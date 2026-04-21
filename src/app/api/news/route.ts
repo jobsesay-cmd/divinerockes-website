@@ -7,7 +7,11 @@ import { newsSchema } from '@/domains/news/schema';
 import { listNews, upsertNews } from '@/domains/news/service';
 
 export async function GET(req: NextRequest) {
-  const parsed = paginationSchema.safeParse(Object.fromEntries(req.nextUrl.searchParams));
+  const parsed = paginationSchema.safeParse({
+    page: req.nextUrl.searchParams.get('page') ?? undefined,
+    pageSize: req.nextUrl.searchParams.get('pageSize') ?? undefined,
+    search: req.nextUrl.searchParams.get('search') ?? undefined,
+  });
   if (!parsed.success) return fail('Validation failed', 422, parsed.error.flatten());
   return ok(await listNews(parsed.data.page, parsed.data.pageSize));
 }
@@ -20,5 +24,5 @@ export async function POST(req: NextRequest) {
   const parsed = newsSchema.safeParse(await req.json());
   if (!parsed.success) return fail('Validation failed', 422, parsed.error.flatten());
 
-  return ok(await upsertNews(null, parsed.data, auth.session.user.id), { status: 201 });
+  return ok(await upsertNews(null, parsed.data, auth.session!.user.id), { status: 201 });
 }

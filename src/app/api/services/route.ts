@@ -7,7 +7,11 @@ import { serviceSchema } from '@/domains/services/schema';
 import { listServices, upsertService } from '@/domains/services/service';
 
 export async function GET(req: NextRequest) {
-  const parsed = paginationSchema.safeParse(Object.fromEntries(req.nextUrl.searchParams));
+  const parsed = paginationSchema.safeParse({
+    page: req.nextUrl.searchParams.get('page') ?? undefined,
+    pageSize: req.nextUrl.searchParams.get('pageSize') ?? undefined,
+    search: req.nextUrl.searchParams.get('search') ?? undefined,
+  });
   if (!parsed.success) return fail('Validation failed', 422, parsed.error.flatten());
   return ok(await listServices(parsed.data.page, parsed.data.pageSize));
 }
@@ -20,5 +24,5 @@ export async function POST(req: NextRequest) {
   const parsed = serviceSchema.safeParse(await req.json());
   if (!parsed.success) return fail('Validation failed', 422, parsed.error.flatten());
 
-  return ok(await upsertService(null, parsed.data, auth.session.user.id), { status: 201 });
+  return ok(await upsertService(null, parsed.data, auth.session!.user.id), { status: 201 });
 }

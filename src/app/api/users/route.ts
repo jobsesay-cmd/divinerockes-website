@@ -9,7 +9,11 @@ export async function GET(req: NextRequest) {
   const auth = await requirePermission('users:manage');
   if (auth.error) return auth.error;
 
-  const parsed = paginationSchema.safeParse(Object.fromEntries(req.nextUrl.searchParams));
+  const parsed = paginationSchema.safeParse({
+    page: req.nextUrl.searchParams.get('page') ?? undefined,
+    pageSize: req.nextUrl.searchParams.get('pageSize') ?? undefined,
+    search: req.nextUrl.searchParams.get('search') ?? undefined,
+  });
   if (!parsed.success) return fail('Validation failed', 422, parsed.error.flatten());
 
   const data = await listUsers(parsed.data.page, parsed.data.pageSize, parsed.data.search);
@@ -23,6 +27,6 @@ export async function POST(req: NextRequest) {
   const parsed = userCreateSchema.safeParse(await req.json());
   if (!parsed.success) return fail('Validation failed', 422, parsed.error.flatten());
 
-  const user = await createUser(parsed.data, auth.session.user.id);
+  const user = await createUser(parsed.data, auth.session!.user.id);
   return ok(user, { status: 201 });
 }

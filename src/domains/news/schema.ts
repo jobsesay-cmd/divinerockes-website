@@ -6,11 +6,11 @@ export const newsSchema = z.object({
   title: z.string().min(2).max(180),
   slug: z.string().regex(/^[a-z0-9-]+$/),
   excerpt: z.string().max(280).optional(),
-  body: z.string().transform((value) => sanitizeRichText(value)),
+  body: z.string().transform((value: string) => sanitizeRichText(value)),
   coverImageUrl: z
     .string()
     .url()
-    .refine((url) => isCloudinaryUrl(url), 'Only Cloudinary image URLs are allowed')
+    .refine((url: string) => isCloudinaryUrl(url), 'Only Cloudinary image URLs are allowed')
     .optional(),
   workflow: publishWorkflowSchema,
   seo: seoSchema.optional(),

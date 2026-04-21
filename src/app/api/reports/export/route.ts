@@ -11,6 +11,6 @@ export async function POST(req: NextRequest) {
   const parsed = reportExportSchema.safeParse(await req.json());
   if (!parsed.success) return fail('Validation failed', 422, parsed.error.flatten());
 
-  const report = await createReportExport(parsed.data, auth.session.user.id);
+  const report = await createReportExport(parsed.data, auth.session!.user.id);
   return ok(report, { status: 202 });
 }

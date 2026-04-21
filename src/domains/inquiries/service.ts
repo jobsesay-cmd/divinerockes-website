@@ -6,11 +6,15 @@ export async function createInquiry(payload: any) {
 }
 
 export async function createQuote(payload: any) {
-  const client = await prisma.client.upsert({
-    where: { email: payload.email },
-    update: { name: payload.name, phone: payload.phone, company: payload.company },
-    create: { name: payload.name, email: payload.email, phone: payload.phone, company: payload.company },
-  });
+  const existingClient = await prisma.client.findFirst({ where: { email: payload.email } });
+  const client = existingClient
+    ? await prisma.client.update({
+        where: { id: existingClient.id },
+        data: { name: payload.name, phone: payload.phone, company: payload.company },
+      })
+    : await prisma.client.create({
+        data: { name: payload.name, email: payload.email, phone: payload.phone, company: payload.company },
+      });
 
   return prisma.quoteRequest.create({
     data: {

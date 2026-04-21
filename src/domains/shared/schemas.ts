@@ -14,7 +14,7 @@ export const seoSchema = z.object({
   ogImageUrl: z
     .string()
     .url()
-    .refine((url) => isCloudinaryUrl(url), 'Only Cloudinary image URLs are allowed')
+    .refine((url: string) => isCloudinaryUrl(url), 'Only Cloudinary image URLs are allowed')
     .optional(),
   noIndex: z.boolean().default(false),
   structuredData: z.record(z.any()).optional(),
@@ -23,7 +23,7 @@ export const seoSchema = z.object({
 export const publishWorkflowSchema = z.object({
   status: contentStatusSchema,
   publishedAt: z.coerce.date().optional(),
-}).superRefine((value, ctx) => {
+}).superRefine((value: { status: string; publishedAt?: Date }, ctx: { addIssue: (issue: unknown) => void }) => {
   if (value.status === ContentStatus.SCHEDULED && !value.publishedAt) {
     ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'publishedAt is required when status is SCHEDULED' });
   }

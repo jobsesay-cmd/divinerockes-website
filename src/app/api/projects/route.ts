@@ -7,7 +7,11 @@ import { projectSchema } from '@/domains/projects/schema';
 import { listProjects, upsertProject } from '@/domains/projects/service';
 
 export async function GET(req: NextRequest) {
-  const parsed = paginationSchema.safeParse(Object.fromEntries(req.nextUrl.searchParams));
+  const parsed = paginationSchema.safeParse({
+    page: req.nextUrl.searchParams.get('page') ?? undefined,
+    pageSize: req.nextUrl.searchParams.get('pageSize') ?? undefined,
+    search: req.nextUrl.searchParams.get('search') ?? undefined,
+  });
   if (!parsed.success) return fail('Validation failed', 422, parsed.error.flatten());
   return ok(await listProjects(parsed.data.page, parsed.data.pageSize));
 }
@@ -20,5 +24,5 @@ export async function POST(req: NextRequest) {
   const parsed = projectSchema.safeParse(await req.json());
   if (!parsed.success) return fail('Validation failed', 422, parsed.error.flatten());
 
-  return ok(await upsertProject(null, parsed.data, auth.session.user.id), { status: 201 });
+  return ok(await upsertProject(null, parsed.data, auth.session!.user.id), { status: 201 });
 }
