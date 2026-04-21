@@ -1,30 +1,45 @@
 # divinerockes-website
 
-Prisma/PostgreSQL data layer for Divinerock Engineering Services CMS + Admin Dashboard.
+Production-grade backend foundation for Divinerock Engineering Services website + admin dashboard.
+
+## Tech stack
+- Next.js route handlers (`src/app/api/**`)
+- PostgreSQL + Prisma ORM (`prisma/schema.prisma`)
+- Session authentication (secure cookies)
+- RBAC and audit/activity logging
+- Zod request validation + rich-text sanitization
+
+## Backend architecture
+Domain modules:
+- `auth`
+- `users`
+- `pages`
+- `services`
+- `projects`
+- `news`
+- `inquiries`
+- `settings`
+- `analytics`
+- `reports`
+
+See `docs/backend-api.md` for route map and sample requests.
 
 ## Setup
-
-1. Copy environment template and configure PostgreSQL:
-   ```bash
-   cp .env.example .env
-   ```
-2. Install dependencies:
+1. Install dependencies:
    ```bash
    npm install
    ```
-3. Validate the Prisma schema:
+2. Configure env vars (`DATABASE_URL`, seed credentials).
+3. Validate schema:
    ```bash
    npm run prisma:validate
    ```
-4. Create and apply local migrations:
+4. Run migrations + generate client:
    ```bash
-   npm run db:migrate:dev -- --name init
+   npm run db:migrate:dev -- --name init_backend
+   npm run prisma:generate
    ```
-5. Seed baseline RBAC/settings data:
+5. Seed default RBAC + settings:
    ```bash
    npm run db:seed
    ```
-
-## Notes on testing failure from previous PR
-
-The earlier `npx prisma validate` failure was caused by fetching Prisma directly from npm in a restricted environment. This repository now includes Prisma as an explicit dependency and npm scripts so validation uses the local binary after installation (`npm run prisma:validate`), which avoids ad-hoc network fetch behavior.

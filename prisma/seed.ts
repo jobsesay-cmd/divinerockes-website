@@ -1,12 +1,10 @@
 import { PrismaClient, RoleType, ProjectCategoryType } from '@prisma/client';
-import { randomBytes, scryptSync } from 'crypto';
+import bcrypt from 'bcryptjs';
 
 const prisma = new PrismaClient();
 
 function hashPassword(password: string): string {
-  const salt = randomBytes(16).toString('hex');
-  const hash = scryptSync(password, salt, 64).toString('hex');
-  return `scrypt:${salt}:${hash}`;
+  return bcrypt.hashSync(password, 12);
 }
 
 async function main() {
