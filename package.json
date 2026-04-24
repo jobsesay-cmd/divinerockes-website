@@ -2,7 +2,7 @@
   "name": "divinerockes-website",
   "version": "1.0.0",
   "private": true,
-  "description": "Divinerock Engineering Services CMS data layer",
+  "description": "Divinerock Engineering Services full-stack web platform",
   "scripts": {
     "prisma:generate": "prisma generate",
     "prisma:validate": "prisma validate --schema prisma/schema.prisma",
@@ -10,14 +10,34 @@
     "typecheck": "tsc --noEmit",
     "db:migrate:dev": "prisma migrate dev",
     "db:migrate:deploy": "prisma migrate deploy",
-    "db:seed": "tsx prisma/seed.ts"
+    "db:seed": "tsx prisma/seed.ts",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "@prisma/client": "^6.7.0",
     "bcryptjs": "^2.4.3",
     "next": "^15.3.0",
     "sanitize-html": "^2.17.0",
-    "zod": "^3.24.4"
+    "zod": "^3.24.4",
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@hookform/resolvers": "^3.10.0",
+    "@tanstack/react-table": "^8.20.5",
+    "@tanstack/react-query": "^5.74.4",
+    "@tanstack/react-query-devtools": "^5.74.4",
+    "@tiptap/react": "^2.12.0",
+    "@tiptap/starter-kit": "^2.12.0",
+    "@tiptap/extension-code-block": "^2.12.0",
+    "@tiptap/extension-image": "^2.12.0",
+    "clsx": "^2.1.1",
+    "recharts": "^2.15.3",
+    "react-hook-form": "^7.56.2",
+    "sonner": "^1.7.2",
+    "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
@@ -25,6 +45,9 @@
     "@types/sanitize-html": "^2.16.1",
     "prisma": "^6.7.0",
     "tsx": "^4.19.3",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17"
   }
 }
