@@ -128,7 +128,7 @@ const ongoingProjects = [
   },
 ] as const;
 
-export default function ProjectsClientPage() {
+export default function ProjectsPage() {
   const [activeFilter, setActiveFilter] = useState<Category>('all');
 
   const visibleProjects = useMemo(
@@ -166,6 +166,7 @@ export default function ProjectsClientPage() {
                 type="button"
                 className={`${styles.filterBtn} ${activeFilter === filter.key ? styles.active : ''}`}
                 onClick={() => setActiveFilter(filter.key)}
+                aria-pressed={activeFilter === filter.key}
               >
                 {filter.label}
               </button>
