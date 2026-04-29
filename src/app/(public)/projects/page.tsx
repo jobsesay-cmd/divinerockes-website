@@ -1,10 +1,11 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faMapMarkerAlt,
+  faLocationDot,
   faCheck,
   faSpinner,
   faClock,
@@ -116,7 +117,7 @@ const ongoingProjects = [
     description: 'Construction of a 50-meter reinforced concrete bridge to improve connectivity.',
     image: '/images/bridge.jpg',
     categoryLabel: 'Bridge Construction',
-    status: ['Foundation works completed', 'Pier construction underway', 'Expected completion: Q3 2025'],
+    status: ['Foundation works completed', 'Pier construction underway', 'Expected completion: Q3 2026'],
   },
   {
     title: 'Educational Facility Construction',
@@ -124,7 +125,7 @@ const ongoingProjects = [
     description: 'Construction of a modern secondary school with 12 classrooms and laboratory facilities.',
     image: '/images/bridge.jpg',
     categoryLabel: 'Building Construction',
-    status: ['Foundation completed', 'Wall construction in progress', 'Expected completion: Q4 2025'],
+    status: ['Foundation completed', 'Wall construction in progress', 'Expected completion: Q4 2026'],
   },
 ] as const;
 
@@ -186,14 +187,13 @@ export default function ProjectsPage() {
             {visibleProjects.map((project) => (
               <article key={project.title} className={styles.projectCard}>
                 <div className={styles.projectImage}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={project.image} alt={project.title} />
+                  <Image src={project.image} alt={project.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw" />
                   <span className={styles.projectCategory}>{project.categoryLabel}</span>
                 </div>
                 <div className={styles.projectContent}>
                   <h3>{project.title}</h3>
                   <div className={styles.projectLocation}>
-                    <FontAwesomeIcon icon={faMapMarkerAlt} />
+                    <FontAwesomeIcon icon={faLocationDot} />
                     <span>{project.location}</span>
                   </div>
                   <p className={styles.projectDescription}>{project.description}</p>
@@ -234,8 +234,7 @@ export default function ProjectsPage() {
             {ongoingProjects.map((project) => (
               <article key={project.title} className={styles.projectCard}>
                 <div className={styles.projectImage}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={project.image} alt={project.title} />
+                  <Image src={project.image} alt={project.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw" />
                   <span className={styles.projectCategory}>{project.categoryLabel}</span>
                 </div>
                 <div className={styles.projectContent}>
@@ -244,7 +243,7 @@ export default function ProjectsPage() {
                   </div>
                   <h3>{project.title}</h3>
                   <div className={styles.projectLocation}>
-                    <FontAwesomeIcon icon={faMapMarkerAlt} />
+                    <FontAwesomeIcon icon={faLocationDot} />
                     <span>{project.location}</span>
                   </div>
                   <p className={styles.projectDescription}>{project.description}</p>
