@@ -1,0 +1,47 @@
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.pageBanner {
+  background: linear-gradient(rgba(9,114,194,0.9), rgba(9,114,194,0.9)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=2000&q=80');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 80px 0;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 24px;
+}
+
+.sectionTitle { color: #0972c2; font-size: 1.75rem; margin-bottom: 12px; }
+.muted { color: #4a5a6a; }
+.bgLight { background: #f5f7fa; border-radius: 16px; }
+
+@media (max-width: 1024px) {
+  .infoGrid { grid-template-columns: repeat(2, 1fr); }
+  .mainGrid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .container { padding: 0 16px; }
+  .infoGrid { grid-template-columns: 1fr; }
+}
