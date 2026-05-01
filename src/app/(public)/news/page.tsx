@@ -1,18 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News & Updates - Divinerock Engineering Services</title>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Link to global CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    <style>
+"use client";
+
+import React from 'react';
+import { useState } from 'react';
+
+export default function NewsPage() {
+
+  const [activeCategory, setActiveCategory] = useState('all');
+  const categories = [
+    ['all', 'All News'],
+    ['projects', 'Project Updates'],
+    ['announcements', 'Company Announcements'],
+    ['industry', 'Industry Insights'],
+    ['events', 'Events'],
+  ];
+
+  return (
+    <>
+      <style>{`
+
         /* Additional styles specific to News page */
         * {
             margin: 0;
@@ -935,531 +940,714 @@
                 gap: 15px;
             }
         }
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <h1>DIVINEROCK</h1>
-                <span>Engineering Services</span>
-            </div>
-            <nav class="nav-menu">
-                <a href="index.html">Home</a>
-                <a href="about.html">About Us</a>
-                <a href="services.html">Services</a>
-                <a href="projects.html">Projects</a>
-                <a href="equipment.html">Equipment</a>
-                <a href="news.html" class="active">News</a>
-                <a href="contact.html">Contact</a>
-                <a href="quote.html" class="quote-btn">Request a Quote</a>
-            </nav>
+    
+      `}</style>
+    <header className="header">
+      <div className="container">
+        <div className="logo">
+          <h1>
+            DIVINEROCK
+          </h1>
+          <span>
+            Engineering Services
+          </span>
         </div>
+        <nav className="nav-menu">
+          <a href="/">
+            Home
+          </a>
+          <a href="/about">
+            About Us
+          </a>
+          <a href="/services">
+            Services
+          </a>
+          <a href="/projects">
+            Projects
+          </a>
+          <a href="/equipment">
+            Equipment
+          </a>
+          <a href="/news" className="active">
+            News
+          </a>
+          <a href="/contact">
+            Contact
+          </a>
+          <a href="/quote" className="quote-btn">
+            Request a Quote
+          </a>
+        </nav>
+      </div>
     </header>
-
-    <!-- Page Banner -->
-    <section class="page-banner">
-        <div class="container">
-            <h1>News & Updates</h1>
-            <p>Stay informed about Divinerock Engineering Services' latest projects, company announcements, and industry insights</p>
-        </div>
+    <section className="page-banner">
+      <div className="container">
+        <h1>
+          News & Updates
+        </h1>
+        <p>
+          Stay informed about Divinerock Engineering Services' latest projects, company announcements, and industry insights
+        </p>
+      </div>
     </section>
-
-    <!-- News Introduction -->
     <section>
-        <div class="container">
-            <div class="news-intro">
-                <h2 class="section-title">Latest from Divinerock</h2>
-                <p>Follow our journey as we continue to deliver quality infrastructure solutions across Sierra Leone. Get updates on project milestones, company achievements, and industry developments.</p>
-            </div>
+      <div className="container">
+        <div className="news-intro">
+          <h2 className="section-title">
+            Latest from Divinerock
+          </h2>
+          <p>
+            Follow our journey as we continue to deliver quality infrastructure solutions across Sierra Leone. Get updates on project milestones, company achievements, and industry developments.
+          </p>
         </div>
+      </div>
     </section>
-
-    <!-- News Categories -->
-    <div class="container">
-        <div class="news-categories">
-            <button class="category-btn active" data-category="all">All News</button>
-            <button class="category-btn" data-category="projects">Project Updates</button>
-            <button class="category-btn" data-category="announcements">Company Announcements</button>
-            <button class="category-btn" data-category="industry">Industry Insights</button>
-            <button class="category-btn" data-category="events">Events</button>
-        </div>
+    <div className="container">
+      <div className="news-categories">
+        <button className="category-btn active" data-category="all">
+          All News
+        </button>
+        <button className="category-btn" data-category="projects">
+          Project Updates
+        </button>
+        <button className="category-btn" data-category="announcements">
+          Company Announcements
+        </button>
+        <button className="category-btn" data-category="industry">
+          Industry Insights
+        </button>
+        <button className="category-btn" data-category="events">
+          Events
+        </button>
+      </div>
     </div>
-
-    <!-- Featured News -->
-    <section class="bg-light" style="padding-top: 0;">
-        <div class="container">
-            <div class="featured-news">
-                <div class="featured-card">
-                    <div class="featured-image">
-                        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80" alt="Featured News">
-                    </div>
-                    <div class="featured-content">
-                        <span class="featured-tag">Featured Story</span>
-                        <div class="featured-date">
-                            <i class="far fa-calendar-alt"></i>
-                            <span>March 15, 2025</span>
-                            <i class="far fa-clock" style="margin-left: 15px;"></i>
-                            <span>5 min read</span>
-                        </div>
-                        <h2>Divinerock Completes Major Highway Rehabilitation Project in Western Area</h2>
-                        <p>The newly completed 15-kilometer highway connects several communities, significantly reducing travel time and improving access to markets, schools, and healthcare facilities. The project employed over 200 local workers and utilized modern construction techniques to ensure long-term durability.</p>
-                        <p>"This project represents our commitment to improving infrastructure and creating economic opportunities for communities across Sierra Leone," said John Kamara, Project Manager at Divinerock Engineering Services.</p>
-                        <div class="featured-meta">
-                            <div class="featured-author">
-                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Author">
-                                <span>By John Kamara</span>
-                            </div>
-                            <div class="featured-share">
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#"><i class="fas fa-envelope"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <section className="bg-light" style={{paddingTop: '0'}}>
+      <div className="container">
+        <div className="featured-news">
+          <div className="featured-card">
+            <div className="featured-image">
+              <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Featured News" />
             </div>
+            <div className="featured-content">
+              <span className="featured-tag">
+                Featured Story
+              </span>
+              <div className="featured-date">
+                <i className="far fa-calendar-alt"></i>
+                <span>
+                  March 15, 2025
+                </span>
+                <i className="far fa-clock" style={{marginLeft: '15px'}}></i>
+                <span>
+                  5 min read
+                </span>
+              </div>
+              <h2>
+                Divinerock Completes Major Highway Rehabilitation Project in Western Area
+              </h2>
+              <p>
+                The newly completed 15-kilometer highway connects several communities, significantly reducing travel time and improving access to markets, schools, and healthcare facilities. The project employed over 200 local workers and utilized modern construction techniques to ensure long-term durability.
+              </p>
+              <p>
+                "This project represents our commitment to improving infrastructure and creating economic opportunities for communities across Sierra Leone," said John Kamara, Project Manager at Divinerock Engineering Services.
+              </p>
+              <div className="featured-meta">
+                <div className="featured-author">
+                  <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Author" />
+                  <span>
+                    By John Kamara
+                  </span>
+                </div>
+                <div className="featured-share">
+                  <a href="#">
+                    <i className="fab fa-facebook-f"></i>
+                  </a>
+                  <a href="#">
+                    <i className="fab fa-twitter"></i>
+                  </a>
+                  <a href="#">
+                    <i className="fab fa-linkedin-in"></i>
+                  </a>
+                  <a href="#">
+                    <i className="fas fa-envelope"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
-
-    <!-- News Grid -->
     <section>
-        <div class="container">
-            <h2 class="section-title">Recent News</h2>
-            <div class="news-grid" id="news-grid">
-                <!-- News Article 1 -->
-                <div class="news-card" data-category="projects">
-                    <div class="news-image">
-                        <img src="https://images.unsplash.com/photo-1590673846749-2c63c1c75e0b?auto=format&fit=crop&w=600&q=80" alt="Bridge Project">
-                        <span class="news-category">Project Update</span>
-                    </div>
-                    <div class="news-content">
-                        <div class="news-date">
-                            <i class="far fa-calendar-alt"></i>
-                            <span>March 10, 2025</span>
-                        </div>
-                        <h3>New Bridge Construction Reaches 50% Completion</h3>
-                        <p>The reinforced concrete bridge in Port Loko District is progressing ahead of schedule, with foundation works completed and pier construction underway.</p>
-                        <a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <!-- News Article 2 -->
-                <div class="news-card" data-category="announcements">
-                    <div class="news-image">
-                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=600&q=80" alt="Safety Milestone">
-                        <span class="news-category">Announcement</span>
-                    </div>
-                    <div class="news-content">
-                        <div class="news-date">
-                            <i class="far fa-calendar-alt"></i>
-                            <span>March 5, 2025</span>
-                        </div>
-                        <h3>Divinerock Achieves 500 Days Without Lost-Time Injury</h3>
-                        <p>This significant safety milestone reflects our unwavering commitment to maintaining the highest safety standards across all project sites.</p>
-                        <a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <!-- News Article 3 -->
-                <div class="news-card" data-category="industry">
-                    <div class="news-image">
-                        <img src="https://images.unsplash.com/photo-1545324451-9ae5c4c0c6b5?auto=format&fit=crop&w=600&q=80" alt="Industry Insights">
-                        <span class="news-category">Industry Insight</span>
-                    </div>
-                    <div class="news-content">
-                        <div class="news-date">
-                            <i class="far fa-calendar-alt"></i>
-                            <span>February 28, 2025</span>
-                        </div>
-                        <h3>Sustainable Construction Practices in Sierra Leone</h3>
-                        <p>How local engineering firms are adopting environmentally responsible methods to build resilient infrastructure for the future.</p>
-                        <a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <!-- News Article 4 -->
-                <div class="news-card" data-category="events">
-                    <div class="news-image">
-                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=600&q=80" alt="Industry Event">
-                        <span class="news-category">Event</span>
-                    </div>
-                    <div class="news-content">
-                        <div class="news-date">
-                            <i class="far fa-calendar-alt"></i>
-                            <span>February 20, 2025</span>
-                        </div>
-                        <h3>Divinerock to Exhibit at Sierra Leone Infrastructure Forum 2025</h3>
-                        <p>Join us at the annual infrastructure exhibition where we'll showcase our recent projects and discuss future opportunities.</p>
-                        <a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <!-- News Article 5 -->
-                <div class="news-card" data-category="projects">
-                    <div class="news-image">
-                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=600&q=80" alt="School Project">
-                        <span class="news-category">Project Update</span>
-                    </div>
-                    <div class="news-content">
-                        <div class="news-date">
-                            <i class="far fa-calendar-alt"></i>
-                            <span>February 15, 2025</span>
-                        </div>
-                        <h3>Construction Begins on New Secondary School in Bo</h3>
-                        <p>The 12-classroom facility will provide modern learning environments for over 500 students in the region.</p>
-                        <a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <!-- News Article 6 -->
-                <div class="news-card" data-category="announcements">
-                    <div class="news-image">
-                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=600&q=80" alt="Equipment Upgrade">
-                        <span class="news-category">Announcement</span>
-                    </div>
-                    <div class="news-content">
-                        <div class="news-date">
-                            <i class="far fa-calendar-alt"></i>
-                            <span>February 10, 2025</span>
-                        </div>
-                        <h3>Fleet Expansion: New Excavators Arrive</h3>
-                        <p>Three new 30-ton excavators have been added to our equipment fleet, increasing our earthworks capacity by 40%.</p>
-                        <a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
+      <div className="container">
+        <h2 className="section-title">
+          Recent News
+        </h2>
+        <div className="news-grid" id="news-grid">
+          <div className="news-card" data-category="projects">
+            <div className="news-image">
+              <img src="https://images.unsplash.com/photo-1590673846749-2c63c1c75e0b?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Bridge Project" />
+              <span className="news-category">
+                Project Update
+              </span>
             </div>
-            
-            <!-- Pagination -->
-            <div class="pagination">
-                <span class="page-link active">1</span>
-                <span class="page-link">2</span>
-                <span class="page-link">3</span>
-                <span class="page-link"><i class="fas fa-chevron-right"></i></span>
+            <div className="news-content">
+              <div className="news-date">
+                <i className="far fa-calendar-alt"></i>
+                <span>
+                  March 10, 2025
+                </span>
+              </div>
+              <h3>
+                New Bridge Construction Reaches 50% Completion
+              </h3>
+              <p>
+                The reinforced concrete bridge in Port Loko District is progressing ahead of schedule, with foundation works completed and pier construction underway.
+              </p>
+              <a href="#" className="news-link">
+                Read More
+                <i className="fas fa-arrow-right"></i>
+              </a>
             </div>
+          </div>
+          <div className="news-card" data-category="announcements">
+            <div className="news-image">
+              <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Safety Milestone" />
+              <span className="news-category">
+                Announcement
+              </span>
+            </div>
+            <div className="news-content">
+              <div className="news-date">
+                <i className="far fa-calendar-alt"></i>
+                <span>
+                  March 5, 2025
+                </span>
+              </div>
+              <h3>
+                Divinerock Achieves 500 Days Without Lost-Time Injury
+              </h3>
+              <p>
+                This significant safety milestone reflects our unwavering commitment to maintaining the highest safety standards across all project sites.
+              </p>
+              <a href="#" className="news-link">
+                Read More
+                <i className="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+          <div className="news-card" data-category="industry">
+            <div className="news-image">
+              <img src="https://images.unsplash.com/photo-1545324451-9ae5c4c0c6b5?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Industry Insights" />
+              <span className="news-category">
+                Industry Insight
+              </span>
+            </div>
+            <div className="news-content">
+              <div className="news-date">
+                <i className="far fa-calendar-alt"></i>
+                <span>
+                  February 28, 2025
+                </span>
+              </div>
+              <h3>
+                Sustainable Construction Practices in Sierra Leone
+              </h3>
+              <p>
+                How local engineering firms are adopting environmentally responsible methods to build resilient infrastructure for the future.
+              </p>
+              <a href="#" className="news-link">
+                Read More
+                <i className="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+          <div className="news-card" data-category="events">
+            <div className="news-image">
+              <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Industry Event" />
+              <span className="news-category">
+                Event
+              </span>
+            </div>
+            <div className="news-content">
+              <div className="news-date">
+                <i className="far fa-calendar-alt"></i>
+                <span>
+                  February 20, 2025
+                </span>
+              </div>
+              <h3>
+                Divinerock to Exhibit at Sierra Leone Infrastructure Forum 2025
+              </h3>
+              <p>
+                Join us at the annual infrastructure exhibition where we'll showcase our recent projects and discuss future opportunities.
+              </p>
+              <a href="#" className="news-link">
+                Read More
+                <i className="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+          <div className="news-card" data-category="projects">
+            <div className="news-image">
+              <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="School Project" />
+              <span className="news-category">
+                Project Update
+              </span>
+            </div>
+            <div className="news-content">
+              <div className="news-date">
+                <i className="far fa-calendar-alt"></i>
+                <span>
+                  February 15, 2025
+                </span>
+              </div>
+              <h3>
+                Construction Begins on New Secondary School in Bo
+              </h3>
+              <p>
+                The 12-classroom facility will provide modern learning environments for over 500 students in the region.
+              </p>
+              <a href="#" className="news-link">
+                Read More
+                <i className="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+          <div className="news-card" data-category="announcements">
+            <div className="news-image">
+              <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Equipment Upgrade" />
+              <span className="news-category">
+                Announcement
+              </span>
+            </div>
+            <div className="news-content">
+              <div className="news-date">
+                <i className="far fa-calendar-alt"></i>
+                <span>
+                  February 10, 2025
+                </span>
+              </div>
+              <h3>
+                Fleet Expansion: New Excavators Arrive
+              </h3>
+              <p>
+                Three new 30-ton excavators have been added to our equipment fleet, increasing our earthworks capacity by 40%.
+              </p>
+              <a href="#" className="news-link">
+                Read More
+                <i className="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
         </div>
-    </section>
-
-    <!-- Project Updates Section -->
-    <section class="updates-section">
-        <div class="container">
-            <h2 class="section-title">Ongoing Project Updates</h2>
-            <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Real-time progress on our current construction projects</p>
-            
-            <div class="updates-grid">
-                <!-- Update 1 -->
-                <div class="update-card">
-                    <div class="update-header">
-                        <div class="update-icon">
-                            <i class="fas fa-road"></i>
-                        </div>
-                        <div class="update-meta">
-                            <div class="update-project">Highway Rehabilitation Project</div>
-                            <div class="update-date"><i class="far fa-calendar-alt"></i> Updated: March 14, 2025</div>
-                        </div>
-                    </div>
-                    <p>Asphalt paving is now 75% complete. Drainage installation finished. Expected completion: May 2025.</p>
-                    <div class="update-progress">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 75%"></div>
-                        </div>
-                        <div class="progress-stats">
-                            <span>Overall Progress</span>
-                            <span>75%</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Update 2 -->
-                <div class="update-card">
-                    <div class="update-header">
-                        <div class="update-icon">
-                            <i class="fas fa-bridge"></i>
-                        </div>
-                        <div class="update-meta">
-                            <div class="update-project">Moyamba Bridge Construction</div>
-                            <div class="update-date"><i class="far fa-calendar-alt"></i> Updated: March 12, 2025</div>
-                        </div>
-                    </div>
-                    <p>Pier construction underway. Foundation works completed. On track for Q3 2025 completion.</p>
-                    <div class="update-progress">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 45%"></div>
-                        </div>
-                        <div class="progress-stats">
-                            <span>Overall Progress</span>
-                            <span>45%</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Update 3 -->
-                <div class="update-card">
-                    <div class="update-header">
-                        <div class="update-icon">
-                            <i class="fas fa-school"></i>
-                        </div>
-                        <div class="update-meta">
-                            <div class="update-project">Bo Educational Facility</div>
-                            <div class="update-date"><i class="far fa-calendar-alt"></i> Updated: March 10, 2025</div>
-                        </div>
-                    </div>
-                    <p>Foundation completed. Wall construction in progress. Materials delivered for next phase.</p>
-                    <div class="update-progress">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 30%"></div>
-                        </div>
-                        <div class="progress-stats">
-                            <span>Overall Progress</span>
-                            <span>30%</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Update 4 -->
-                <div class="update-card">
-                    <div class="update-header">
-                        <div class="update-icon">
-                            <i class="fas fa-tools"></i>
-                        </div>
-                        <div class="update-meta">
-                            <div class="update-project">Industrial Fabrication Project</div>
-                            <div class="update-date"><i class="far fa-calendar-alt"></i> Updated: March 8, 2025</div>
-                        </div>
-                    </div>
-                    <p>Steel fabrication 60% complete. Installation to begin April 2025.</p>
-                    <div class="update-progress">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 60%"></div>
-                        </div>
-                        <div class="progress-stats">
-                            <span>Overall Progress</span>
-                            <span>60%</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div className="pagination">
+          <span className="page-link active">
+            1
+          </span>
+          <span className="page-link">
+            2
+          </span>
+          <span className="page-link">
+            3
+          </span>
+          <span className="page-link">
+            <i className="fas fa-chevron-right"></i>
+          </span>
         </div>
+      </div>
     </section>
-
-    <!-- Company Announcements -->
+    <section className="updates-section">
+      <div className="container">
+        <h2 className="section-title">
+          Ongoing Project Updates
+        </h2>
+        <p className="section-subtitle" style={{color: 'rgba(255,255,255,0.9)'}}>
+          Real-time progress on our current construction projects
+        </p>
+        <div className="updates-grid">
+          <div className="update-card">
+            <div className="update-header">
+              <div className="update-icon">
+                <i className="fas fa-road"></i>
+              </div>
+              <div className="update-meta">
+                <div className="update-project">
+                  Highway Rehabilitation Project
+                </div>
+                <div className="update-date">
+                  <i className="far fa-calendar-alt"></i>
+                  Updated: March 14, 2025
+                </div>
+              </div>
+            </div>
+            <p>
+              Asphalt paving is now 75% complete. Drainage installation finished. Expected completion: May 2025.
+            </p>
+            <div className="update-progress">
+              <div className="progress-bar">
+                <div className="progress-fill" style={{width: '75%'}}></div>
+              </div>
+              <div className="progress-stats">
+                <span>
+                  Overall Progress
+                </span>
+                <span>
+                  75%
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="update-card">
+            <div className="update-header">
+              <div className="update-icon">
+                <i className="fas fa-bridge"></i>
+              </div>
+              <div className="update-meta">
+                <div className="update-project">
+                  Moyamba Bridge Construction
+                </div>
+                <div className="update-date">
+                  <i className="far fa-calendar-alt"></i>
+                  Updated: March 12, 2025
+                </div>
+              </div>
+            </div>
+            <p>
+              Pier construction underway. Foundation works completed. On track for Q3 2025 completion.
+            </p>
+            <div className="update-progress">
+              <div className="progress-bar">
+                <div className="progress-fill" style={{width: '45%'}}></div>
+              </div>
+              <div className="progress-stats">
+                <span>
+                  Overall Progress
+                </span>
+                <span>
+                  45%
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="update-card">
+            <div className="update-header">
+              <div className="update-icon">
+                <i className="fas fa-school"></i>
+              </div>
+              <div className="update-meta">
+                <div className="update-project">
+                  Bo Educational Facility
+                </div>
+                <div className="update-date">
+                  <i className="far fa-calendar-alt"></i>
+                  Updated: March 10, 2025
+                </div>
+              </div>
+            </div>
+            <p>
+              Foundation completed. Wall construction in progress. Materials delivered for next phase.
+            </p>
+            <div className="update-progress">
+              <div className="progress-bar">
+                <div className="progress-fill" style={{width: '30%'}}></div>
+              </div>
+              <div className="progress-stats">
+                <span>
+                  Overall Progress
+                </span>
+                <span>
+                  30%
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="update-card">
+            <div className="update-header">
+              <div className="update-icon">
+                <i className="fas fa-tools"></i>
+              </div>
+              <div className="update-meta">
+                <div className="update-project">
+                  Industrial Fabrication Project
+                </div>
+                <div className="update-date">
+                  <i className="far fa-calendar-alt"></i>
+                  Updated: March 8, 2025
+                </div>
+              </div>
+            </div>
+            <p>
+              Steel fabrication 60% complete. Installation to begin April 2025.
+            </p>
+            <div className="update-progress">
+              <div className="progress-bar">
+                <div className="progress-fill" style={{width: '60%'}}></div>
+              </div>
+              <div className="progress-stats">
+                <span>
+                  Overall Progress
+                </span>
+                <span>
+                  60%
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <section>
-        <div class="container">
-            <h2 class="section-title">Company Announcements</h2>
-            <p class="section-subtitle">Important updates and news from Divinerock Engineering Services</p>
-            
-            <div class="announcements-list">
-                <!-- Announcement 1 -->
-                <div class="announcement-item">
-                    <div class="announcement-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <div class="announcement-content">
-                        <h3>Divinerock Wins Safety Excellence Award</h3>
-                        <div class="announcement-meta">
-                            <span><i class="far fa-calendar-alt"></i> March 1, 2025</span>
-                            <span><i class="fas fa-tag"></i> Award</span>
-                        </div>
-                        <p>We are proud to announce that Divinerock Engineering Services has received the Safety Excellence Award from the Sierra Leone Construction Industry Association for our outstanding safety record in 2024.</p>
-                    </div>
-                </div>
-                
-                <!-- Announcement 2 -->
-                <div class="announcement-item">
-                    <div class="announcement-icon">
-                        <i class="fas fa-user-plus"></i>
-                    </div>
-                    <div class="announcement-content">
-                        <h3>New Team Members Join Divinerock</h3>
-                        <div class="announcement-meta">
-                            <span><i class="far fa-calendar-alt"></i> February 20, 2025</span>
-                            <span><i class="fas fa-tag"></i> Team</span>
-                        </div>
-                        <p>We welcome two new senior engineers to our team: Fatmata Bangura (Structural Engineer) and Mohamed Koroma (Geotechnical Specialist).</p>
-                    </div>
-                </div>
-                
-                <!-- Announcement 3 -->
-                <div class="announcement-item">
-                    <div class="announcement-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <div class="announcement-content">
-                        <h3>ISO 9001:2015 Certification Renewed</h3>
-                        <div class="announcement-meta">
-                            <span><i class="far fa-calendar-alt"></i> February 10, 2025</span>
-                            <span><i class="fas fa-tag"></i> Certification</span>
-                        </div>
-                        <p>We are pleased to announce the successful renewal of our ISO 9001:2015 Quality Management certification following a comprehensive audit.</p>
-                    </div>
-                </div>
+      <div className="container">
+        <h2 className="section-title">
+          Company Announcements
+        </h2>
+        <p className="section-subtitle">
+          Important updates and news from Divinerock Engineering Services
+        </p>
+        <div className="announcements-list">
+          <div className="announcement-item">
+            <div className="announcement-icon">
+              <i className="fas fa-trophy"></i>
             </div>
+            <div className="announcement-content">
+              <h3>
+                Divinerock Wins Safety Excellence Award
+              </h3>
+              <div className="announcement-meta">
+                <span>
+                  <i className="far fa-calendar-alt"></i>
+                  March 1, 2025
+                </span>
+                <span>
+                  <i className="fas fa-tag"></i>
+                  Award
+                </span>
+              </div>
+              <p>
+                We are proud to announce that Divinerock Engineering Services has received the Safety Excellence Award from the Sierra Leone Construction Industry Association for our outstanding safety record in 2024.
+              </p>
+            </div>
+          </div>
+          <div className="announcement-item">
+            <div className="announcement-icon">
+              <i className="fas fa-user-plus"></i>
+            </div>
+            <div className="announcement-content">
+              <h3>
+                New Team Members Join Divinerock
+              </h3>
+              <div className="announcement-meta">
+                <span>
+                  <i className="far fa-calendar-alt"></i>
+                  February 20, 2025
+                </span>
+                <span>
+                  <i className="fas fa-tag"></i>
+                  Team
+                </span>
+              </div>
+              <p>
+                We welcome two new senior engineers to our team: Fatmata Bangura (Structural Engineer) and Mohamed Koroma (Geotechnical Specialist).
+              </p>
+            </div>
+          </div>
+          <div className="announcement-item">
+            <div className="announcement-icon">
+              <i className="fas fa-certificate"></i>
+            </div>
+            <div className="announcement-content">
+              <h3>
+                ISO 9001:2015 Certification Renewed
+              </h3>
+              <div className="announcement-meta">
+                <span>
+                  <i className="far fa-calendar-alt"></i>
+                  February 10, 2025
+                </span>
+                <span>
+                  <i className="fas fa-tag"></i>
+                  Certification
+                </span>
+              </div>
+              <p>
+                We are pleased to announce the successful renewal of our ISO 9001:2015 Quality Management certification following a comprehensive audit.
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
-
-    <!-- Industry Insights -->
-    <section class="bg-light">
-        <div class="container">
-            <h2 class="section-title">Industry Insights</h2>
-            <p class="section-subtitle">Expert perspectives on construction and engineering in Sierra Leone</p>
-            
-            <div class="insights-grid">
-                <div class="insight-card">
-                    <div class="insight-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Infrastructure Outlook 2025</h3>
-                    <p>Analysis of upcoming infrastructure projects and opportunities in Sierra Leone's construction sector.</p>
-                </div>
-                
-                <div class="insight-card">
-                    <div class="insight-icon">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <h3>Sustainable Construction</h3>
-                    <p>How eco-friendly building practices are transforming the local construction industry.</p>
-                </div>
-                
-                <div class="insight-card">
-                    <div class="insight-icon">
-                        <i class="fas fa-hard-hat"></i>
-                    </div>
-                    <h3>Workforce Development</h3>
-                    <p>Addressing the skills gap in Sierra Leone's engineering and construction workforce.</p>
-                </div>
+    <section className="bg-light">
+      <div className="container">
+        <h2 className="section-title">
+          Industry Insights
+        </h2>
+        <p className="section-subtitle">
+          Expert perspectives on construction and engineering in Sierra Leone
+        </p>
+        <div className="insights-grid">
+          <div className="insight-card">
+            <div className="insight-icon">
+              <i className="fas fa-chart-line"></i>
             </div>
+            <h3>
+              Infrastructure Outlook 2025
+            </h3>
+            <p>
+              Analysis of upcoming infrastructure projects and opportunities in Sierra Leone's construction sector.
+            </p>
+          </div>
+          <div className="insight-card">
+            <div className="insight-icon">
+              <i className="fas fa-leaf"></i>
+            </div>
+            <h3>
+              Sustainable Construction
+            </h3>
+            <p>
+              How eco-friendly building practices are transforming the local construction industry.
+            </p>
+          </div>
+          <div className="insight-card">
+            <div className="insight-icon">
+              <i className="fas fa-hard-hat"></i>
+            </div>
+            <h3>
+              Workforce Development
+            </h3>
+            <p>
+              Addressing the skills gap in Sierra Leone's engineering and construction workforce.
+            </p>
+          </div>
         </div>
+      </div>
     </section>
-
-    <!-- Newsletter Section -->
-    <section class="newsletter-section">
-        <div class="container">
-            <div class="newsletter-box">
-                <i class="fas fa-envelope-open-text" style="font-size: 3rem; color: #0972C2; margin-bottom: 20px;"></i>
-                <h3>Subscribe to Our Newsletter</h3>
-                <p>Get the latest news, project updates, and industry insights delivered straight to your inbox.</p>
-                <form class="newsletter-form">
-                    <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
-                    <button type="submit" class="btn btn-primary">Subscribe</button>
-                </form>
-                <p style="font-size: 0.9rem; margin-top: 20px; color: #4a5a6a;">We respect your privacy. Unsubscribe at any time.</p>
-            </div>
+    <section className="newsletter-section">
+      <div className="container">
+        <div className="newsletter-box">
+          <i className="fas fa-envelope-open-text" style={{fontSize: '3rem', color: '#0972C2', marginBottom: '20px'}}></i>
+          <h3>
+            Subscribe to Our Newsletter
+          </h3>
+          <p>
+            Get the latest news, project updates, and industry insights delivered straight to your inbox.
+          </p>
+          <form className="newsletter-form">
+            <input type="email" className="newsletter-input" placeholder="Enter your email address" required="" />
+            <button type="submit" className="btn btn-primary">
+              Subscribe
+            </button>
+          </form>
+          <p style={{fontSize: '0.9rem', marginTop: '20px', color: '#4a5a6a'}}>
+            We respect your privacy. Unsubscribe at any time.
+          </p>
         </div>
+      </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>About Divinerock</h4>
-                    <p>Divinerock Engineering Services is a civil engineering and construction company committed to delivering reliable infrastructure solutions. Specialized in road construction, bridge development, building construction, steel fabrication, and project management services for both public and private sector clients.</p>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Our Services</h4>
-                    <ul class="footer-links">
-                        <li><a href="services.html">Construction Services</a></li>
-                        <li><a href="services.html">Civil Engineering</a></li>
-                        <li><a href="services.html">Fabrication & Metal Works</a></li>
-                        <li><a href="services.html">Project Management</a></li>
-                        <li><a href="services.html">Renovation & Maintenance</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Contact Information</h4>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> Sierratel Earth Station, Wilberforce, Freetown</li>
-                        <li><i class="fas fa-phone" style="margin-right: 10px;"></i> +232 00 000 000</li>
-                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> info@divinerock.sl</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 Divinerock Engineering Services. All rights reserved. | Building Strong Foundations for Sustainable Infrastructure</p>
-            </div>
+    <footer className="footer">
+      <div className="container">
+        <div className="footer-grid">
+          <div className="footer-col">
+            <h4>
+              About Divinerock
+            </h4>
+            <p>
+              Divinerock Engineering Services is a civil engineering and construction company committed to delivering reliable infrastructure solutions. Specialized in road construction, bridge development, building construction, steel fabrication, and project management services for both public and private sector clients.
+            </p>
+          </div>
+          <div className="footer-col">
+            <h4>
+              Quick Links
+            </h4>
+            <ul className="footer-links">
+              <li>
+                <a href="/">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="/about">
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a href="/services">
+                  Services
+                </a>
+              </li>
+              <li>
+                <a href="/projects">
+                  Projects
+                </a>
+              </li>
+              <li>
+                <a href="/contact">
+                  Contact Us
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="footer-col">
+            <h4>
+              Our Services
+            </h4>
+            <ul className="footer-links">
+              <li>
+                <a href="/services">
+                  Construction Services
+                </a>
+              </li>
+              <li>
+                <a href="/services">
+                  Civil Engineering
+                </a>
+              </li>
+              <li>
+                <a href="/services">
+                  Fabrication & Metal Works
+                </a>
+              </li>
+              <li>
+                <a href="/services">
+                  Project Management
+                </a>
+              </li>
+              <li>
+                <a href="/services">
+                  Renovation & Maintenance
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="footer-col">
+            <h4>
+              Contact Information
+            </h4>
+            <ul className="footer-links">
+              <li>
+                <i className="fas fa-map-marker-alt" style={{marginRight: '10px'}}></i>
+                Sierratel Earth Station, Wilberforce, Freetown
+              </li>
+              <li>
+                <i className="fas fa-phone" style={{marginRight: '10px'}}></i>
+                +232 00 000 000
+              </li>
+              <li>
+                <i className="fas fa-envelope" style={{marginRight: '10px'}}></i>
+                info@divinerock.sl
+              </li>
+            </ul>
+          </div>
         </div>
+        <div className="footer-bottom">
+          <p>
+            © 2025 Divinerock Engineering Services. All rights reserved. | Building Strong Foundations for Sustainable Infrastructure
+          </p>
+        </div>
+      </div>
     </footer>
+    </>
+  );
+}
 
-    <!-- JavaScript -->
-    <script>
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 100) {
-                header.style.background = '#0860a3';
-                header.style.padding = '10px 0';
-            } else {
-                header.style.background = '#0972C2';
-                header.style.padding = '15px 0';
-            }
-        });
-        
-        // Active link highlighting
-        const currentLocation = window.location.pathname;
-        const navLinks = document.querySelectorAll('.nav-menu a');
-        
-        navLinks.forEach(link => {
-            if (link.getAttribute('href') === 'news.html') {
-                link.classList.add('active');
-            }
-        });
-        
-        // News filtering
-        const categoryBtns = document.querySelectorAll('.category-btn');
-        const newsCards = document.querySelectorAll('.news-card');
-        
-        categoryBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all buttons
-                categoryBtns.forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
-                btn.classList.add('active');
-                
-                const category = btn.getAttribute('data-category');
-                
-                newsCards.forEach(card => {
-                    if (category === 'all' || card.getAttribute('data-category') === category) {
-                        card.style.display = 'flex';
-                        setTimeout(() => {
-                            card.style.opacity = '1';
-                            card.style.transform = 'scale(1)';
-                        }, 50);
-                    } else {
-                        card.style.opacity = '0';
-                        card.style.transform = 'scale(0.8)';
-                        setTimeout(() => {
-                            card.style.display = 'none';
-                        }, 300);
-                    }
-                });
-            });
-        });
-        
-        // Newsletter form submission
-        const newsletterForm = document.querySelector('.newsletter-form');
-        if (newsletterForm) {
-            newsletterForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Thank you for subscribing to our newsletter!');
-                this.reset();
-            });
-        }
-    </script>
-</body>
-</html>
