@@ -1,18 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Equipment & Machinery - Divinerock Engineering Services</title>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Link to global CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    <style>
+import React from 'react';
+
+export default function EquipmentPage() {
+
+  return (
+    <>
+      <style>{`
+
         /* Additional styles specific to Equipment page */
         * {
             margin: 0;
@@ -86,6 +79,7 @@
         }
         
         .nav-menu a::after {
+            content: '';
             position: absolute;
             bottom: 0;
             left: 0;
@@ -795,544 +789,832 @@
                 font-size: 1.6rem;
             }
         }
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <h1>DIVINEROCK</h1>
-                <span>Engineering Services</span>
-            </div>
-            <nav class="nav-menu">
-                <a href="index.html">Home</a>
-                <a href="about.html">About Us</a>
-                <a href="services.html">Services</a>
-                <a href="projects.html">Projects</a>
-                <a href="equipment.html" class="active">Equipment</a>
-                <a href="news.html">News</a>
-                <a href="contact.html">Contact</a>
-                <a href="quote.html" class="quote-btn">Request a Quote</a>
-            </nav>
+    
+      `}</style>
+    <header className="header">
+      <div className="container">
+        <div className="logo">
+          <h1>
+            DIVINEROCK
+          </h1>
+          <span>
+            Engineering Services
+          </span>
         </div>
+        <nav className="nav-menu">
+          <a href="/">
+            Home
+          </a>
+          <a href="/about">
+            About Us
+          </a>
+          <a href="/services">
+            Services
+          </a>
+          <a href="/projects">
+            Projects
+          </a>
+          <a href="/equipment" className="active">
+            Equipment
+          </a>
+          <a href="/news">
+            News
+          </a>
+          <a href="/contact">
+            Contact
+          </a>
+          <a href="/quote" className="quote-btn">
+            Request a Quote
+          </a>
+        </nav>
+      </div>
     </header>
-
-    <!-- Page Banner -->
-    <section class="page-banner">
-        <div class="container">
-            <h1>Equipment & Machinery</h1>
-            <p>Modern fleet of heavy equipment and machinery enabling efficient project execution across Sierra Leone</p>
-        </div>
+    <section className="page-banner">
+      <div className="container">
+        <h1>
+          Equipment & Machinery
+        </h1>
+        <p>
+          Modern fleet of heavy equipment and machinery enabling efficient project execution across Sierra Leone
+        </p>
+      </div>
     </section>
-
-    <!-- Equipment Introduction -->
     <section>
-        <div class="container">
-            <div class="equipment-intro">
-                <h2 class="section-title">Our Operational Capacity</h2>
-                <p>Divinerock Engineering Services utilizes modern construction equipment and skilled personnel to support efficient project delivery. Our operational capacity includes earthmoving machinery, concrete equipment, fabrication tools, and construction support vehicles that enable us to execute projects safely and efficiently.</p>
-            </div>
+      <div className="container">
+        <div className="equipment-intro">
+          <h2 className="section-title">
+            Our Operational Capacity
+          </h2>
+          <p>
+            Divinerock Engineering Services utilizes modern construction equipment and skilled personnel to support efficient project delivery. Our operational capacity includes earthmoving machinery, concrete equipment, fabrication tools, and construction support vehicles that enable us to execute projects safely and efficiently.
+          </p>
         </div>
+      </div>
     </section>
-
-    <!-- Heavy Equipment Section -->
-    <section class="bg-light">
-        <div class="container">
-            <div class="equipment-category">
-                <h2 class="category-title">Heavy Earthmoving Equipment</h2>
-                <p class="section-subtitle">Powerful machinery for large-scale earthworks and site preparation</p>
-                
-                <div class="heavy-equipment-grid">
-                    <!-- Excavators -->
-                    <div class="heavy-equipment-item">
-                        <div class="heavy-equipment-image">
-                            <img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=800&q=80" alt="Excavator">
-                        </div>
-                        <div class="heavy-equipment-content">
-                            <h3>Excavators</h3>
-                            <p>Heavy-duty excavation machines for digging, trenching, and material handling.</p>
-                            <div class="equipment-features">
-                                <span class="equipment-feature"><i class="fas fa-weight-hanging"></i> 20-30 ton</span>
-                                <span class="equipment-feature"><i class="fas fa-ruler"></i> Deep digging</span>
-                                <span class="equipment-feature"><i class="fas fa-tools"></i> Multi-purpose</span>
-                            </div>
-                            <div class="equipment-specs">
-                                <h4>Specifications:</h4>
-                                <ul>
-                                    <li><i class="fas fa-check"></i> Multiple bucket sizes available</li>
-                                    <li><i class="fas fa-check"></i> Long reach capabilities</li>
-                                    <li><i class="fas fa-check"></i> GPS guided operation</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Bulldozers -->
-                    <div class="heavy-equipment-item">
-                        <div class="heavy-equipment-image">
-                            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80" alt="Bulldozer">
-                        </div>
-                        <div class="heavy-equipment-content">
-                            <h3>Bulldozers</h3>
-                            <p>Powerful tracked vehicles for grading, pushing, and site leveling.</p>
-                            <div class="equipment-features">
-                                <span class="equipment-feature"><i class="fas fa-weight-hanging"></i> Heavy-duty</span>
-                                <span class="equipment-feature"><i class="fas fa-tachometer-alt"></i> High power</span>
-                                <span class="equipment-feature"><i class="fas fa-mountain"></i> Rough terrain</span>
-                            </div>
-                            <div class="equipment-specs">
-                                <h4>Specifications:</h4>
-                                <ul>
-                                    <li><i class="fas fa-check"></i> Large blade capacity</li>
-                                    <li><i class="fas fa-check"></i> Ripper attachment available</li>
-                                    <li><i class="fas fa-check"></i> All-terrain capability</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Graders -->
-                    <div class="heavy-equipment-item">
-                        <div class="heavy-equipment-image">
-                            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80" alt="Motor Grader">
-                        </div>
-                        <div class="heavy-equipment-content">
-                            <h3>Motor Graders</h3>
-                            <p>Precision grading equipment for road construction and leveling.</p>
-                            <div class="equipment-features">
-                                <span class="equipment-feature"><i class="fas fa-road"></i> Road finishing</span>
-                                <span class="equipment-feature"><i class="fas fa-level-up-alt"></i> Precision</span>
-                                <span class="equipment-feature"><i class="fas fa-ruler-combined"></i> Fine grading</span>
-                            </div>
-                            <div class="equipment-specs">
-                                <h4>Specifications:</h4>
-                                <ul>
-                                    <li><i class="fas fa-check"></i> 14ft moldboard</li>
-                                    <li><i class="fas fa-check"></i> Laser grading capable</li>
-                                    <li><i class="fas fa-check"></i> All-wheel drive</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+    <section className="bg-light">
+      <div className="container">
+        <div className="equipment-category">
+          <h2 className="category-title">
+            Heavy Earthmoving Equipment
+          </h2>
+          <p className="section-subtitle">
+            Powerful machinery for large-scale earthworks and site preparation
+          </p>
+          <div className="heavy-equipment-grid">
+            <div className="heavy-equipment-item">
+              <div className="heavy-equipment-image">
+                <img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Excavator" />
+              </div>
+              <div className="heavy-equipment-content">
+                <h3>
+                  Excavators
+                </h3>
+                <p>
+                  Heavy-duty excavation machines for digging, trenching, and material handling.
+                </p>
+                <div className="equipment-features">
+                  <span className="equipment-feature">
+                    <i className="fas fa-weight-hanging"></i>
+                    20-30 ton
+                  </span>
+                  <span className="equipment-feature">
+                    <i className="fas fa-ruler"></i>
+                    Deep digging
+                  </span>
+                  <span className="equipment-feature">
+                    <i className="fas fa-tools"></i>
+                    Multi-purpose
+                  </span>
                 </div>
+                <div className="equipment-specs">
+                  <h4>
+                    Specifications:
+                  </h4>
+                  <ul>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      Multiple bucket sizes available
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      Long reach capabilities
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      GPS guided operation
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
+            <div className="heavy-equipment-item">
+              <div className="heavy-equipment-image">
+                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Bulldozer" />
+              </div>
+              <div className="heavy-equipment-content">
+                <h3>
+                  Bulldozers
+                </h3>
+                <p>
+                  Powerful tracked vehicles for grading, pushing, and site leveling.
+                </p>
+                <div className="equipment-features">
+                  <span className="equipment-feature">
+                    <i className="fas fa-weight-hanging"></i>
+                    Heavy-duty
+                  </span>
+                  <span className="equipment-feature">
+                    <i className="fas fa-tachometer-alt"></i>
+                    High power
+                  </span>
+                  <span className="equipment-feature">
+                    <i className="fas fa-mountain"></i>
+                    Rough terrain
+                  </span>
+                </div>
+                <div className="equipment-specs">
+                  <h4>
+                    Specifications:
+                  </h4>
+                  <ul>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      Large blade capacity
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      Ripper attachment available
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      All-terrain capability
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="heavy-equipment-item">
+              <div className="heavy-equipment-image">
+                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Motor Grader" />
+              </div>
+              <div className="heavy-equipment-content">
+                <h3>
+                  Motor Graders
+                </h3>
+                <p>
+                  Precision grading equipment for road construction and leveling.
+                </p>
+                <div className="equipment-features">
+                  <span className="equipment-feature">
+                    <i className="fas fa-road"></i>
+                    Road finishing
+                  </span>
+                  <span className="equipment-feature">
+                    <i className="fas fa-level-up-alt"></i>
+                    Precision
+                  </span>
+                  <span className="equipment-feature">
+                    <i className="fas fa-ruler-combined"></i>
+                    Fine grading
+                  </span>
+                </div>
+                <div className="equipment-specs">
+                  <h4>
+                    Specifications:
+                  </h4>
+                  <ul>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      14ft moldboard
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      Laser grading capable
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      All-wheel drive
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
-
-    <!-- Main Equipment Grid -->
     <section>
-        <div class="container">
-            <div class="equipment-category">
-                <h2 class="category-title">Construction Equipment Fleet</h2>
-                <p class="section-subtitle">Comprehensive range of machinery for all construction needs</p>
-                
-                <div class="equipment-main-grid">
-                    <!-- Excavators -->
-                    <div class="equipment-item">
-                        <div class="equipment-image">
-                            <i class="fas fa-tractor equipment-icon"></i>
-                        </div>
-                        <div class="equipment-details">
-                            <h3>Excavators</h3>
-                            <p>Multiple units available for earthworks, trenching, and foundation excavation.</p>
-                            <div class="equipment-specs">
-                                <ul>
-                                    <li><i class="fas fa-check"></i> 5 units available</li>
-                                    <li><i class="fas fa-check"></i> 20-30 ton capacity</li>
-                                    <li><i class="fas fa-check"></i> Various bucket sizes</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Bulldozers -->
-                    <div class="equipment-item">
-                        <div class="equipment-image">
-                            <i class="fas fa-tractor equipment-icon"></i>
-                        </div>
-                        <div class="equipment-details">
-                            <h3>Bulldozers</h3>
-                            <p>Heavy-duty tracked dozers for grading, clearing, and pushing operations.</p>
-                            <div class="equipment-specs">
-                                <ul>
-                                    <li><i class="fas fa-check"></i> 3 units available</li>
-                                    <li><i class="fas fa-check"></i> D6 & D8 models</li>
-                                    <li><i class="fas fa-check"></i> Ripper attachments</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Motor Graders -->
-                    <div class="equipment-item">
-                        <div class="equipment-image">
-                            <i class="fas fa-road equipment-icon"></i>
-                        </div>
-                        <div class="equipment-details">
-                            <h3>Motor Graders</h3>
-                            <p>Precision grading equipment for road construction and fine leveling.</p>
-                            <div class="equipment-specs">
-                                <ul>
-                                    <li><i class="fas fa-check"></i> 2 units available</li>
-                                    <li><i class="fas fa-check"></i> 14ft moldboard</li>
-                                    <li><i class="fas fa-check"></i> Laser guided</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Compactors -->
-                    <div class="equipment-item">
-                        <div class="equipment-image">
-                            <i class="fas fa-compress equipment-icon"></i>
-                        </div>
-                        <div class="equipment-details">
-                            <h3>Compactors</h3>
-                            <p>Soil and asphalt compactors for foundation and pavement construction.</p>
-                            <div class="equipment-specs">
-                                <ul>
-                                    <li><i class="fas fa-check"></i> 4 units available</li>
-                                    <li><i class="fas fa-check"></i> Smooth drum & padfoot</li>
-                                    <li><i class="fas fa-check"></i> Vibratory models</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Concrete Mixers -->
-                    <div class="equipment-item">
-                        <div class="equipment-image">
-                            <i class="fas fa-truck-mixer equipment-icon"></i>
-                        </div>
-                        <div class="equipment-details">
-                            <h3>Concrete Mixers</h3>
-                            <p>Transit mixers and batch plants for concrete production and placement.</p>
-                            <div class="equipment-specs">
-                                <ul>
-                                    <li><i class="fas fa-check"></i> 6 transit mixers</li>
-                                    <li><i class="fas fa-check"></i> 1 batch plant</li>
-                                    <li><i class="fas fa-check"></i> 7-10m³ capacity</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Water Trucks -->
-                    <div class="equipment-item">
-                        <div class="equipment-image">
-                            <i class="fas fa-truck-water equipment-icon"></i>
-                        </div>
-                        <div class="equipment-details">
-                            <h3>Water Trucks</h3>
-                            <p>For dust suppression and compaction moisture control.</p>
-                            <div class="equipment-specs">
-                                <ul>
-                                    <li><i class="fas fa-check"></i> 3 units available</li>
-                                    <li><i class="fas fa-check"></i> 10,000L capacity</li>
-                                    <li><i class="fas fa-check"></i> Spray bars included</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Dump Trucks -->
-                    <div class="equipment-item">
-                        <div class="equipment-image">
-                            <i class="fas fa-truck equipment-icon"></i>
-                        </div>
-                        <div class="equipment-details">
-                            <h3>Dump Trucks</h3>
-                            <p>For material transport and earthmoving operations.</p>
-                            <div class="equipment-specs">
-                                <ul>
-                                    <li><i class="fas fa-check"></i> 8 units available</li>
-                                    <li><i class="fas fa-check"></i> 15-20 ton capacity</li>
-                                    <li><i class="fas fa-check"></i> Articulated & rigid</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Lowbed Trailers -->
-                    <div class="equipment-item">
-                        <div class="equipment-image">
-                            <i class="fas fa-truck-pickup equipment-icon"></i>
-                        </div>
-                        <div class="equipment-details">
-                            <h3>Lowbed Trailers</h3>
-                            <p>For transporting heavy equipment between sites.</p>
-                            <div class="equipment-specs">
-                                <ul>
-                                    <li><i class="fas fa-check"></i> 2 units available</li>
-                                    <li><i class="fas fa-check"></i> 40 ton capacity</li>
-                                    <li><i class="fas fa-check"></i> Extendable decks</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+      <div className="container">
+        <div className="equipment-category">
+          <h2 className="category-title">
+            Construction Equipment Fleet
+          </h2>
+          <p className="section-subtitle">
+            Comprehensive range of machinery for all construction needs
+          </p>
+          <div className="equipment-main-grid">
+            <div className="equipment-item">
+              <div className="equipment-image">
+                <i className="fas fa-tractor equipment-icon"></i>
+              </div>
+              <div className="equipment-details">
+                <h3>
+                  Excavators
+                </h3>
+                <p>
+                  Multiple units available for earthworks, trenching, and foundation excavation.
+                </p>
+                <div className="equipment-specs">
+                  <ul>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      5 units available
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      20-30 ton capacity
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      Various bucket sizes
+                    </li>
+                  </ul>
                 </div>
+              </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Fabrication Equipment Section -->
-    <section class="bg-light">
-        <div class="container">
-            <div class="equipment-category">
-                <h2 class="category-title">Fabrication & Metal Works Equipment</h2>
-                <p class="section-subtitle">Modern workshop equipment for steel fabrication and welding</p>
-                
-                <div class="fabrication-grid">
-                    <div class="fabrication-item">
-                        <div class="fabrication-icon">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <h4>Welding Machines</h4>
-                        <p>Multiple arc and MIG welders for steel fabrication</p>
-                    </div>
-                    
-                    <div class="fabrication-item">
-                        <div class="fabrication-icon">
-                            <i class="fas fa-cut"></i>
-                        </div>
-                        <h4>Plasma Cutters</h4>
-                        <p>Precision cutting equipment for metal plates</p>
-                    </div>
-                    
-                    <div class="fabrication-item">
-                        <div class="fabrication-icon">
-                            <i class="fas fa-tools"></i>
-                        </div>
-                        <h4>Angle Grinders</h4>
-                        <p>Heavy-duty grinding and finishing tools</p>
-                    </div>
-                    
-                    <div class="fabrication-item">
-                        <div class="fabrication-icon">
-                            <i class="fas fa-compress"></i>
-                        </div>
-                        <h4>Hydraulic Press</h4>
-                        <p>For metal forming and bending operations</p>
-                    </div>
-                    
-                    <div class="fabrication-item">
-                        <div class="fabrication-icon">
-                            <i class="fas fa-drill"></i>
-                        </div>
-                        <h4>Drilling Machines</h4>
-                        <p>Radial and pillar drills for precision holes</p>
-                    </div>
-                    
-                    <div class="fabrication-item">
-                        <div class="fabrication-icon">
-                            <i class="fas fa-wind"></i>
-                        </div>
-                        <h4>Extraction Systems</h4>
-                        <p>Fume extraction for safe workshop environment</p>
-                    </div>
-                    
-                    <div class="fabrication-item">
-                        <div class="fabrication-icon">
-                            <i class="fas fa-weight-hanging"></i>
-                        </div>
-                        <h4>Overhead Cranes</h4>
-                        <p>5-ton capacity for heavy lifting in workshop</p>
-                    </div>
-                    
-                    <div class="fabrication-item">
-                        <div class="fabrication-icon">
-                            <i class="fas fa-ruler-combined"></i>
-                        </div>
-                        <h4>Measuring Tools</h4>
-                        <p>Precision measurement and alignment equipment</p>
-                    </div>
+            <div className="equipment-item">
+              <div className="equipment-image">
+                <i className="fas fa-tractor equipment-icon"></i>
+              </div>
+              <div className="equipment-details">
+                <h3>
+                  Bulldozers
+                </h3>
+                <p>
+                  Heavy-duty tracked dozers for grading, clearing, and pushing operations.
+                </p>
+                <div className="equipment-specs">
+                  <ul>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      3 units available
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      D6 & D8 models
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      Ripper attachments
+                    </li>
+                  </ul>
                 </div>
+              </div>
             </div>
+            <div className="equipment-item">
+              <div className="equipment-image">
+                <i className="fas fa-road equipment-icon"></i>
+              </div>
+              <div className="equipment-details">
+                <h3>
+                  Motor Graders
+                </h3>
+                <p>
+                  Precision grading equipment for road construction and fine leveling.
+                </p>
+                <div className="equipment-specs">
+                  <ul>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      2 units available
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      14ft moldboard
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      Laser guided
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="equipment-item">
+              <div className="equipment-image">
+                <i className="fas fa-compress equipment-icon"></i>
+              </div>
+              <div className="equipment-details">
+                <h3>
+                  Compactors
+                </h3>
+                <p>
+                  Soil and asphalt compactors for foundation and pavement construction.
+                </p>
+                <div className="equipment-specs">
+                  <ul>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      4 units available
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      Smooth drum & padfoot
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      Vibratory models
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="equipment-item">
+              <div className="equipment-image">
+                <i className="fas fa-truck-mixer equipment-icon"></i>
+              </div>
+              <div className="equipment-details">
+                <h3>
+                  Concrete Mixers
+                </h3>
+                <p>
+                  Transit mixers and batch plants for concrete production and placement.
+                </p>
+                <div className="equipment-specs">
+                  <ul>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      6 transit mixers
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      1 batch plant
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      7-10m³ capacity
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="equipment-item">
+              <div className="equipment-image">
+                <i className="fas fa-truck-water equipment-icon"></i>
+              </div>
+              <div className="equipment-details">
+                <h3>
+                  Water Trucks
+                </h3>
+                <p>
+                  For dust suppression and compaction moisture control.
+                </p>
+                <div className="equipment-specs">
+                  <ul>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      3 units available
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      10,000L capacity
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      Spray bars included
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="equipment-item">
+              <div className="equipment-image">
+                <i className="fas fa-truck equipment-icon"></i>
+              </div>
+              <div className="equipment-details">
+                <h3>
+                  Dump Trucks
+                </h3>
+                <p>
+                  For material transport and earthmoving operations.
+                </p>
+                <div className="equipment-specs">
+                  <ul>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      8 units available
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      15-20 ton capacity
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      Articulated & rigid
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="equipment-item">
+              <div className="equipment-image">
+                <i className="fas fa-truck-pickup equipment-icon"></i>
+              </div>
+              <div className="equipment-details">
+                <h3>
+                  Lowbed Trailers
+                </h3>
+                <p>
+                  For transporting heavy equipment between sites.
+                </p>
+                <div className="equipment-specs">
+                  <ul>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      2 units available
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      40 ton capacity
+                    </li>
+                    <li>
+                      <i className="fas fa-check"></i>
+                      Extendable decks
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
-
-    <!-- Vehicle Fleet Section -->
+    <section className="bg-light">
+      <div className="container">
+        <div className="equipment-category">
+          <h2 className="category-title">
+            Fabrication & Metal Works Equipment
+          </h2>
+          <p className="section-subtitle">
+            Modern workshop equipment for steel fabrication and welding
+          </p>
+          <div className="fabrication-grid">
+            <div className="fabrication-item">
+              <div className="fabrication-icon">
+                <i className="fas fa-bolt"></i>
+              </div>
+              <h4>
+                Welding Machines
+              </h4>
+              <p>
+                Multiple arc and MIG welders for steel fabrication
+              </p>
+            </div>
+            <div className="fabrication-item">
+              <div className="fabrication-icon">
+                <i className="fas fa-cut"></i>
+              </div>
+              <h4>
+                Plasma Cutters
+              </h4>
+              <p>
+                Precision cutting equipment for metal plates
+              </p>
+            </div>
+            <div className="fabrication-item">
+              <div className="fabrication-icon">
+                <i className="fas fa-tools"></i>
+              </div>
+              <h4>
+                Angle Grinders
+              </h4>
+              <p>
+                Heavy-duty grinding and finishing tools
+              </p>
+            </div>
+            <div className="fabrication-item">
+              <div className="fabrication-icon">
+                <i className="fas fa-compress"></i>
+              </div>
+              <h4>
+                Hydraulic Press
+              </h4>
+              <p>
+                For metal forming and bending operations
+              </p>
+            </div>
+            <div className="fabrication-item">
+              <div className="fabrication-icon">
+                <i className="fas fa-drill"></i>
+              </div>
+              <h4>
+                Drilling Machines
+              </h4>
+              <p>
+                Radial and pillar drills for precision holes
+              </p>
+            </div>
+            <div className="fabrication-item">
+              <div className="fabrication-icon">
+                <i className="fas fa-wind"></i>
+              </div>
+              <h4>
+                Extraction Systems
+              </h4>
+              <p>
+                Fume extraction for safe workshop environment
+              </p>
+            </div>
+            <div className="fabrication-item">
+              <div className="fabrication-icon">
+                <i className="fas fa-weight-hanging"></i>
+              </div>
+              <h4>
+                Overhead Cranes
+              </h4>
+              <p>
+                5-ton capacity for heavy lifting in workshop
+              </p>
+            </div>
+            <div className="fabrication-item">
+              <div className="fabrication-icon">
+                <i className="fas fa-ruler-combined"></i>
+              </div>
+              <h4>
+                Measuring Tools
+              </h4>
+              <p>
+                Precision measurement and alignment equipment
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <section>
-        <div class="container">
-            <div class="equipment-category">
-                <h2 class="category-title">Support Vehicles & Transport</h2>
-                <p class="section-subtitle">Fleet of vehicles for logistics and site support</p>
-                
-                <div class="vehicle-grid">
-                    <div class="vehicle-item">
-                        <div class="vehicle-image">
-                            <i class="fas fa-truck"></i>
-                        </div>
-                        <div class="vehicle-content">
-                            <h4>Flatbed Trucks</h4>
-                            <p>Material transport, 4 units</p>
-                        </div>
-                    </div>
-                    
-                    <div class="vehicle-item">
-                        <div class="vehicle-image">
-                            <i class="fas fa-truck-pickup"></i>
-                        </div>
-                        <div class="vehicle-content">
-                            <h4>Pickup Trucks</h4>
-                            <p>Crew transport, 6 units</p>
-                        </div>
-                    </div>
-                    
-                    <div class="vehicle-item">
-                        <div class="vehicle-image">
-                            <i class="fas fa-bus"></i>
-                        </div>
-                        <div class="vehicle-content">
-                            <h4>Crew Buses</h4>
-                            <p>Worker transportation, 2 units</p>
-                        </div>
-                    </div>
-                    
-                    <div class="vehicle-item">
-                        <div class="vehicle-image">
-                            <i class="fas fa-truck-tank"></i>
-                        </div>
-                        <div class="vehicle-content">
-                            <h4>Fuel Trucks</h4>
-                            <p>On-site refueling, 2 units</p>
-                        </div>
-                    </div>
-                </div>
+      <div className="container">
+        <div className="equipment-category">
+          <h2 className="category-title">
+            Support Vehicles & Transport
+          </h2>
+          <p className="section-subtitle">
+            Fleet of vehicles for logistics and site support
+          </p>
+          <div className="vehicle-grid">
+            <div className="vehicle-item">
+              <div className="vehicle-image">
+                <i className="fas fa-truck"></i>
+              </div>
+              <div className="vehicle-content">
+                <h4>
+                  Flatbed Trucks
+                </h4>
+                <p>
+                  Material transport, 4 units
+                </p>
+              </div>
             </div>
+            <div className="vehicle-item">
+              <div className="vehicle-image">
+                <i className="fas fa-truck-pickup"></i>
+              </div>
+              <div className="vehicle-content">
+                <h4>
+                  Pickup Trucks
+                </h4>
+                <p>
+                  Crew transport, 6 units
+                </p>
+              </div>
+            </div>
+            <div className="vehicle-item">
+              <div className="vehicle-image">
+                <i className="fas fa-bus"></i>
+              </div>
+              <div className="vehicle-content">
+                <h4>
+                  Crew Buses
+                </h4>
+                <p>
+                  Worker transportation, 2 units
+                </p>
+              </div>
+            </div>
+            <div className="vehicle-item">
+              <div className="vehicle-image">
+                <i className="fas fa-truck-tank"></i>
+              </div>
+              <div className="vehicle-content">
+                <h4>
+                  Fuel Trucks
+                </h4>
+                <p>
+                  On-site refueling, 2 units
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
-
-    <!-- Equipment Statistics -->
-    <section class="equipment-stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number">45+</div>
-                    <div class="stat-label">Heavy Equipment Units</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">15+</div>
-                    <div class="stat-label">Support Vehicles</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Regularly Maintained</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">Mechanical Support</div>
-                </div>
+    <section className="equipment-stats">
+      <div className="container">
+        <div className="stats-grid">
+          <div className="stat-item">
+            <div className="stat-number">
+              45+
             </div>
+            <div className="stat-label">
+              Heavy Equipment Units
+            </div>
+          </div>
+          <div className="stat-item">
+            <div className="stat-number">
+              15+
+            </div>
+            <div className="stat-label">
+              Support Vehicles
+            </div>
+          </div>
+          <div className="stat-item">
+            <div className="stat-number">
+              100%
+            </div>
+            <div className="stat-label">
+              Regularly Maintained
+            </div>
+          </div>
+          <div className="stat-item">
+            <div className="stat-number">
+              24/7
+            </div>
+            <div className="stat-label">
+              Mechanical Support
+            </div>
+          </div>
         </div>
+      </div>
     </section>
-
-    <!-- Maintenance Section -->
-    <section class="maintenance-section">
-        <div class="container">
-            <div class="maintenance-grid">
-                <div class="maintenance-content">
-                    <h3>Equipment Maintenance Program</h3>
-                    <p>Divinerock Engineering Services maintains all equipment through a rigorous preventive maintenance program to ensure reliability, safety, and optimal performance on every project.</p>
-                    
-                    <ul class="maintenance-list">
-                        <li><i class="fas fa-check-circle"></i> Regular scheduled servicing by qualified mechanics</li>
-                        <li><i class="fas fa-check-circle"></i> Daily pre-operation inspections</li>
-                        <li><i class="fas fa-check-circle"></i> Genuine OEM parts for all repairs</li>
-                        <li><i class="fas fa-check-circle"></i> Computerized maintenance tracking system</li>
-                        <li><i class="fas fa-check-circle"></i> On-site mechanics for rapid response</li>
-                        <li><i class="fas fa-check-circle"></i> Comprehensive parts inventory</li>
-                    </ul>
-                </div>
-                <div class="maintenance-image">
-                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80" alt="Equipment Maintenance">
-                </div>
-            </div>
+    <section className="maintenance-section">
+      <div className="container">
+        <div className="maintenance-grid">
+          <div className="maintenance-content">
+            <h3>
+              Equipment Maintenance Program
+            </h3>
+            <p>
+              Divinerock Engineering Services maintains all equipment through a rigorous preventive maintenance program to ensure reliability, safety, and optimal performance on every project.
+            </p>
+            <ul className="maintenance-list">
+              <li>
+                <i className="fas fa-check-circle"></i>
+                Regular scheduled servicing by qualified mechanics
+              </li>
+              <li>
+                <i className="fas fa-check-circle"></i>
+                Daily pre-operation inspections
+              </li>
+              <li>
+                <i className="fas fa-check-circle"></i>
+                Genuine OEM parts for all repairs
+              </li>
+              <li>
+                <i className="fas fa-check-circle"></i>
+                Computerized maintenance tracking system
+              </li>
+              <li>
+                <i className="fas fa-check-circle"></i>
+                On-site mechanics for rapid response
+              </li>
+              <li>
+                <i className="fas fa-check-circle"></i>
+                Comprehensive parts inventory
+              </li>
+            </ul>
+          </div>
+          <div className="maintenance-image">
+            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Equipment Maintenance" />
+          </div>
         </div>
+      </div>
     </section>
-
-    <!-- Call to Action Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Need Equipment for Your Project?</h2>
-                <p>Divinerock Engineering Services has the machinery and expertise to handle projects of any scale. Contact us to discuss your equipment needs.</p>
-                <a href="quote.html" class="btn btn-accent" style="font-size: 1.1rem; padding: 18px 45px;">Request Equipment Quote</a>
-            </div>
+    <section className="cta-section">
+      <div className="container">
+        <div className="cta-content">
+          <h2>
+            Need Equipment for Your Project?
+          </h2>
+          <p>
+            Divinerock Engineering Services has the machinery and expertise to handle projects of any scale. Contact us to discuss your equipment needs.
+          </p>
+          <a href="/quote" className="btn btn-accent" style={{fontSize: '1.1rem', padding: '18px 45px'}}>
+            Request Equipment Quote
+          </a>
         </div>
+      </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>About Divinerock</h4>
-                    <p>Divinerock Engineering Services is a civil engineering and construction company committed to delivering reliable infrastructure solutions. Specialized in road construction, bridge development, building construction, steel fabrication, and project management services for both public and private sector clients.</p>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Our Services</h4>
-                    <ul class="footer-links">
-                        <li><a href="services.html">Construction Services</a></li>
-                        <li><a href="services.html">Civil Engineering</a></li>
-                        <li><a href="services.html">Fabrication & Metal Works</a></li>
-                        <li><a href="services.html">Project Management</a></li>
-                        <li><a href="services.html">Renovation & Maintenance</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Contact Information</h4>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> Sierratel Earth Station, Wilberforce, Freetown</li>
-                        <li><i class="fas fa-phone" style="margin-right: 10px;"></i> +232 00 000 000</li>
-                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> info@divinerock.sl</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 Divinerock Engineering Services. All rights reserved. | Building Strong Foundations for Sustainable Infrastructure</p>
-            </div>
+    <footer className="footer">
+      <div className="container">
+        <div className="footer-grid">
+          <div className="footer-col">
+            <h4>
+              About Divinerock
+            </h4>
+            <p>
+              Divinerock Engineering Services is a civil engineering and construction company committed to delivering reliable infrastructure solutions. Specialized in road construction, bridge development, building construction, steel fabrication, and project management services for both public and private sector clients.
+            </p>
+          </div>
+          <div className="footer-col">
+            <h4>
+              Quick Links
+            </h4>
+            <ul className="footer-links">
+              <li>
+                <a href="/">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="/about">
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a href="/services">
+                  Services
+                </a>
+              </li>
+              <li>
+                <a href="/projects">
+                  Projects
+                </a>
+              </li>
+              <li>
+                <a href="/contact">
+                  Contact Us
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="footer-col">
+            <h4>
+              Our Services
+            </h4>
+            <ul className="footer-links">
+              <li>
+                <a href="/services">
+                  Construction Services
+                </a>
+              </li>
+              <li>
+                <a href="/services">
+                  Civil Engineering
+                </a>
+              </li>
+              <li>
+                <a href="/services">
+                  Fabrication & Metal Works
+                </a>
+              </li>
+              <li>
+                <a href="/services">
+                  Project Management
+                </a>
+              </li>
+              <li>
+                <a href="/services">
+                  Renovation & Maintenance
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="footer-col">
+            <h4>
+              Contact Information
+            </h4>
+            <ul className="footer-links">
+              <li>
+                <i className="fas fa-map-marker-alt" style={{marginRight: '10px'}}></i>
+                Sierratel Earth Station, Wilberforce, Freetown
+              </li>
+              <li>
+                <i className="fas fa-phone" style={{marginRight: '10px'}}></i>
+                +232 00 000 000
+              </li>
+              <li>
+                <i className="fas fa-envelope" style={{marginRight: '10px'}}></i>
+                info@divinerock.sl
+              </li>
+            </ul>
+          </div>
         </div>
+        <div className="footer-bottom">
+          <p>
+            © 2025 Divinerock Engineering Services. All rights reserved. | Building Strong Foundations for Sustainable Infrastructure
+          </p>
+        </div>
+      </div>
     </footer>
-
-    <!-- JavaScript -->
-    <script>
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 100) {
-                header.style.background = '#0860a3';
-                header.style.padding = '10px 0';
-            } else {
-                header.style.background = '#0972C2';
-                header.style.padding = '15px 0';
-            }
-        });
-        
-        // Active link highlighting
-        const currentLocation = window.location.pathname;
-        const navLinks = document.querySelectorAll('.nav-menu a');
-        
-        navLinks.forEach(link => {
-            if (link.getAttribute('href') === 'equipment.html') {
-                link.classList.add('active');
-            }
-        });
-    </script>
-</body>
-</html>
+    </>
+  );
+}
