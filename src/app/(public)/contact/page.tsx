@@ -1,12 +1,12 @@
 "use client";
 
 import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 export default function ContactPage() {
 
   const [showSuccess, setShowSuccess] = useState(false);
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setShowSuccess(true);
     event.currentTarget.reset();
@@ -895,13 +895,13 @@ export default function ContactPage() {
                   <label className="form-label" htmlFor="firstName">
                     First Name *
                   </label>
-                  <input type="text" className="form-control" id="firstName" required="" />
+                  <input type="text" className="form-control" id="firstName" required />
                 </div>
                 <div className="form-group">
                   <label className="form-label" htmlFor="lastName">
                     Last Name *
                   </label>
-                  <input type="text" className="form-control" id="lastName" required="" />
+                  <input type="text" className="form-control" id="lastName" required />
                 </div>
               </div>
               <div className="form-row">
@@ -909,7 +909,7 @@ export default function ContactPage() {
                   <label className="form-label" htmlFor="email">
                     Email Address *
                   </label>
-                  <input type="email" className="form-control" id="email" required="" />
+                  <input type="email" className="form-control" id="email" required />
                 </div>
                 <div className="form-group">
                   <label className="form-label" htmlFor="phone">
@@ -928,7 +928,7 @@ export default function ContactPage() {
                 <label className="form-label" htmlFor="subject">
                   Subject *
                 </label>
-                <select className="form-control" id="subject" required="">
+                <select className="form-control" id="subject" required>
                   <option value="">
                     Select a subject
                   </option>
@@ -959,10 +959,10 @@ export default function ContactPage() {
                 <label className="form-label" htmlFor="message">
                   Message *
                 </label>
-                <textarea className="form-control" id="message" required=""></textarea>
+                <textarea className="form-control" id="message" required></textarea>
               </div>
               <div className="form-check">
-                <input type="checkbox" id="privacy" required="" />
+                <input type="checkbox" id="privacy" required />
                 <label htmlFor="privacy">
                   I agree to the
                   <a href="#">
@@ -1095,7 +1095,7 @@ export default function ContactPage() {
     <section className="map-section">
       <div className="container">
         <div className="map-container">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126900.58164911648!2d-13.289974!3d8.465677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOMKwMjcnNTYuNCJOIDEzwrAxNScwMC4wIlc!5e0!3m2!1sen!2ssl!4v1611111111111!5m2!1sen!2ssl" allowFullScreen="" loading="lazy"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126900.58164911648!2d-13.289974!3d8.465677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOMKwMjcnNTYuNCJOIDEzwrAxNScwMC4wIlc!5e0!3m2!1sen!2ssl!4v1611111111111!5m2!1sen!2ssl" allowFullScreen loading="lazy"></iframe>
         </div>
       </div>
     </section>

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import {
   faMapMarkerAlt,
   faCheck,
@@ -27,6 +28,21 @@ type Project = {
   category: Exclude<Category, 'all'>;
   scope: string[];
   outcome?: string;
+};
+
+type OngoingProject = {
+  title: string;
+  location: string;
+  description: string;
+  image: string;
+  categoryLabel: string;
+  status: [string, string, string];
+};
+
+type ApproachStep = {
+  icon: IconDefinition;
+  title: string;
+  copy: string;
 };
 
 const filters: { key: Category; label: string }[] = [
@@ -109,14 +125,14 @@ const completedProjects: Project[] = [
   },
 ];
 
-const ongoingProjects = [
+const ongoingProjects: OngoingProject[] = [
   {
     title: 'Moyamba Bridge Construction',
     location: 'Moyamba District',
     description: 'Construction of a 50-meter reinforced concrete bridge to improve connectivity.',
     image: '/images/bridge.jpg',
     categoryLabel: 'Bridge Construction',
-    status: ['Foundation works completed', 'Pier construction underway', 'Expected completion: Q3 2025'],
+    status: ['Foundation works completed', 'Pier construction underway', 'Expected completion: Q3 2026'],
   },
   {
     title: 'Educational Facility Construction',
@@ -124,9 +140,17 @@ const ongoingProjects = [
     description: 'Construction of a modern secondary school with 12 classrooms and laboratory facilities.',
     image: '/images/bridge.jpg',
     categoryLabel: 'Building Construction',
-    status: ['Foundation completed', 'Wall construction in progress', 'Expected completion: Q4 2025'],
+    status: ['Foundation completed', 'Wall construction in progress', 'Expected completion: Q4 2026'],
   },
-] as const;
+];
+
+const approachSteps: ApproachStep[] = [
+  { icon: faClipboardList, title: 'Project Planning', copy: 'Detailed planning, resource allocation, and scheduling' },
+  { icon: faDraftingCompass, title: 'Engineering Design', copy: 'Technical specifications, drawings, and approvals' },
+  { icon: faHardHat, title: 'Construction Execution', copy: 'On-site implementation with strict supervision' },
+  { icon: faCheckDouble, title: 'Quality Control', copy: 'Continuous inspection and testing throughout' },
+  { icon: faFlagCheckered, title: 'Project Completion', copy: 'Final inspection, handover, and client satisfaction' },
+];
 
 export default function ProjectsPage() {
   const [activeFilter, setActiveFilter] = useState<Category>('all');
@@ -301,19 +325,13 @@ export default function ProjectsPage() {
           </div>
 
           <div className={styles.approachGrid}>
-            {[
-              [faClipboardList, 'Project Planning', 'Detailed planning, resource allocation, and scheduling'],
-              [faDraftingCompass, 'Engineering Design', 'Technical specifications, drawings, and approvals'],
-              [faHardHat, 'Construction Execution', 'On-site implementation with strict supervision'],
-              [faCheckDouble, 'Quality Control', 'Continuous inspection and testing throughout'],
-              [faFlagCheckered, 'Project Completion', 'Final inspection, handover, and client satisfaction'],
-            ].map(([icon, title, copy]) => (
-              <article key={title} className={styles.approachStep}>
+            {approachSteps.map((step) => (
+              <article key={step.title} className={styles.approachStep}>
                 <div className={styles.stepIcon}>
-                  <FontAwesomeIcon icon={icon} />
+                  <FontAwesomeIcon icon={step.icon} />
                 </div>
-                <h4>{title}</h4>
-                <p>{copy}</p>
+                <h4>{step.title}</h4>
+                <p>{step.copy}</p>
               </article>
             ))}
           </div>
