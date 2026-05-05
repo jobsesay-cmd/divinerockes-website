@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import {
   faBuilding,
   faDraftingCompass,
@@ -9,7 +10,6 @@ import {
   faTools,
   faChartLine,
   faCogs,
-  faSolarPanel,
   faLeaf,
   faCircleCheck,
   faTractor,
@@ -28,7 +28,33 @@ export const metadata: Metadata = {
   description: 'Engineering and construction services from Divinerock Engineering Services',
 };
 
-const services = [
+type Service = {
+  title: string;
+  description: string;
+  items: readonly string[];
+  icon?: IconDefinition;
+  subItems?: readonly string[];
+};
+
+type EquipmentItem = {
+  icon: IconDefinition;
+  title: string;
+  copy: string;
+};
+
+type IndustryItem = {
+  icon: IconDefinition;
+  title: string;
+  copy: string;
+};
+
+type ProcessStep = {
+  step: string;
+  title: string;
+  copy: string;
+};
+
+const services: Service[] = [
   {
     icon: faBuilding,
     title: 'Construction Services',
@@ -85,7 +111,34 @@ const services = [
     items: ['Landscape design and installation', 'Pest control and fumigation', 'Mosquito fogging', 'Erosion control solutions'],
     subItems: ['Landscaping', 'Pest Control', 'Fogging Services', 'Erosion Control'],
   },
-] as const;
+];
+
+const equipmentItems: EquipmentItem[] = [
+  { icon: faTractor, title: 'Excavators', copy: 'Heavy earthmoving and excavation' },
+  { icon: faTruck, title: 'Dump Trucks', copy: 'Material transport and hauling' },
+  { icon: faRoad, title: 'Graders', copy: 'Road grading and leveling' },
+  { icon: faIndustry, title: 'Concrete Mixers', copy: 'Concrete production and placement' },
+  { icon: faBolt, title: 'Solar Equipment', copy: 'Panels, inverters, batteries' },
+  { icon: faSprayCan, title: 'Fogging Machines', copy: 'Pest control and disinfection' },
+  { icon: faLeaf, title: 'Landscaping Tools', copy: 'Mowers, trimmers, blowers' },
+  { icon: faTools, title: 'Mechanical Tools', copy: 'Maintenance and repair equipment' },
+];
+
+const industries: IndustryItem[] = [
+  { icon: faRoad, title: 'Infrastructure', copy: 'Roads, bridges, drainage' },
+  { icon: faBuilding, title: 'Commercial', copy: 'Office buildings, retail' },
+  { icon: faIndustry, title: 'Industrial', copy: 'Factories, warehouses' },
+  { icon: faCity, title: 'Public Sector', copy: 'Government projects' },
+  { icon: faHome, title: 'Residential', copy: 'Housing developments' },
+];
+
+const processSteps: ProcessStep[] = [
+  { step: '1', title: 'Project Planning', copy: 'Detailed planning and resource allocation' },
+  { step: '2', title: 'Engineering Design', copy: 'Technical specifications and drawings' },
+  { step: '3', title: 'Construction Execution', copy: 'On-site implementation and management' },
+  { step: '4', title: 'Quality Control', copy: 'Inspection and testing throughout execution' },
+  { step: '5', title: 'Project Completion', copy: 'Handover and client satisfaction' },
+];
 
 export default function ServicesPage() {
   return (
@@ -111,23 +164,27 @@ export default function ServicesPage() {
           {services.map((service) => (
             <article key={service.title} className={styles.card}>
               <div className={styles.cardHeader}>
-                <span className={styles.icon}><FontAwesomeIcon icon={service.icon} /></span>
+                <span className={styles.icon}>{service.icon ? <FontAwesomeIcon icon={service.icon} /> : <FontAwesomeIcon icon={faBolt} />}</span>
                 <h3>{service.title}</h3>
               </div>
               <div className={styles.cardBody}>
                 <p>{service.description}</p>
                 <ul className={styles.list}>
                   {service.items.map((item) => (
-                    <li key={item}><FontAwesomeIcon icon={faCircleCheck} color="#d83936" /> {item}</li>
+                    <li key={item}>
+                      <FontAwesomeIcon icon={faCircleCheck} color="#d83936" /> {item}
+                    </li>
                   ))}
                 </ul>
-                {service.subItems && (
+                {service.subItems?.length ? (
                   <div className={styles.subGrid}>
                     {service.subItems.map((sub) => (
-                      <div key={sub} className={styles.subItem}>{sub}</div>
+                      <div key={sub} className={styles.subItem}>
+                        {sub}
+                      </div>
                     ))}
                   </div>
-                )}
+                ) : null}
               </div>
             </article>
           ))}
@@ -140,20 +197,11 @@ export default function ServicesPage() {
           <p className={styles.subtitle}>Modern equipment and skilled personnel supporting efficient project delivery across all service lines.</p>
         </div>
         <div className={styles.equipmentGrid}>
-          {[
-            [faTractor, 'Excavators', 'Heavy earthmoving and excavation'],
-            [faTruck, 'Dump Trucks', 'Material transport and hauling'],
-            [faRoad, 'Graders', 'Road grading and leveling'],
-            [faIndustry, 'Concrete Mixers', 'Concrete production and placement'],
-            [faBolt, 'Solar Equipment', 'Panels, inverters, batteries'],
-            [faSprayCan, 'Fogging Machines', 'Pest control and disinfection'],
-            [faLeaf, 'Landscaping Tools', 'Mowers, trimmers, blowers'],
-            [faTools, 'Mechanical Tools', 'Maintenance and repair equipment'],
-          ].map(([icon, title, copy]) => (
-            <article key={title as string} className={styles.glass}>
-              <FontAwesomeIcon icon={icon as typeof faTractor} />
-              <h4>{title as string}</h4>
-              <p>{copy as string}</p>
+          {equipmentItems.map((item) => (
+            <article key={item.title} className={styles.glass}>
+              <FontAwesomeIcon icon={item.icon} />
+              <h4>{item.title}</h4>
+              <p>{item.copy}</p>
             </article>
           ))}
         </div>
@@ -165,17 +213,13 @@ export default function ServicesPage() {
           <p className={styles.subtitle}>Divinerock Engineering Services supports projects across multiple sectors.</p>
         </div>
         <div className={styles.industryGrid}>
-          {[
-            [faRoad, 'Infrastructure', 'Roads, bridges, drainage'],
-            [faBuilding, 'Commercial', 'Office buildings, retail'],
-            [faIndustry, 'Industrial', 'Factories, warehouses'],
-            [faCity, 'Public Sector', 'Government projects'],
-            [faHome, 'Residential', 'Housing developments'],
-          ].map(([icon, title, copy]) => (
-            <article key={title as string} className={styles.card}>
-              <span className={styles.icon}><FontAwesomeIcon icon={icon as typeof faRoad} /></span>
-              <h4>{title as string}</h4>
-              <p>{copy as string}</p>
+          {industries.map((item) => (
+            <article key={item.title} className={styles.card}>
+              <span className={styles.icon}>
+                <FontAwesomeIcon icon={item.icon} />
+              </span>
+              <h4>{item.title}</h4>
+              <p>{item.copy}</p>
             </article>
           ))}
         </div>
@@ -187,17 +231,11 @@ export default function ServicesPage() {
           <p className={styles.subtitle}>A structured approach to ensure quality, safety, and timely delivery.</p>
         </div>
         <div className={styles.processGrid}>
-          {[
-            ['1', 'Project Planning', 'Detailed planning and resource allocation'],
-            ['2', 'Engineering Design', 'Technical specifications and drawings'],
-            ['3', 'Construction Execution', 'On-site implementation and management'],
-            ['4', 'Quality Control', 'Inspection and testing throughout execution'],
-            ['5', 'Project Completion', 'Handover and client satisfaction'],
-          ].map(([step, title, copy]) => (
-            <article key={step} className={styles.center}>
-              <div className={styles.pill}>{step}</div>
-              <h4>{title}</h4>
-              <p>{copy}</p>
+          {processSteps.map((item) => (
+            <article key={item.step} className={styles.center}>
+              <div className={styles.pill}>{item.step}</div>
+              <h4>{item.title}</h4>
+              <p>{item.copy}</p>
             </article>
           ))}
         </div>
@@ -206,7 +244,9 @@ export default function ServicesPage() {
       <section className={styles.cta}>
         <h2>Need Professional Engineering Services?</h2>
         <p>Divinerock Engineering Services is ready to support your construction, infrastructure, or specialized project with reliable engineering solutions.</p>
-        <Link href="/quote" className={`${styles.btn} ${styles.accent}`}>Request a Quote</Link>
+        <Link href="/quote" className={`${styles.btn} ${styles.accent}`}>
+          Request a Quote
+        </Link>
       </section>
     </div>
   );

@@ -1534,7 +1534,7 @@ export default function NewsPage() {
             Get the latest news, project updates, and industry insights delivered straight to your inbox.
           </p>
           <form className="newsletter-form">
-            <input type="email" className="newsletter-input" placeholder="Enter your email address" required="" />
+            <input type="email" className="newsletter-input" placeholder="Enter your email address" required />
             <button type="submit" className="btn btn-primary">
               Subscribe
             </button>

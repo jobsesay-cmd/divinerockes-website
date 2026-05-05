@@ -1,18 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Divinerock Engineering Services</title>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Link to global CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    <style>
+"use client";
+
+import React from 'react';
+import React, { useState } from 'react';
+
+export default function ContactPage() {
+
+  const [showSuccess, setShowSuccess] = useState(false);
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setShowSuccess(true);
+    event.currentTarget.reset();
+    window.setTimeout(() => setShowSuccess(false), 5000);
+  };
+
+  return (
+    <>
+      <style>{`
+
         /* Additional styles specific to Contact page */
         * {
             margin: 0;
@@ -746,388 +750,554 @@
                 padding: 30px;
             }
         }
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <h1>DIVINEROCK</h1>
-                <span>Engineering Services</span>
-            </div>
-            <nav class="nav-menu">
-                <a href="index.html">Home</a>
-                <a href="about.html">About Us</a>
-                <a href="services.html">Services</a>
-                <a href="projects.html">Projects</a>
-                <a href="equipment.html">Equipment</a>
-                <a href="news.html">News</a>
-                <a href="contact.html" class="active">Contact</a>
-                <a href="quote.html" class="quote-btn">Request a Quote</a>
-            </nav>
+    
+      `}</style>
+    <header className="header">
+      <div className="container">
+        <div className="logo">
+          <h1>
+            DIVINEROCK
+          </h1>
+          <span>
+            Engineering Services
+          </span>
         </div>
+        <nav className="nav-menu">
+          <a href="/">
+            Home
+          </a>
+          <a href="/about">
+            About Us
+          </a>
+          <a href="/services">
+            Services
+          </a>
+          <a href="/projects">
+            Projects
+          </a>
+          <a href="/equipment">
+            Equipment
+          </a>
+          <a href="/news">
+            News
+          </a>
+          <a href="/contact" className="active">
+            Contact
+          </a>
+          <a href="/quote" className="quote-btn">
+            Request a Quote
+          </a>
+        </nav>
+      </div>
     </header>
-
-    <!-- Page Banner -->
-    <section class="page-banner">
-        <div class="container">
-            <h1>Contact Divinerock Engineering Services</h1>
-            <p>Get in touch with our team to discuss your project requirements, request a quote, or learn more about our services</p>
-        </div>
+    <section className="page-banner">
+      <div className="container">
+        <h1>
+          Contact Divinerock Engineering Services
+        </h1>
+        <p>
+          Get in touch with our team to discuss your project requirements, request a quote, or learn more about our services
+        </p>
+      </div>
     </section>
-
-    <!-- Contact Info Cards -->
-    <section style="padding-bottom: 0;">
-        <div class="container">
-            <div class="contact-info-grid">
-                <!-- Office Address -->
-                <div class="contact-info-card">
-                    <div class="info-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3>Office Address</h3>
-                    <p>Sierratel Earth Station,<br>Main Motor Road, Wilberforce,<br>Freetown, Sierra Leone</p>
-                </div>
-                
-                <!-- Phone Number -->
-                <div class="contact-info-card">
-                    <div class="info-icon">
-                        <i class="fas fa-phone-alt"></i>
-                    </div>
-                    <h3>Phone Number</h3>
-                    <p><a href="tel:+23200000000">+232 00 000 000</a><br>
-                    <a href="tel:+23211111111">+232 11 111 111</a><br>
-                    <small>Mon-Fri, 8:00 AM - 5:00 PM</small></p>
-                </div>
-                
-                <!-- Email Address -->
-                <div class="contact-info-card">
-                    <div class="info-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <h3>Email Address</h3>
-                    <p><a href="mailto:info@divinerock.sl">info@divinerock.sl</a><br>
-                    <a href="mailto:projects@divinerock.sl">projects@divinerock.sl</a><br>
-                    <a href="mailto:tenders@divinerock.sl">tenders@divinerock.sl</a></p>
-                </div>
-                
-                <!-- Office Hours -->
-                <div class="contact-info-card">
-                    <div class="info-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3>Office Hours</h3>
-                    <p>Monday - Friday: 8:00 AM - 5:00 PM<br>
-                    Saturday: 9:00 AM - 1:00 PM<br>
-                    Sunday: Closed</p>
-                </div>
+    <section style={{paddingBottom: '0'}}>
+      <div className="container">
+        <div className="contact-info-grid">
+          <div className="contact-info-card">
+            <div className="info-icon">
+              <i className="fas fa-map-marker-alt"></i>
             </div>
+            <h3>
+              Office Address
+            </h3>
+            <p>
+              Sierratel Earth Station,
+              <br />
+              Main Motor Road, Wilberforce,
+              <br />
+              Freetown, Sierra Leone
+            </p>
+          </div>
+          <div className="contact-info-card">
+            <div className="info-icon">
+              <i className="fas fa-phone-alt"></i>
+            </div>
+            <h3>
+              Phone Number
+            </h3>
+            <p>
+              <a href="tel:+23200000000">
+                +232 00 000 000
+              </a>
+              <br />
+              <a href="tel:+23211111111">
+                +232 11 111 111
+              </a>
+              <br />
+              <small>
+                Mon-Fri, 8:00 AM - 5:00 PM
+              </small>
+            </p>
+          </div>
+          <div className="contact-info-card">
+            <div className="info-icon">
+              <i className="fas fa-envelope"></i>
+            </div>
+            <h3>
+              Email Address
+            </h3>
+            <p>
+              <a href="mailto:info@divinerock.sl">
+                info@divinerock.sl
+              </a>
+              <br />
+              <a href="mailto:projects@divinerock.sl">
+                projects@divinerock.sl
+              </a>
+              <br />
+              <a href="mailto:tenders@divinerock.sl">
+                tenders@divinerock.sl
+              </a>
+            </p>
+          </div>
+          <div className="contact-info-card">
+            <div className="info-icon">
+              <i className="fas fa-clock"></i>
+            </div>
+            <h3>
+              Office Hours
+            </h3>
+            <p>
+              Monday - Friday: 8:00 AM - 5:00 PM
+              <br />
+              Saturday: 9:00 AM - 1:00 PM
+              <br />
+              Sunday: Closed
+            </p>
+          </div>
         </div>
+      </div>
     </section>
-
-    <!-- Main Contact Section -->
     <section>
-        <div class="container">
-            <div class="contact-main-grid">
-                <!-- Contact Form -->
-                <div class="contact-form-wrapper">
-                    <h2 class="form-title">Send Us a Message</h2>
-                    
-                    <!-- Success Message -->
-                    <div class="success-message" id="successMessage">
-                        <i class="fas fa-check-circle" style="margin-right: 10px;"></i>
-                        Thank you for your message! We'll get back to you within 24 hours.
-                    </div>
-                    
-                    <form id="contactForm">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label" for="firstName">First Name *</label>
-                                <input type="text" class="form-control" id="firstName" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="lastName">Last Name *</label>
-                                <input type="text" class="form-control" id="lastName" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label" for="email">Email Address *</label>
-                                <input type="email" class="form-control" id="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="phone">Phone Number</label>
-                                <input type="tel" class="form-control" id="phone">
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label" for="company">Company / Organization</label>
-                            <input type="text" class="form-control" id="company">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label" for="subject">Subject *</label>
-                            <select class="form-control" id="subject" required>
-                                <option value="">Select a subject</option>
-                                <option value="general">General Inquiry</option>
-                                <option value="project">Project Discussion</option>
-                                <option value="quote">Request a Quote</option>
-                                <option value="tender">Tender / Bid Inquiry</option>
-                                <option value="partnership">Partnership Opportunity</option>
-                                <option value="careers">Careers / Employment</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label" for="message">Message *</label>
-                            <textarea class="form-control" id="message" required></textarea>
-                        </div>
-                        
-                        <div class="form-check">
-                            <input type="checkbox" id="privacy" required>
-                            <label for="privacy">I agree to the <a href="#">Privacy Policy</a> and consent to being contacted *</label>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary btn-large">
-                            <i class="fas fa-paper-plane" style="margin-right: 10px;"></i>
-                            Send Message
-                        </button>
-                    </form>
-                </div>
-                
-                <!-- Office Details -->
-                <div class="office-details">
-                    <h3>Visit Our Office</h3>
-                    
-                    <h4><i class="fas fa-building" style="margin-right: 10px; color: #D83936;"></i>Headquarters</h4>
-                    <p style="margin-bottom: 25px;">Sierratel Earth Station, Main Motor Road, Wilberforce, Freetown, Sierra Leone</p>
-                    
-                    <h4><i class="fas fa-clock" style="margin-right: 10px; color: #D83936;"></i>Office Hours</h4>
-                    <ul class="office-hours">
-                        <li><span>Monday - Friday:</span> <span>8:00 AM - 5:00 PM</span></li>
-                        <li><span>Saturday:</span> <span>9:00 AM - 1:00 PM</span></li>
-                        <li><span>Sunday:</span> <span>Closed</span></li>
-                        <li><span>Public Holidays:</span> <span>Closed</span></li>
-                    </ul>
-                    
-                    <h4><i class="fas fa-phone-alt" style="margin-right: 10px; color: #D83936;"></i>Direct Contacts</h4>
-                    <ul class="office-features">
-                        <li><i class="fas fa-user"></i> <strong>General Inquiries:</strong> info@divinerock.sl</li>
-                        <li><i class="fas fa-hard-hat"></i> <strong>Projects Department:</strong> projects@divinerock.sl</li>
-                        <li><i class="fas fa-file-contract"></i> <strong>Tenders & Bids:</strong> tenders@divinerock.sl</li>
-                        <li><i class="fas fa-handshake"></i> <strong>Partnerships:</strong> partnerships@divinerock.sl</li>
-                        <li><i class="fas fa-briefcase"></i> <strong>Careers:</strong> careers@divinerock.sl</li>
-                    </ul>
-                    
-                    <h4><i class="fas fa-directions" style="margin-right: 10px; color: #D83936;"></i>Getting Here</h4>
-                    <p>Located on Main Motor Road in Wilberforce, opposite the Sierratel Earth Station. Ample parking available for visitors.</p>
-                    
-                    <div style="margin-top: 30px; display: flex; gap: 15px;">
-                        <a href="#" style="color: #0972C2; font-size: 1.8rem; transition: color 0.3s ease;" onmouseover="this.style.color='#D83936'" onmouseout="this.style.color='#0972C2'">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                        <a href="#" style="color: #0972C2; font-size: 1.8rem; transition: color 0.3s ease;" onmouseover="this.style.color='#D83936'" onmouseout="this.style.color='#0972C2'">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" style="color: #0972C2; font-size: 1.8rem; transition: color 0.3s ease;" onmouseover="this.style.color='#D83936'" onmouseout="this.style.color='#0972C2'">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="#" style="color: #0972C2; font-size: 1.8rem; transition: color 0.3s ease;" onmouseover="this.style.color='#D83936'" onmouseout="this.style.color='#0972C2'">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                    </div>
-                </div>
+      <div className="container">
+        <div className="contact-main-grid">
+          <div className="contact-form-wrapper">
+            <h2 className="form-title">
+              Send Us a Message
+            </h2>
+            <div className={`success-message ${showSuccess ? "show" : ""}`} id="successMessage">
+              <i className="fas fa-check-circle" style={{marginRight: '10px'}}></i>
+              Thank you for your message! We'll get back to you within 24 hours.
             </div>
+            <form id="contactForm" onSubmit={handleSubmit}>
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="form-label" htmlFor="firstName">
+                    First Name *
+                  </label>
+                  <input type="text" className="form-control" id="firstName" required />
+                </div>
+                <div className="form-group">
+                  <label className="form-label" htmlFor="lastName">
+                    Last Name *
+                  </label>
+                  <input type="text" className="form-control" id="lastName" required />
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="form-label" htmlFor="email">
+                    Email Address *
+                  </label>
+                  <input type="email" className="form-control" id="email" required />
+                </div>
+                <div className="form-group">
+                  <label className="form-label" htmlFor="phone">
+                    Phone Number
+                  </label>
+                  <input type="tel" className="form-control" id="phone" />
+                </div>
+              </div>
+              <div className="form-group">
+                <label className="form-label" htmlFor="company">
+                  Company / Organization
+                </label>
+                <input type="text" className="form-control" id="company" />
+              </div>
+              <div className="form-group">
+                <label className="form-label" htmlFor="subject">
+                  Subject *
+                </label>
+                <select className="form-control" id="subject" required>
+                  <option value="">
+                    Select a subject
+                  </option>
+                  <option value="general">
+                    General Inquiry
+                  </option>
+                  <option value="project">
+                    Project Discussion
+                  </option>
+                  <option value="quote">
+                    Request a Quote
+                  </option>
+                  <option value="tender">
+                    Tender / Bid Inquiry
+                  </option>
+                  <option value="partnership">
+                    Partnership Opportunity
+                  </option>
+                  <option value="careers">
+                    Careers / Employment
+                  </option>
+                  <option value="other">
+                    Other
+                  </option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label className="form-label" htmlFor="message">
+                  Message *
+                </label>
+                <textarea className="form-control" id="message" required></textarea>
+              </div>
+              <div className="form-check">
+                <input type="checkbox" id="privacy" required />
+                <label htmlFor="privacy">
+                  I agree to the
+                  <a href="#">
+                    Privacy Policy
+                  </a>
+                  and consent to being contacted *
+                </label>
+              </div>
+              <button type="submit" className="btn btn-primary btn-large">
+                <i className="fas fa-paper-plane" style={{marginRight: '10px'}}></i>
+                Send Message
+              </button>
+            </form>
+          </div>
+          <div className="office-details">
+            <h3>
+              Visit Our Office
+            </h3>
+            <h4>
+              <i className="fas fa-building" style={{marginRight: '10px', color: '#D83936'}}></i>
+              Headquarters
+            </h4>
+            <p style={{marginBottom: '25px'}}>
+              Sierratel Earth Station, Main Motor Road, Wilberforce, Freetown, Sierra Leone
+            </p>
+            <h4>
+              <i className="fas fa-clock" style={{marginRight: '10px', color: '#D83936'}}></i>
+              Office Hours
+            </h4>
+            <ul className="office-hours">
+              <li>
+                <span>
+                  Monday - Friday:
+                </span>
+                <span>
+                  8:00 AM - 5:00 PM
+                </span>
+              </li>
+              <li>
+                <span>
+                  Saturday:
+                </span>
+                <span>
+                  9:00 AM - 1:00 PM
+                </span>
+              </li>
+              <li>
+                <span>
+                  Sunday:
+                </span>
+                <span>
+                  Closed
+                </span>
+              </li>
+              <li>
+                <span>
+                  Public Holidays:
+                </span>
+                <span>
+                  Closed
+                </span>
+              </li>
+            </ul>
+            <h4>
+              <i className="fas fa-phone-alt" style={{marginRight: '10px', color: '#D83936'}}></i>
+              Direct Contacts
+            </h4>
+            <ul className="office-features">
+              <li>
+                <i className="fas fa-user"></i>
+                <strong>
+                  General Inquiries:
+                </strong>
+                info@divinerock.sl
+              </li>
+              <li>
+                <i className="fas fa-hard-hat"></i>
+                <strong>
+                  Projects Department:
+                </strong>
+                projects@divinerock.sl
+              </li>
+              <li>
+                <i className="fas fa-file-contract"></i>
+                <strong>
+                  Tenders & Bids:
+                </strong>
+                tenders@divinerock.sl
+              </li>
+              <li>
+                <i className="fas fa-handshake"></i>
+                <strong>
+                  Partnerships:
+                </strong>
+                partnerships@divinerock.sl
+              </li>
+              <li>
+                <i className="fas fa-briefcase"></i>
+                <strong>
+                  Careers:
+                </strong>
+                careers@divinerock.sl
+              </li>
+            </ul>
+            <h4>
+              <i className="fas fa-directions" style={{marginRight: '10px', color: '#D83936'}}></i>
+              Getting Here
+            </h4>
+            <p>
+              Located on Main Motor Road in Wilberforce, opposite the Sierratel Earth Station. Ample parking available for visitors.
+            </p>
+            <div style={{marginTop: '30px', display: 'flex', gap: '15px'}}>
+              <a href="#" style={{color: '#0972C2', fontSize: '1.8rem', transition: 'color 0.3s ease'}}>
+                <i className="fab fa-facebook"></i>
+              </a>
+              <a href="#" style={{color: '#0972C2', fontSize: '1.8rem', transition: 'color 0.3s ease'}}>
+                <i className="fab fa-twitter"></i>
+              </a>
+              <a href="#" style={{color: '#0972C2', fontSize: '1.8rem', transition: 'color 0.3s ease'}}>
+                <i className="fab fa-linkedin"></i>
+              </a>
+              <a href="#" style={{color: '#0972C2', fontSize: '1.8rem', transition: 'color 0.3s ease'}}>
+                <i className="fab fa-whatsapp"></i>
+              </a>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
-
-    <!-- Map Section -->
-    <section class="map-section">
-        <div class="container">
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126900.58164911648!2d-13.289974!3d8.465677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOMKwMjcnNTYuNCJOIDEzwrAxNScwMC4wIlc!5e0!3m2!1sen!2ssl!4v1611111111111!5m2!1sen!2ssl" allowfullscreen="" loading="lazy"></iframe>
-            </div>
+    <section className="map-section">
+      <div className="container">
+        <div className="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126900.58164911648!2d-13.289974!3d8.465677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOMKwMjcnNTYuNCJOIDEzwrAxNScwMC4wIlc!5e0!3m2!1sen!2ssl!4v1611111111111!5m2!1sen!2ssl" allowFullScreen loading="lazy"></iframe>
         </div>
+      </div>
     </section>
-
-    <!-- Business & Tender Inquiries Section -->
-    <section class="business-inquiries">
-        <div class="container">
-            <div class="inquiries-content">
-                <h2 class="section-title">Business & Tender Inquiries</h2>
-                <p>Divinerock Engineering Services welcomes opportunities to collaborate with government agencies, private developers, and international organizations on infrastructure and construction projects.</p>
-                <p>For project inquiries, tender participation, or partnership opportunities, please contact our dedicated teams using the options below.</p>
-                
-                <div class="inquiry-buttons">
-                    <a href="mailto:tenders@divinerock.sl" class="inquiry-btn">
-                        <i class="fas fa-file-contract"></i>
-                        Tender Submissions
-                    </a>
-                    <a href="mailto:partnerships@divinerock.sl" class="inquiry-btn">
-                        <i class="fas fa-handshake"></i>
-                        Partnership Opportunities
-                    </a>
-                    <a href="quote.html" class="inquiry-btn">
-                        <i class="fas fa-calculator"></i>
-                        Request a Quote
-                    </a>
-                </div>
-            </div>
+    <section className="business-inquiries">
+      <div className="container">
+        <div className="inquiries-content">
+          <h2 className="section-title">
+            Business & Tender Inquiries
+          </h2>
+          <p>
+            Divinerock Engineering Services welcomes opportunities to collaborate with government agencies, private developers, and international organizations on infrastructure and construction projects.
+          </p>
+          <p>
+            For project inquiries, tender participation, or partnership opportunities, please contact our dedicated teams using the options below.
+          </p>
+          <div className="inquiry-buttons">
+            <a href="mailto:tenders@divinerock.sl" className="inquiry-btn">
+              <i className="fas fa-file-contract"></i>
+              Tender Submissions
+            </a>
+            <a href="mailto:partnerships@divinerock.sl" className="inquiry-btn">
+              <i className="fas fa-handshake"></i>
+              Partnership Opportunities
+            </a>
+            <a href="/quote" className="inquiry-btn">
+              <i className="fas fa-calculator"></i>
+              Request a Quote
+            </a>
+          </div>
         </div>
+      </div>
     </section>
-
-    <!-- FAQ Section -->
-    <section class="faq-section">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="section-title">Frequently Asked Questions</h2>
-                <p class="section-subtitle">Quick answers to common questions about our services and processes</p>
-            </div>
-            
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <h3><i class="fas fa-question-circle"></i> How do I request a quote?</h3>
-                    <p>You can request a quote by filling out our online form on the "Request a Quote" page, or by emailing projects@divinerock.sl with your project details.</p>
-                </div>
-                
-                <div class="faq-item">
-                    <h3><i class="fas fa-question-circle"></i> What information do you need for a project inquiry?</h3>
-                    <p>Please provide project type, location, scope of work, estimated timeline, and any specific requirements or drawings available.</p>
-                </div>
-                
-                <div class="faq-item">
-                    <h3><i class="fas fa-question-circle"></i> How quickly do you respond to inquiries?</h3>
-                    <p>We typically respond to all inquiries within 24-48 hours during business days.</p>
-                </div>
-                
-                <div class="faq-item">
-                    <h3><i class="fas fa-question-circle"></i> Do you work with government agencies?</h3>
-                    <p>Yes, we actively participate in government tenders and have experience working with public sector clients on infrastructure projects.</p>
-                </div>
-                
-                <div class="faq-item">
-                    <h3><i class="fas fa-question-circle"></i> What areas do you serve?</h3>
-                    <p>We serve clients throughout Sierra Leone, with project experience in Western Area, Port Loko, Moyamba, Bo, and other regions.</p>
-                </div>
-                
-                <div class="faq-item">
-                    <h3><i class="fas fa-question-circle"></i> How can I apply for jobs at Divinerock?</h3>
-                    <p>Please send your CV and cover letter to careers@divinerock.sl. Check our News page for current openings.</p>
-                </div>
-            </div>
+    <section className="faq-section">
+      <div className="container">
+        <div className="text-center">
+          <h2 className="section-title">
+            Frequently Asked Questions
+          </h2>
+          <p className="section-subtitle">
+            Quick answers to common questions about our services and processes
+          </p>
         </div>
+        <div className="faq-grid">
+          <div className="faq-item">
+            <h3>
+              <i className="fas fa-question-circle"></i>
+              How do I request a quote?
+            </h3>
+            <p>
+              You can request a quote by filling out our online form on the "Request a Quote" page, or by emailing projects@divinerock.sl with your project details.
+            </p>
+          </div>
+          <div className="faq-item">
+            <h3>
+              <i className="fas fa-question-circle"></i>
+              What information do you need for a project inquiry?
+            </h3>
+            <p>
+              Please provide project type, location, scope of work, estimated timeline, and any specific requirements or drawings available.
+            </p>
+          </div>
+          <div className="faq-item">
+            <h3>
+              <i className="fas fa-question-circle"></i>
+              How quickly do you respond to inquiries?
+            </h3>
+            <p>
+              We typically respond to all inquiries within 24-48 hours during business days.
+            </p>
+          </div>
+          <div className="faq-item">
+            <h3>
+              <i className="fas fa-question-circle"></i>
+              Do you work with government agencies?
+            </h3>
+            <p>
+              Yes, we actively participate in government tenders and have experience working with public sector clients on infrastructure projects.
+            </p>
+          </div>
+          <div className="faq-item">
+            <h3>
+              <i className="fas fa-question-circle"></i>
+              What areas do you serve?
+            </h3>
+            <p>
+              We serve clients throughout Sierra Leone, with project experience in Western Area, Port Loko, Moyamba, Bo, and other regions.
+            </p>
+          </div>
+          <div className="faq-item">
+            <h3>
+              <i className="fas fa-question-circle"></i>
+              How can I apply for jobs at Divinerock?
+            </h3>
+            <p>
+              Please send your CV and cover letter to careers@divinerock.sl. Check our News page for current openings.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>About Divinerock</h4>
-                    <p>Divinerock Engineering Services is a civil engineering and construction company committed to delivering reliable infrastructure solutions. Specialized in road construction, bridge development, building construction, steel fabrication, and project management services for both public and private sector clients.</p>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Our Services</h4>
-                    <ul class="footer-links">
-                        <li><a href="services.html">Construction Services</a></li>
-                        <li><a href="services.html">Civil Engineering</a></li>
-                        <li><a href="services.html">Fabrication & Metal Works</a></li>
-                        <li><a href="services.html">Project Management</a></li>
-                        <li><a href="services.html">Renovation & Maintenance</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Contact Information</h4>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> Sierratel Earth Station, Wilberforce, Freetown</li>
-                        <li><i class="fas fa-phone" style="margin-right: 10px;"></i> +232 00 000 000</li>
-                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> info@divinerock.sl</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 Divinerock Engineering Services. All rights reserved. | Building Strong Foundations for Sustainable Infrastructure</p>
-            </div>
+    <footer className="footer">
+      <div className="container">
+        <div className="footer-grid">
+          <div className="footer-col">
+            <h4>
+              About Divinerock
+            </h4>
+            <p>
+              Divinerock Engineering Services is a civil engineering and construction company committed to delivering reliable infrastructure solutions. Specialized in road construction, bridge development, building construction, steel fabrication, and project management services for both public and private sector clients.
+            </p>
+          </div>
+          <div className="footer-col">
+            <h4>
+              Quick Links
+            </h4>
+            <ul className="footer-links">
+              <li>
+                <a href="/">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="/about">
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a href="/services">
+                  Services
+                </a>
+              </li>
+              <li>
+                <a href="/projects">
+                  Projects
+                </a>
+              </li>
+              <li>
+                <a href="/contact">
+                  Contact Us
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="footer-col">
+            <h4>
+              Our Services
+            </h4>
+            <ul className="footer-links">
+              <li>
+                <a href="/services">
+                  Construction Services
+                </a>
+              </li>
+              <li>
+                <a href="/services">
+                  Civil Engineering
+                </a>
+              </li>
+              <li>
+                <a href="/services">
+                  Fabrication & Metal Works
+                </a>
+              </li>
+              <li>
+                <a href="/services">
+                  Project Management
+                </a>
+              </li>
+              <li>
+                <a href="/services">
+                  Renovation & Maintenance
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="footer-col">
+            <h4>
+              Contact Information
+            </h4>
+            <ul className="footer-links">
+              <li>
+                <i className="fas fa-map-marker-alt" style={{marginRight: '10px'}}></i>
+                Sierratel Earth Station, Wilberforce, Freetown
+              </li>
+              <li>
+                <i className="fas fa-phone" style={{marginRight: '10px'}}></i>
+                +232 00 000 000
+              </li>
+              <li>
+                <i className="fas fa-envelope" style={{marginRight: '10px'}}></i>
+                info@divinerock.sl
+              </li>
+            </ul>
+          </div>
         </div>
+        <div className="footer-bottom">
+          <p>
+            © 2025 Divinerock Engineering Services. All rights reserved. | Building Strong Foundations for Sustainable Infrastructure
+          </p>
+        </div>
+      </div>
     </footer>
-
-    <!-- JavaScript -->
-    <script>
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 100) {
-                header.style.background = '#0860a3';
-                header.style.padding = '10px 0';
-            } else {
-                header.style.background = '#0972C2';
-                header.style.padding = '15px 0';
-            }
-        });
-        
-        // Active link highlighting
-        const currentLocation = window.location.pathname;
-        const navLinks = document.querySelectorAll('.nav-menu a');
-        
-        navLinks.forEach(link => {
-            if (link.getAttribute('href') === 'contact.html') {
-                link.classList.add('active');
-            }
-        });
-        
-        // Contact Form Submission
-        const contactForm = document.getElementById('contactForm');
-        const successMessage = document.getElementById('successMessage');
-        
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Show success message
-                successMessage.classList.add('show');
-                
-                // Scroll to success message
-                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                
-                // Reset form
-                this.reset();
-                
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    successMessage.classList.remove('show');
-                }, 5000);
-            });
-        }
-        
-        // Form input animations
-        const formControls = document.querySelectorAll('.form-control');
-        formControls.forEach(control => {
-            control.addEventListener('focus', function() {
-                this.parentElement.classList.add('focused');
-            });
-            
-            control.addEventListener('blur', function() {
-                this.parentElement.classList.remove('focused');
-            });
-        });
-    </script>
-</body>
-</html>
+    </>
+  );
+}

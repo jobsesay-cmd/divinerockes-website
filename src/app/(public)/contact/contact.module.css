@@ -895,13 +895,13 @@ export default function ContactPage() {
                   <label className="form-label" htmlFor="firstName">
                     First Name *
                   </label>
-                  <input type="text" className="form-control" id="firstName" required="" />
+                  <input type="text" className="form-control" id="firstName" required />
                 </div>
                 <div className="form-group">
                   <label className="form-label" htmlFor="lastName">
                     Last Name *
                   </label>
-                  <input type="text" className="form-control" id="lastName" required="" />
+                  <input type="text" className="form-control" id="lastName" required />
                 </div>
               </div>
               <div className="form-row">
@@ -909,7 +909,7 @@ export default function ContactPage() {
                   <label className="form-label" htmlFor="email">
                     Email Address *
                   </label>
-                  <input type="email" className="form-control" id="email" required="" />
+                  <input type="email" className="form-control" id="email" required />
                 </div>
                 <div className="form-group">
                   <label className="form-label" htmlFor="phone">
@@ -928,7 +928,7 @@ export default function ContactPage() {
                 <label className="form-label" htmlFor="subject">
                   Subject *
                 </label>
-                <select className="form-control" id="subject" required="">
+                <select className="form-control" id="subject" required>
                   <option value="">
                     Select a subject
                   </option>
@@ -959,10 +959,10 @@ export default function ContactPage() {
                 <label className="form-label" htmlFor="message">
                   Message *
                 </label>
-                <textarea className="form-control" id="message" required=""></textarea>
+                <textarea className="form-control" id="message" required></textarea>
               </div>
               <div className="form-check">
-                <input type="checkbox" id="privacy" required="" />
+                <input type="checkbox" id="privacy" required />
                 <label htmlFor="privacy">
                   I agree to the
                   <a href="#">
