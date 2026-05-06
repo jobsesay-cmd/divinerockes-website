@@ -60,4 +60,4 @@
 .btn { display: inline-block; padding: 15px 35px; font-weight: 700; text-decoration: none; border-radius: 4px; transition: all 0.3s ease; font-family: 'Montserrat', sans-serif; }
 .btnAccent { background-color: #d83936; color: white; }
 @media (max-width: 1024px) { .projectsGrid, .statsGrid { grid-template-columns: repeat(2, 1fr); } .approachGrid { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 768px) { .container { padding: 0 16px; } section { padding: 60px 0; } .projectsGrid, .statsGrid, .approachGrid { grid-template-columns: 1fr; } .projectFilters { flex-direction: column; align-items: center; } .filterBtn { width: 100%; max-width: 260px; text-align: center; } }
+@media (max-width: 768px) { .container { padding: 0 16px; } .page section { padding: 60px 0; } .projectsGrid, .statsGrid, .approachGrid { grid-template-columns: 1fr; } .projectFilters { flex-direction: column; align-items: center; } .filterBtn { width: 100%; max-width: 260px; text-align: center; } }
