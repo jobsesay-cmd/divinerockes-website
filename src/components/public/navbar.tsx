@@ -8,7 +8,7 @@ const links = [
   ['/equipment', 'Equipment'],
   ['/news', 'News'],
   ['/contact', 'Contact'],
-];
+] as const;
 
 export function PublicNavbar() {
   return (
