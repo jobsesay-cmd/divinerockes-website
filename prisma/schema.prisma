@@ -30,7 +30,7 @@ enum QuoteStatus {
   APPROVED
 }
 
-enum Prisma.ProjectCategoryType {
+enum ProjectCategoryType {
   RESIDENTIAL
   COMMERCIAL
   INDUSTRIAL

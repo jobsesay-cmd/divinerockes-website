@@ -111,7 +111,7 @@ async function main() {
     },
   });
 
-  for (const type of Object.values(Prisma.ProjectCategoryType)) {
+  for (const type of Object.values(ProjectCategoryType)) {
     const slug = type.toLowerCase();
     await prisma.category.upsert({
       where: { slug },
