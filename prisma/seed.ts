@@ -1,4 +1,4 @@
-import { PrismaClient, RoleType, ProjectCategoryType } from '@prisma/client';
+import { PrismaClient, Prisma } from '@prisma/client';
 import bcrypt from 'bcryptjs';
 
 const prisma = new PrismaClient();
@@ -30,7 +30,9 @@ async function main() {
     });
   }
 
-  const roleMatrix: Record<RoleType, string[]> = {
+  const roleMatrix: Record<Prisma.RoleType, string[]> = {
+  ...
+};
     SUPER_ADMIN: permissions.map(([key]) => key),
     ADMIN: [
       'dashboard:read',
@@ -109,7 +111,7 @@ async function main() {
     },
   });
 
-  for (const type of Object.values(ProjectCategoryType)) {
+  for (const type of Object.values(Prisma.ProjectCategoryType)) {
     const slug = type.toLowerCase();
     await prisma.category.upsert({
       where: { slug },
