@@ -5,7 +5,7 @@ export default function PublicLayout({ children }: Readonly<{ children: React.Re
   return (
     <>
       <PublicNavbar />
-      <main className="mx-auto min-h-screen max-w-7xl space-y-16 px-4 py-10">{children}</main>
+      <main>{children}</main>
       <PublicFooter />
     </>
   );
