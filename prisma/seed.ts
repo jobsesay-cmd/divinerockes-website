@@ -31,8 +31,6 @@ async function main() {
   }
 
   const roleMatrix: Record<Prisma.RoleType, string[]> = {
-  ...
-};
     SUPER_ADMIN: permissions.map(([key]) => key),
     ADMIN: [
       'dashboard:read',
@@ -52,7 +50,7 @@ async function main() {
     SUPPORT: ['dashboard:read', 'inquiries:manage', 'quotes:manage'],
   };
 
-  for (const roleType of Object.values(RoleType)) {
+  for (const roleType of Object.values(Prisma.RoleType)) {
     const role = await prisma.role.upsert({
       where: { key: roleType },
       update: { name: roleType.replace('_', ' ') },
@@ -96,7 +94,10 @@ async function main() {
     },
   });
 
-  const superAdminRole = await prisma.role.findUniqueOrThrow({ where: { key: RoleType.SUPER_ADMIN } });
+  const superAdminRole = await prisma.role.findUniqueOrThrow({
+    where: { key: Prisma.RoleType.SUPER_ADMIN },
+  });
+
   await prisma.userRole.upsert({
     where: {
       userId_roleId: {
@@ -111,7 +112,7 @@ async function main() {
     },
   });
 
-  for (const type of Object.values(ProjectCategoryType)) {
+  for (const type of Object.values(Prisma.ProjectCategoryType)) {
     const slug = type.toLowerCase();
     await prisma.category.upsert({
       where: { slug },
