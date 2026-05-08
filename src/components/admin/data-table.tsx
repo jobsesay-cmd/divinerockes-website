@@ -3,7 +3,7 @@
 import { ColumnDef, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
 
 type DataTableProps<T extends object> = {
-  columns: ColumnDef<T, any>[];;
+  columns: ColumnDef<T, any>[];
   data: T[];
 };
 
