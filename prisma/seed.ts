@@ -1,8 +1,21 @@
 import { PrismaClient } from '@prisma/client';
-import type { RoleType, ProjectCategoryType } from '@prisma/client';
 import bcrypt from 'bcryptjs';
 
 const prisma = new PrismaClient();
+
+const ROLE_TYPES = ['SUPER_ADMIN', 'ADMIN', 'EDITOR', 'AUTHOR', 'REVIEWER', 'SUPPORT'] as const;
+type RoleType = (typeof ROLE_TYPES)[number];
+
+const PROJECT_CATEGORY_TYPES = [
+  'RESIDENTIAL',
+  'COMMERCIAL',
+  'INDUSTRIAL',
+  'INFRASTRUCTURE',
+  'CONSULTANCY',
+  'RENOVATION',
+  'OTHER',
+] as const;
+type ProjectCategoryType = (typeof PROJECT_CATEGORY_TYPES)[number];
 
 function hashPassword(password: string): string {
   return bcrypt.hashSync(password, 12);
@@ -51,7 +64,7 @@ async function main() {
     SUPPORT: ['dashboard:read', 'inquiries:manage', 'quotes:manage'],
   };
 
-  for (const roleType of Object.values(RoleType)) {
+  for (const roleType of ROLE_TYPES) {
     const role = await prisma.role.upsert({
       where: { key: roleType },
       update: { name: roleType.replace('_', ' ') },
@@ -95,7 +108,7 @@ async function main() {
     },
   });
 
-  const superAdminRole = await prisma.role.findUniqueOrThrow({ where: { key: RoleType.SUPER_ADMIN } });
+  const superAdminRole = await prisma.role.findUniqueOrThrow({ where: { key: 'SUPER_ADMIN' } });
   await prisma.userRole.upsert({
     where: {
       userId_roleId: {
@@ -110,7 +123,7 @@ async function main() {
     },
   });
 
-  for (const type of Object.values(ProjectCategoryType)) {
+  for (const type of PROJECT_CATEGORY_TYPES) {
     const slug = type.toLowerCase();
     await prisma.category.upsert({
       where: { slug },
@@ -118,7 +131,7 @@ async function main() {
       create: {
         slug,
         name: type.replace('_', ' '),
-        type,
+        type: type as ProjectCategoryType,
       },
     });
   }
