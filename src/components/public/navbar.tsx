@@ -2,37 +2,34 @@ import Link from 'next/link';
 
 const links = [
   ['/', 'Home'],
-  ['/about', 'About'],
+  ['/about', 'About Us'],
   ['/services', 'Services'],
   ['/projects', 'Projects'],
   ['/equipment', 'Equipment'],
   ['/news', 'News'],
   ['/contact', 'Contact'],
-  ['/quote', 'Quote'],
-];
+] as const;
 
 export function PublicNavbar() {
   return (
-    <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4" aria-label="Main navigation">
-        <Link href="/" className="text-lg font-extrabold text-brand-700">
-          Divinerock ES
-        </Link>
-        <ul className="flex flex-wrap items-center gap-5 text-sm font-medium text-slate-700">
+    <header className="header">
+      <div className="container">
+        <div className="logo">
+          <h1>DIVINEROCK</h1>
+          <span>Engineering Services</span>
+        </div>
+
+        <nav className="nav-menu" aria-label="Main navigation">
           {links.map(([href, label]) => (
-            <li key={href}>
-              <Link href={href} className="transition hover:text-brand-700">
-                {label}
-              </Link>
-            </li>
-          ))}
-          <li>
-            <Link href="/admin" className="rounded bg-brand-500 px-3 py-2 text-white hover:bg-brand-700">
-              Admin
+            <Link key={href} href={href}>
+              {label}
             </Link>
-          </li>
-        </ul>
-      </nav>
+          ))}
+          <Link href="/quote" className="quote-btn">
+            Request a Quote
+          </Link>
+        </nav>
+      </div>
     </header>
   );
 }
