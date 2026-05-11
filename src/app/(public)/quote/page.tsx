@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { FormEvent, useState } from "react";
-import styles from "./quote.module.css";
+import Link from 'next/link';
+import { type FormEvent, useState } from 'react';
+import styles from './quote.module.css';
 
 type FormData = {
   projectType: string;
@@ -24,21 +24,21 @@ type FormData = {
 };
 
 const initialFormData: FormData = {
-  projectType: "",
-  location: "",
-  budget: "",
-  startDate: "",
-  duration: "",
-  description: "",
-  requirements: "",
-  size: "",
-  personnel: "",
-  fullName: "",
-  company: "",
-  email: "",
-  phone: "",
-  contactTime: "anytime",
-  comments: "",
+  projectType: '',
+  location: '',
+  budget: '',
+  startDate: '',
+  duration: '',
+  description: '',
+  requirements: '',
+  size: '',
+  personnel: '',
+  fullName: '',
+  company: '',
+  email: '',
+  phone: '',
+  contactTime: 'anytime',
+  comments: '',
   privacy: false,
 };
 
@@ -48,94 +48,56 @@ export default function QuotePage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
 
-  const updateField = (
-    field: keyof FormData,
-    value: string | boolean
-  ) => {
+  const updateField = (field: keyof FormData, value: string | boolean) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
-    setErrors((prev) => ({ ...prev, [field]: "" }));
+    setErrors((prev) => ({ ...prev, [field]: '' }));
   };
 
   const validateStep = (step: number) => {
-    const newErrors: Record<string, string> = {};
+    const nextErrors: Record<string, string> = {};
 
     if (step === 1) {
-      if (!formData.projectType) newErrors.projectType = "Please select a project type";
-      if (!formData.location.trim()) newErrors.location = "Please enter project location";
+      if (!formData.projectType) nextErrors.projectType = 'Please select a project type';
+      if (!formData.location.trim()) nextErrors.location = 'Please enter project location';
     }
 
     if (step === 2) {
-      if (!formData.description.trim()) newErrors.description = "Please describe your project";
+      if (!formData.description.trim()) nextErrors.description = 'Please describe your project';
     }
 
     if (step === 3) {
-      if (!formData.fullName.trim()) newErrors.fullName = "Please enter your full name";
-      if (!formData.email.includes("@")) newErrors.email = "Please enter a valid email address";
-      if (!formData.phone.trim()) newErrors.phone = "Please enter your phone number";
-      if (!formData.privacy) newErrors.privacy = "Please agree to the Privacy Policy";
+      if (!formData.fullName.trim()) nextErrors.fullName = 'Please enter your full name';
+      if (!formData.email.includes('@')) nextErrors.email = 'Please enter a valid email address';
+      if (!formData.phone.trim()) nextErrors.phone = 'Please enter your phone number';
+      if (!formData.privacy) nextErrors.privacy = 'Please agree to the Privacy Policy';
     }
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    setErrors(nextErrors);
+    return Object.keys(nextErrors).length === 0;
   };
 
-  const nextStep = (step: number) => {
-    if (validateStep(currentStep)) {
-      setCurrentStep(step);
-    }
+  const nextStep = (target: number) => {
+    if (validateStep(currentStep)) setCurrentStep(target);
   };
 
-  const previousStep = (step: number) => {
-    setCurrentStep(step);
-  };
+  const prevStep = (target: number) => setCurrentStep(target);
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     if (!validateStep(3)) return;
 
-    console.log("Quote Request Submitted:", formData);
-
-    // Future backend integration:
-    // await fetch("/api/quotes", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(formData),
-    // });
-
+    // Placeholder submit
+    console.log('Quote Request Submitted:', formData);
     setSubmitted(true);
   };
 
   return (
     <>
-      <header className={styles.header}>
-        <div className={styles.container}>
-          <div className={styles.logo}>
-            <h1>DIVINEROCK</h1>
-            <span>Engineering Services</span>
-          </div>
-
-          <nav className={styles.navMenu}>
-            <Link href="/">Home</Link>
-            <Link href="/about">About Us</Link>
-            <Link href="/services">Services</Link>
-            <Link href="/projects">Projects</Link>
-            <Link href="/equipment">Equipment</Link>
-            <Link href="/news">News</Link>
-            <Link href="/contact">Contact</Link>
-            <Link href="/quote" className={`${styles.quoteBtn} ${styles.active}`}>
-              Request a Quote
-            </Link>
-          </nav>
-        </div>
-      </header>
-
       <section className={styles.pageBanner}>
         <div className={styles.container}>
           <h1>Request a Quote</h1>
           <p>
-            Tell us about your project and we&apos;ll provide a comprehensive,
-            competitive quote within 48 hours
+            Tell us about your project and we&apos;ll provide a comprehensive, competitive quote within 48 hours
           </p>
         </div>
       </section>
@@ -145,10 +107,9 @@ export default function QuotePage() {
           <div className={styles.quoteIntro}>
             <h2 className={styles.sectionTitle}>Let&apos;s Build Together</h2>
             <p>
-              Fill out the form below with your project details. Our team will
-              review your requirements and prepare a detailed quotation tailored
-              to your specific needs. All quotes include comprehensive breakdown
-              of costs, timelines, and deliverables.
+              Fill out the form below with your project details. Our team will review your requirements and prepare a
+              detailed quotation tailored to your specific needs. All quotes include comprehensive breakdown of costs,
+              timelines, and deliverables.
             </p>
           </div>
         </div>
@@ -157,15 +118,14 @@ export default function QuotePage() {
       <section>
         <div className={styles.container}>
           {submitted ? (
-            <div className={`${styles.successMessage} ${styles.show}`}>
+            <div className={styles.successMessage}>
               <div className={styles.successIcon}>
-                <i className="fas fa-check" />
+                <i className="fas fa-check-circle" />
               </div>
-
               <h2>Thank You for Your Inquiry!</h2>
               <p>
-                Your quote request has been submitted successfully. Our team will
-                review your project details and get back to you within 48 hours.
+                Your quote request has been submitted successfully. Our team will review your details and get back to
+                you within 48 hours.
               </p>
 
               <div className={styles.successDetails}>
@@ -187,10 +147,7 @@ export default function QuotePage() {
               <div className={styles.formHeader}>
                 <i className="fas fa-file-invoice" />
                 <h2>Project Quote Request</h2>
-                <p>
-                  Please provide as much detail as possible to help us prepare an
-                  accurate quote
-                </p>
+                <p>Please provide as much detail as possible to help us prepare an accurate quote</p>
               </div>
 
               <div className={styles.formBody}>
@@ -199,27 +156,27 @@ export default function QuotePage() {
                     <div
                       key={step}
                       className={`${styles.progressStep} ${
-                        currentStep === step ? styles.activeStep : ""
-                      } ${currentStep > step ? styles.completedStep : ""}`}
+                        currentStep === step ? styles.activeStep : ''
+                      } ${currentStep > step ? styles.completedStep : ''}`}
                     >
                       <div className={styles.stepNumber}>{step}</div>
                       <div className={styles.stepLabel}>
-                        {step === 1 && "Project Info"}
-                        {step === 2 && "Project Details"}
-                        {step === 3 && "Contact Information"}
+                        {step === 1 && 'Project Info'}
+                        {step === 2 && 'Project Details'}
+                        {step === 3 && 'Contact Information'}
                       </div>
                     </div>
                   ))}
                 </div>
 
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={onSubmit}>
                   {currentStep === 1 && (
                     <div className={styles.formStep}>
                       <FormGroup label="Project Type *" icon="fas fa-tag" error={errors.projectType}>
                         <select
                           className={styles.formControl}
                           value={formData.projectType}
-                          onChange={(e) => updateField("projectType", e.target.value)}
+                          onChange={(e) => updateField('projectType', e.target.value)}
                         >
                           <option value="">Select project type</option>
                           <option value="construction">Construction Services</option>
@@ -236,9 +193,9 @@ export default function QuotePage() {
                         <FormGroup label="Project Location *" icon="fas fa-map-marker-alt" error={errors.location}>
                           <input
                             className={styles.formControl}
-                            value={formData.location}
                             placeholder="City/District, Sierra Leone"
-                            onChange={(e) => updateField("location", e.target.value)}
+                            value={formData.location}
+                            onChange={(e) => updateField('location', e.target.value)}
                           />
                         </FormGroup>
 
@@ -246,7 +203,7 @@ export default function QuotePage() {
                           <select
                             className={styles.formControl}
                             value={formData.budget}
-                            onChange={(e) => updateField("budget", e.target.value)}
+                            onChange={(e) => updateField('budget', e.target.value)}
                           >
                             <option value="">Select budget range</option>
                             <option value="under-50k">Under $50,000</option>
@@ -266,7 +223,7 @@ export default function QuotePage() {
                             type="date"
                             className={styles.formControl}
                             value={formData.startDate}
-                            onChange={(e) => updateField("startDate", e.target.value)}
+                            onChange={(e) => updateField('startDate', e.target.value)}
                           />
                         </FormGroup>
 
@@ -274,7 +231,7 @@ export default function QuotePage() {
                           <select
                             className={styles.formControl}
                             value={formData.duration}
-                            onChange={(e) => updateField("duration", e.target.value)}
+                            onChange={(e) => updateField('duration', e.target.value)}
                           >
                             <option value="">Select expected duration</option>
                             <option value="under-3">Under 3 months</option>
@@ -287,7 +244,11 @@ export default function QuotePage() {
                       </div>
 
                       <div className={styles.formActionsRight}>
-                        <button type="button" className={`${styles.btn} ${styles.btnPrimary}`} onClick={() => nextStep(2)}>
+                        <button
+                          type="button"
+                          className={`${styles.btn} ${styles.btnPrimary}`}
+                          onClick={() => nextStep(2)}
+                        >
                           Next Step <i className="fas fa-arrow-right" />
                         </button>
                       </div>
@@ -299,18 +260,18 @@ export default function QuotePage() {
                       <FormGroup label="Project Scope / Description *" icon="fas fa-clipboard-list" error={errors.description}>
                         <textarea
                           className={styles.formControl}
+                          placeholder="Please describe your project in detail. Include information about size, specifications, materials, and any special requirements..."
                           value={formData.description}
-                          placeholder="Please describe your project in detail..."
-                          onChange={(e) => updateField("description", e.target.value)}
+                          onChange={(e) => updateField('description', e.target.value)}
                         />
                       </FormGroup>
 
                       <FormGroup label="Specific Requirements" icon="fas fa-file-alt">
                         <textarea
                           className={styles.formControl}
+                          placeholder="List any specific technical requirements, materials, or standards that need to be met..."
                           value={formData.requirements}
-                          placeholder="List technical requirements, materials, or standards..."
-                          onChange={(e) => updateField("requirements", e.target.value)}
+                          onChange={(e) => updateField('requirements', e.target.value)}
                         />
                       </FormGroup>
 
@@ -318,9 +279,9 @@ export default function QuotePage() {
                         <FormGroup label="Project Size / Scale" icon="fas fa-ruler-combined">
                           <input
                             className={styles.formControl}
+                            placeholder="e.g., 500 sq meters, 2 km road, etc."
                             value={formData.size}
-                            placeholder="e.g., 500 sq meters, 2 km road"
-                            onChange={(e) => updateField("size", e.target.value)}
+                            onChange={(e) => updateField('size', e.target.value)}
                           />
                         </FormGroup>
 
@@ -328,28 +289,36 @@ export default function QuotePage() {
                           <input
                             type="number"
                             className={styles.formControl}
-                            value={formData.personnel}
                             placeholder="Estimated workforce required"
-                            onChange={(e) => updateField("personnel", e.target.value)}
+                            value={formData.personnel}
+                            onChange={(e) => updateField('personnel', e.target.value)}
                           />
                         </FormGroup>
                       </div>
 
-                      <FormGroup label="Upload Supporting Documents Optional" icon="fas fa-paperclip">
+                      <FormGroup label="Upload Supporting Documents (Optional)" icon="fas fa-paperclip">
                         <input
                           type="file"
                           className={styles.formControl}
                           multiple
                           accept=".pdf,.doc,.docx,.dwg,.jpg,.png"
                         />
-                        <small>You can upload drawings, specifications, or relevant documents. Max 10MB.</small>
+                        <small>You can upload drawings, specifications, or any relevant documents (Max 10MB)</small>
                       </FormGroup>
 
                       <div className={styles.formActionsBetween}>
-                        <button type="button" className={`${styles.btn} ${styles.btnOutline}`} onClick={() => previousStep(1)}>
+                        <button
+                          type="button"
+                          className={`${styles.btn} ${styles.btnOutline}`}
+                          onClick={() => prevStep(1)}
+                        >
                           <i className="fas fa-arrow-left" /> Previous
                         </button>
-                        <button type="button" className={`${styles.btn} ${styles.btnPrimary}`} onClick={() => nextStep(3)}>
+                        <button
+                          type="button"
+                          className={`${styles.btn} ${styles.btnPrimary}`}
+                          onClick={() => nextStep(3)}
+                        >
                           Next Step <i className="fas fa-arrow-right" />
                         </button>
                       </div>
@@ -362,18 +331,18 @@ export default function QuotePage() {
                         <FormGroup label="Full Name *" icon="fas fa-user" error={errors.fullName}>
                           <input
                             className={styles.formControl}
-                            value={formData.fullName}
                             placeholder="John Doe"
-                            onChange={(e) => updateField("fullName", e.target.value)}
+                            value={formData.fullName}
+                            onChange={(e) => updateField('fullName', e.target.value)}
                           />
                         </FormGroup>
 
                         <FormGroup label="Company/Organization" icon="fas fa-building">
                           <input
                             className={styles.formControl}
+                            placeholder="Company name (if applicable)"
                             value={formData.company}
-                            placeholder="Company name"
-                            onChange={(e) => updateField("company", e.target.value)}
+                            onChange={(e) => updateField('company', e.target.value)}
                           />
                         </FormGroup>
                       </div>
@@ -383,9 +352,9 @@ export default function QuotePage() {
                           <input
                             type="email"
                             className={styles.formControl}
-                            value={formData.email}
                             placeholder="your@email.com"
-                            onChange={(e) => updateField("email", e.target.value)}
+                            value={formData.email}
+                            onChange={(e) => updateField('email', e.target.value)}
                           />
                         </FormGroup>
 
@@ -393,9 +362,9 @@ export default function QuotePage() {
                           <input
                             type="tel"
                             className={styles.formControl}
-                            value={formData.phone}
                             placeholder="+232 XX XXX XXX"
-                            onChange={(e) => updateField("phone", e.target.value)}
+                            value={formData.phone}
+                            onChange={(e) => updateField('phone', e.target.value)}
                           />
                         </FormGroup>
                       </div>
@@ -404,7 +373,7 @@ export default function QuotePage() {
                         <select
                           className={styles.formControl}
                           value={formData.contactTime}
-                          onChange={(e) => updateField("contactTime", e.target.value)}
+                          onChange={(e) => updateField('contactTime', e.target.value)}
                         >
                           <option value="anytime">Anytime</option>
                           <option value="morning">Morning (8 AM - 12 PM)</option>
@@ -416,27 +385,32 @@ export default function QuotePage() {
                       <FormGroup label="Additional Comments" icon="fas fa-comment">
                         <textarea
                           className={styles.formControl}
-                          value={formData.comments}
                           placeholder="Any other information you'd like us to know..."
-                          onChange={(e) => updateField("comments", e.target.value)}
+                          value={formData.comments}
+                          onChange={(e) => updateField('comments', e.target.value)}
                         />
                       </FormGroup>
 
                       <div className={styles.formCheck}>
                         <input
-                          type="checkbox"
                           id="privacy"
+                          type="checkbox"
                           checked={formData.privacy}
-                          onChange={(e) => updateField("privacy", e.target.checked)}
+                          onChange={(e) => updateField('privacy', e.target.checked)}
                         />
                         <label htmlFor="privacy">
-                          I agree to the <Link href="/privacy-policy">Privacy Policy</Link> and consent to being contacted about my project. *
+                          I agree to the <Link href="/privacy-policy">Privacy Policy</Link> and consent to being
+                          contacted about my project. *
                         </label>
                       </div>
                       {errors.privacy && <p className={styles.errorMessage}>{errors.privacy}</p>}
 
                       <div className={styles.formActionsBetween}>
-                        <button type="button" className={`${styles.btn} ${styles.btnOutline}`} onClick={() => previousStep(2)}>
+                        <button
+                          type="button"
+                          className={`${styles.btn} ${styles.btnOutline}`}
+                          onClick={() => prevStep(2)}
+                        >
                           <i className="fas fa-arrow-left" /> Previous
                         </button>
                         <button type="submit" className={`${styles.btn} ${styles.btnAccent} ${styles.btnLarge}`}>
@@ -452,9 +426,74 @@ export default function QuotePage() {
         </div>
       </section>
 
-      <WhyChooseSection />
-      <TestimonialsSection />
-      <Footer />
+      <section className={styles.bgLight}>
+        <div className={styles.container}>
+          <div className={styles.textCenter}>
+            <h2 className={styles.sectionTitle}>Why Choose Divinerock</h2>
+            <p className={styles.sectionSubtitle}>
+              When you request a quote from us, you&apos;re getting more than just a price
+            </p>
+          </div>
+
+          <div className={styles.whyChooseGrid}>
+            {[
+              ['fas fa-clock', '48-Hour Response', 'We provide detailed quotes within 48 hours of receiving your request'],
+              ['fas fa-file-invoice', 'Detailed Breakdown', 'Transparent pricing with full breakdown of costs, materials, and labor'],
+              ['fas fa-calendar-check', 'Project Timeline', 'Clear project milestones and completion schedule included'],
+              ['fas fa-handshake', 'No Obligation', 'Free quotes with no commitment required'],
+            ].map(([icon, title, text]) => (
+              <div className={styles.whyItem} key={title}>
+                <div className={styles.whyIcon}>
+                  <i className={icon} />
+                </div>
+                <h4>{title}</h4>
+                <p>{text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.testimonialsSection}>
+        <div className={styles.container}>
+          <div className={styles.textCenter}>
+            <h2 className={styles.sectionTitle}>What Our Clients Say</h2>
+            <p className={styles.whiteSubtitle}>Trusted by leading organizations across Sierra Leone</p>
+          </div>
+
+          <div className={styles.testimonialGrid}>
+            <div className={styles.testimonialCard}>
+              <div className={styles.testimonialContent}>
+                <i className="fas fa-quote-left" /> Divinerock provided the most comprehensive quote we received.
+                Their attention to detail and professional approach gave us confidence from day one.
+              </div>
+              <div className={styles.testimonialAuthor}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="James Koroma" />
+                <div className={styles.authorInfo}>
+                  <h4>James Koroma</h4>
+                  <p>Project Director, Ministry of Works</p>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.testimonialCard}>
+              <div className={styles.testimonialContent}>
+                <i className="fas fa-quote-left" /> The quoting process was smooth and transparent. They took time
+                to understand our requirements and delivered a quote that matched our budget perfectly.
+              </div>
+              <div className={styles.testimonialAuthor}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Mariatu Sesay" />
+                <div className={styles.authorInfo}>
+                  <h4>Mariatu Sesay</h4>
+                  <p>CEO, Sesay Construction Ltd</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
@@ -479,146 +518,5 @@ function FormGroup({
       {children}
       {error && <div className={styles.errorMessage}>{error}</div>}
     </div>
-  );
-}
-
-function WhyChooseSection() {
-  const items = [
-    ["fas fa-clock", "48-Hour Response", "We provide detailed quotes within 48 hours of receiving your request"],
-    ["fas fa-file-invoice", "Detailed Breakdown", "Transparent pricing with full breakdown of costs, materials, and labor"],
-    ["fas fa-calendar-check", "Project Timeline", "Clear project milestones and completion schedule included"],
-    ["fas fa-handshake", "No Obligation", "Free quotes with no commitment required"],
-  ];
-
-  return (
-    <section className={styles.bgLight}>
-      <div className={styles.container}>
-        <div className={styles.textCenter}>
-          <h2 className={styles.sectionTitle}>Why Choose Divinerock</h2>
-          <p className={styles.sectionSubtitle}>When you request a quote from us, you&apos;re getting more than just a price</p>
-        </div>
-
-        <div className={styles.whyChooseGrid}>
-          {items.map(([icon, title, text]) => (
-            <div className={styles.whyItem} key={title}>
-              <div className={styles.whyIcon}>
-                <i className={icon} />
-              </div>
-              <h4>{title}</h4>
-              <p>{text}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function TestimonialsSection() {
-  return (
-    <section className={styles.testimonialsSection}>
-      <div className={styles.container}>
-        <div className={styles.textCenter}>
-          <h2 className={styles.sectionTitle}>What Our Clients Say</h2>
-          <p className={styles.whiteSubtitle}>Trusted by leading organizations across Sierra Leone</p>
-        </div>
-
-        <div className={styles.testimonialGrid}>
-          <Testimonial
-            image="https://randomuser.me/api/portraits/men/45.jpg"
-            name="James Koroma"
-            role="Project Director, Ministry of Works"
-            text="Divinerock provided the most comprehensive quote we received. Their attention to detail and professional approach gave us confidence from day one."
-          />
-          <Testimonial
-            image="https://randomuser.me/api/portraits/women/32.jpg"
-            name="Mariatu Sesay"
-            role="CEO, Sesay Construction Ltd"
-            text="The quoting process was smooth and transparent. They took time to understand our requirements and delivered a quote that matched our budget perfectly."
-          />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Testimonial({
-  image,
-  name,
-  role,
-  text,
-}: {
-  image: string;
-  name: string;
-  role: string;
-  text: string;
-}) {
-  return (
-    <div className={styles.testimonialCard}>
-      <div className={styles.testimonialContent}>
-        <i className="fas fa-quote-left" /> {text}
-      </div>
-      <div className={styles.testimonialAuthor}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={image} alt={name} />
-        <div className={styles.authorInfo}>
-          <h4>{name}</h4>
-          <p>{role}</p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className={styles.footer}>
-      <div className={styles.container}>
-        <div className={styles.footerGrid}>
-          <div className={styles.footerCol}>
-            <h4>About Divinerock</h4>
-            <p>
-              Divinerock Engineering Services is a civil engineering and
-              construction company committed to delivering reliable
-              infrastructure solutions.
-            </p>
-          </div>
-
-          <div className={styles.footerCol}>
-            <h4>Quick Links</h4>
-            <ul className={styles.footerLinks}>
-              <li><Link href="/">Home</Link></li>
-              <li><Link href="/about">About Us</Link></li>
-              <li><Link href="/services">Services</Link></li>
-              <li><Link href="/projects">Projects</Link></li>
-              <li><Link href="/contact">Contact Us</Link></li>
-            </ul>
-          </div>
-
-          <div className={styles.footerCol}>
-            <h4>Our Services</h4>
-            <ul className={styles.footerLinks}>
-              <li><Link href="/services">Construction Services</Link></li>
-              <li><Link href="/services">Civil Engineering</Link></li>
-              <li><Link href="/services">Fabrication & Metal Works</Link></li>
-              <li><Link href="/services">Project Management</Link></li>
-            </ul>
-          </div>
-
-          <div className={styles.footerCol}>
-            <h4>Contact Information</h4>
-            <ul className={styles.footerLinks}>
-              <li><i className="fas fa-map-marker-alt" /> Sierratel Earth Station, Wilberforce, Freetown</li>
-              <li><i className="fas fa-phone" /> +232 00 000 000</li>
-              <li><i className="fas fa-envelope" /> info@divinerock.sl</li>
-            </ul>
-          </div>
-        </div>
-
-        <div className={styles.footerBottom}>
-          <p>&copy; 2025 Divinerock Engineering Services. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
   );
 }
