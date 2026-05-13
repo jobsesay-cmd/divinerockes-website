@@ -1,11 +1,12 @@
 import Link from 'next/link';
+import styles from './footer.module.css';
 
 export function PublicFooter() {
   return (
-    <footer className="footer">
-      <div className="container">
-        <div className="footer-grid">
-          <div className="footer-col">
+    <footer className={styles.footer}>
+      <div className={styles.container}>
+        <div className={styles.footerGrid}>
+          <div className={styles.footerCol}>
             <h4>Divinerock Engineering Services</h4>
             <p>
               Delivering reliable civil engineering, construction, and fabrication
@@ -13,9 +14,9 @@ export function PublicFooter() {
             </p>
           </div>
 
-          <div className="footer-col">
+          <div className={styles.footerCol}>
             <h4>Quick Links</h4>
-            <ul className="footer-links">
+            <ul className={styles.footerLinks}>
               <li><Link href="/">Home</Link></li>
               <li><Link href="/about">About Us</Link></li>
               <li><Link href="/services">Services</Link></li>
@@ -23,9 +24,9 @@ export function PublicFooter() {
             </ul>
           </div>
 
-          <div className="footer-col">
+          <div className={styles.footerCol}>
             <h4>Services</h4>
-            <ul className="footer-links">
+            <ul className={styles.footerLinks}>
               <li><Link href="/services">Construction Services</Link></li>
               <li><Link href="/services">Civil Engineering</Link></li>
               <li><Link href="/services">Fabrication</Link></li>
@@ -33,7 +34,7 @@ export function PublicFooter() {
             </ul>
           </div>
 
-          <div className="footer-col footer-contact">
+          <div className={styles.footerCol}>
             <h4>Contact</h4>
             <p>Freetown, Sierra Leone</p>
             <p>+232 00 000 000</p>
@@ -41,7 +42,7 @@ export function PublicFooter() {
           </div>
         </div>
 
-        <div className="footer-bottom">
+        <div className={styles.footerBottom}>
           © {new Date().getFullYear()} Divinerock Engineering Services. All rights reserved.
         </div>
       </div>

@@ -1,10 +1,7 @@
 import { AdminHeader } from '@/components/admin/header';
 import { AdminSidebar } from '@/components/admin/sidebar';
-import { requireAdminSession } from '@/lib/auth/guards';
 
-export default async function AdminLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  await requireAdminSession();
-
+export default function AdminLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <div className="flex min-h-screen bg-slate-100">
       <AdminSidebar />

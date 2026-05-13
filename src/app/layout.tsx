@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import '@fortawesome/fontawesome-svg-core/styles.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import './globals.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import { AppProviders } from '@/components/layout/providers';
