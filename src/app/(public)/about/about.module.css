@@ -195,3 +195,255 @@
   .cardGrid, .valuesGrid, .teamGrid, .statsGrid { grid-template-columns: 1fr; }
   .pageBanner { padding: 60px 0; }
 }
+.aboutContent p {
+  color: #294a68;
+  line-height: 1.7;
+  font-size: 1.05rem;
+  margin-bottom: 16px;
+}
+
+.aboutHighlight {
+  background: #0972c2;
+  color: #fff;
+  border-radius: 12px;
+  padding: 28px;
+  margin-top: 24px;
+}
+.aboutHighlight h3 { margin-bottom: 10px; color: #fff; }
+.aboutHighlight p { color: rgba(255,255,255,0.95); margin: 0; }
+
+.missionVisionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px;
+}
+.missionCard,
+.visionCard {
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px 28px;
+  border: 1px solid #ecf1f6;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.04);
+  position: relative;
+}
+.missionCard { border-left: 6px solid #0972c2; }
+.visionCard { border-left: 6px solid #d83936; }
+.missionCard h3 { color: #0972c2; }
+.visionCard h3 { color: #d83936; }
+
+.cardIcon {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 18px;
+  background: #0972c2;
+}
+.visionCard .cardIcon { background: #d83936; }
+
+.valueCard {
+  background: #fff;
+  border: 1px solid #ecf1f6;
+  border-radius: 12px;
+  padding: 30px 24px;
+  text-align: center;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.04);
+}
+.valueIcon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 16px;
+  background: #0972c2;
+  color: #fff;
+  font-size: 2rem;
+}
+.valueCard h3 { color: #0972c2; margin-bottom: 10px; }
+
+.capabilitySection {
+  background: linear-gradient(135deg, #0972c2 0%, #0a5fa0 100%);
+  color: #fff;
+  border-radius: 16px;
+  padding: 90px 24px;
+}
+.capabilityContent { max-width: 980px; margin: 0 auto; text-align: center; }
+.capabilitySection .sectionTitle { color: #fff; }
+.capabilitySection .sectionTitle::after { left: 50%; transform: translateX(-50%); background: #d83936; }
+.capabilitySection p { color: rgba(255,255,255,0.94); line-height: 1.65; }
+
+.capabilityStats {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.capabilityStat {
+  background: rgba(255,255,255,0.13);
+  border-radius: 12px;
+  padding: 28px 14px;
+}
+.statNumber {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: #fff;
+}
+.statLabel { color: rgba(255,255,255,0.95); }
+
+.safetyGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: stretch;
+}
+.safetyContent h3 {
+  color: #0972c2;
+  margin-bottom: 14px;
+  font-size: 2.1rem;
+}
+.safetyContent p {
+  color: #294a68;
+  margin-bottom: 14px;
+}
+.safetyList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.safetyList li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  color: #24435f;
+}
+.safetyList li i { color: #d83936; margin-top: 3px; }
+
+.safetyImage {
+  border-radius: 14px;
+  overflow: hidden;
+}
+.safetyImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 420px;
+}
+
+.certGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+.certCard {
+  background: #fff;
+  border: 1px solid #ecf1f6;
+  border-radius: 12px;
+  padding: 28px 20px;
+  text-align: center;
+}
+.certIcon {
+  font-size: 3rem;
+  color: #0972c2;
+  margin-bottom: 12px;
+}
+.certCard h4 { color: #0972c2; margin-bottom: 8px; }
+
+.complianceText {
+  margin-top: 26px;
+  color: #3d5a75;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.teamCard h3 { color: #0972c2; margin-bottom: 6px; }
+.teamCard p { color: #4a5a6a; margin-bottom: 14px; }
+
+.teamSocial {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.teamSocial a {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #eef2f7;
+  color: #0972c2;
+  text-decoration: none;
+}
+
+.expertiseGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px;
+}
+.expertiseCard {
+  background: #fff;
+  border: 1px solid #ecf1f6;
+  border-radius: 12px;
+  padding: 28px;
+}
+.expertiseCard h3 { color: #0972c2; margin-bottom: 12px; }
+.expertiseCard ul { list-style: none; padding: 0; margin: 0; }
+.expertiseCard li {
+  margin-bottom: 10px;
+  color: #294a68;
+}
+.expertiseCard li i {
+  color: #d83936;
+  margin-right: 10px;
+}
+
+.ctaSection {
+  background:
+    linear-gradient(rgba(9,114,194,0.88), rgba(9,114,194,0.88)),
+    url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=2200&q=80');
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  text-align: center;
+  color: #fff;
+  padding: 92px 24px;
+}
+.ctaSection h2 {
+  font-size: clamp(2.3rem, 4.2vw, 4rem);
+  margin-bottom: 14px;
+}
+.ctaSection p {
+  max-width: 900px;
+  margin: 0 auto 28px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.95);
+}
+.ctaBtn {
+  display: inline-block;
+  background: #d83936;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 16px 42px;
+  border-radius: 8px;
+}
+
+@media (max-width: 1200px) {
+  .certGrid { grid-template-columns: repeat(2, 1fr); }
+  .teamGrid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 1024px) {
+  .missionVisionGrid { grid-template-columns: 1fr; }
+  .capabilityStats { grid-template-columns: 1fr; }
+  .safetyGrid { grid-template-columns: 1fr; }
+  .expertiseGrid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .certGrid, .teamGrid, .valuesGrid { grid-template-columns: 1fr; }
+  .capabilitySection, .ctaSection { padding: 70px 18px; }
+}
