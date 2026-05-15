@@ -15,8 +15,13 @@ export default function ContactPage() {
   return (
     <>
       <style>{`
-
-        /* Additional styles specific to Contact page */
+/* Hide legacy per-page nav/footer; shared layout renders these */
+        .header,
+        .footer {
+            display: none !important;
+        }
+       
+/* Additional styles specific to Contact page */
         * {
             margin: 0;
             padding: 0;
