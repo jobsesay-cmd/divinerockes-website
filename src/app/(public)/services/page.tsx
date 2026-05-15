@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import styles from './services.module.css';
 
 export const metadata: Metadata = {
   title: 'Our Services - Divinerock Engineering Services',
