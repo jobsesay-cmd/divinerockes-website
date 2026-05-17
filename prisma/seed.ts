@@ -92,8 +92,8 @@ async function main() {
     }
   }
 
-  const adminEmail = process.env.SEED_ADMIN_EMAIL ?? 'admin@divinerockes.com';
-  const adminPassword = process.env.SEED_ADMIN_PASSWORD ?? 'ChangeMeImmediately!123';
+  const adminEmail = process.env.SEED_ADMIN_EMAIL ?? 'admin@divinerockesltd.com';
+  const adminPassword = process.env.SEED_ADMIN_PASSWORD ?? 'H@EntAI,&,92';
 
   const admin = await prisma.user.upsert({
     where: { email: adminEmail },
