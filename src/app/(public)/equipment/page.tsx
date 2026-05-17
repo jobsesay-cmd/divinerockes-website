@@ -5,8 +5,13 @@ export default function EquipmentPage() {
   return (
     <>
       <style>{`
-
-        /* Additional styles specific to Equipment page */
+/* Hide legacy per-page nav/footer; shared layout renders these */
+        .header,
+        .footer {
+            display: none !important;
+        }
+        
+/* Additional styles specific to Equipment page */
         * {
             margin: 0;
             padding: 0;

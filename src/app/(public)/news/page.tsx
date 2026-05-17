@@ -17,8 +17,13 @@ export default function NewsPage() {
   return (
     <>
       <style>{`
-
-        /* Additional styles specific to News page */
+/* Hide legacy per-page nav/footer; shared layout renders these */
+        .header,
+        .footer {
+            display: none !important;
+        }
+       
+/* Additional styles specific to News page */
         * {
             margin: 0;
             padding: 0;
