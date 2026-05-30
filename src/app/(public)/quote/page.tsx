@@ -47,6 +47,7 @@ export default function QuotePage() {
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const updateField = (field: keyof FormData, value: string | boolean) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -86,9 +87,48 @@ export default function QuotePage() {
     event.preventDefault();
     if (!validateStep(3)) return;
 
-    // Placeholder submit
-    console.log('Quote Request Submitted:', formData);
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setErrors((prev) => ({ ...prev, submit: '' }));
+
+    try {
+      const payload = {
+        name: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company || undefined,
+        serviceType: formData.projectType,
+        timeline: formData.duration || formData.startDate || undefined,
+        requirements: [
+          `Location: ${formData.location}`,
+          formData.budget ? `Budget: ${formData.budget}` : '',
+          `Description: ${formData.description}`,
+          formData.requirements ? `Specific requirements: ${formData.requirements}` : '',
+          formData.size ? `Project size: ${formData.size}` : '',
+          formData.personnel ? `Personnel: ${formData.personnel}` : '',
+          formData.contactTime ? `Preferred contact time: ${formData.contactTime}` : '',
+          formData.comments ? `Additional comments: ${formData.comments}` : '',
+        ]
+          .filter(Boolean)
+          .join('\n'),
+      };
+
+      const response = await fetch('/api/inquiries/quotes', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit quote request');
+      }
+
+      setSubmitted(true);
+    } catch (error) {
+      console.error(error);
+      setErrors((prev) => ({ ...prev, submit: 'Failed to submit request. Please try again.' }));
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -96,9 +136,7 @@ export default function QuotePage() {
       <section className={styles.pageBanner}>
         <div className={styles.container}>
           <h1>Request a Quote</h1>
-          <p>
-            Tell us about your project and we&apos;ll provide a comprehensive, competitive quote within 48 hours
-          </p>
+          <p>Tell us about your project and we&apos;ll provide a comprehensive, competitive quote within 48 hours</p>
         </div>
       </section>
 
@@ -244,11 +282,7 @@ export default function QuotePage() {
                       </div>
 
                       <div className={styles.formActionsRight}>
-                        <button
-                          type="button"
-                          className={`${styles.btn} ${styles.btnPrimary}`}
-                          onClick={() => nextStep(2)}
-                        >
+                        <button type="button" className={`${styles.btn} ${styles.btnPrimary}`} onClick={() => nextStep(2)}>
                           Next Step <i className="fas fa-arrow-right" />
                         </button>
                       </div>
@@ -296,29 +330,11 @@ export default function QuotePage() {
                         </FormGroup>
                       </div>
 
-                      <FormGroup label="Upload Supporting Documents (Optional)" icon="fas fa-paperclip">
-                        <input
-                          type="file"
-                          className={styles.formControl}
-                          multiple
-                          accept=".pdf,.doc,.docx,.dwg,.jpg,.png"
-                        />
-                        <small>You can upload drawings, specifications, or any relevant documents (Max 10MB)</small>
-                      </FormGroup>
-
                       <div className={styles.formActionsBetween}>
-                        <button
-                          type="button"
-                          className={`${styles.btn} ${styles.btnOutline}`}
-                          onClick={() => prevStep(1)}
-                        >
+                        <button type="button" className={`${styles.btn} ${styles.btnOutline}`} onClick={() => prevStep(1)}>
                           <i className="fas fa-arrow-left" /> Previous
                         </button>
-                        <button
-                          type="button"
-                          className={`${styles.btn} ${styles.btnPrimary}`}
-                          onClick={() => nextStep(3)}
-                        >
+                        <button type="button" className={`${styles.btn} ${styles.btnPrimary}`} onClick={() => nextStep(3)}>
                           Next Step <i className="fas fa-arrow-right" />
                         </button>
                       </div>
@@ -404,17 +420,14 @@ export default function QuotePage() {
                         </label>
                       </div>
                       {errors.privacy && <p className={styles.errorMessage}>{errors.privacy}</p>}
+                      {errors.submit && <p className={styles.errorMessage}>{errors.submit}</p>}
 
                       <div className={styles.formActionsBetween}>
-                        <button
-                          type="button"
-                          className={`${styles.btn} ${styles.btnOutline}`}
-                          onClick={() => prevStep(2)}
-                        >
+                        <button type="button" className={`${styles.btn} ${styles.btnOutline}`} onClick={() => prevStep(2)}>
                           <i className="fas fa-arrow-left" /> Previous
                         </button>
-                        <button type="submit" className={`${styles.btn} ${styles.btnAccent} ${styles.btnLarge}`}>
-                          Submit Quote Request <i className="fas fa-paper-plane" />
+                        <button type="submit" disabled={isSubmitting} className={`${styles.btn} ${styles.btnAccent} ${styles.btnLarge}`}>
+                          {isSubmitting ? 'Submitting...' : 'Submit Quote Request'} <i className="fas fa-paper-plane" />
                         </button>
                       </div>
                     </div>
@@ -423,75 +436,6 @@ export default function QuotePage() {
               </div>
             </div>
           )}
-        </div>
-      </section>
-
-      <section className={styles.bgLight}>
-        <div className={styles.container}>
-          <div className={styles.textCenter}>
-            <h2 className={styles.sectionTitle}>Why Choose Divinerock</h2>
-            <p className={styles.sectionSubtitle}>
-              When you request a quote from us, you&apos;re getting more than just a price
-            </p>
-          </div>
-
-          <div className={styles.whyChooseGrid}>
-            {[
-              ['fas fa-clock', '48-Hour Response', 'We provide detailed quotes within 48 hours of receiving your request'],
-              ['fas fa-file-invoice', 'Detailed Breakdown', 'Transparent pricing with full breakdown of costs, materials, and labor'],
-              ['fas fa-calendar-check', 'Project Timeline', 'Clear project milestones and completion schedule included'],
-              ['fas fa-handshake', 'No Obligation', 'Free quotes with no commitment required'],
-            ].map(([icon, title, text]) => (
-              <div className={styles.whyItem} key={title}>
-                <div className={styles.whyIcon}>
-                  <i className={icon} />
-                </div>
-                <h4>{title}</h4>
-                <p>{text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.testimonialsSection}>
-        <div className={styles.container}>
-          <div className={styles.textCenter}>
-            <h2 className={styles.sectionTitle}>What Our Clients Say</h2>
-            <p className={styles.whiteSubtitle}>Trusted by leading organizations across Sierra Leone</p>
-          </div>
-
-          <div className={styles.testimonialGrid}>
-            <div className={styles.testimonialCard}>
-              <div className={styles.testimonialContent}>
-                <i className="fas fa-quote-left" /> Divinerock provided the most comprehensive quote we received.
-                Their attention to detail and professional approach gave us confidence from day one.
-              </div>
-              <div className={styles.testimonialAuthor}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="James Koroma" />
-                <div className={styles.authorInfo}>
-                  <h4>James Koroma</h4>
-                  <p>Project Director, Ministry of Works</p>
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.testimonialCard}>
-              <div className={styles.testimonialContent}>
-                <i className="fas fa-quote-left" /> The quoting process was smooth and transparent. They took time
-                to understand our requirements and delivered a quote that matched our budget perfectly.
-              </div>
-              <div className={styles.testimonialAuthor}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Mariatu Sesay" />
-                <div className={styles.authorInfo}>
-                  <h4>Mariatu Sesay</h4>
-                  <p>CEO, Sesay Construction Ltd</p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
     </>

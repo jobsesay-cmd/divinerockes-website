@@ -14,6 +14,8 @@ enum RoleType {
   AUTHOR
   REVIEWER
   SUPPORT
+  PROJECTS_MANAGER
+  INQUIRIES_MANAGER
 }
 
 enum ContentStatus {
@@ -199,20 +201,21 @@ model Service {
 }
 
 model Project {
-  id          String        @id @default(cuid())
-  title       String
-  slug        String        @unique
-  summary     String?
-  description Json
-  location    String?
-  completedOn DateTime?
-  status      ContentStatus @default(DRAFT)
-  publishedAt DateTime?
-  featured    Boolean       @default(false)
-  version     Int           @default(1)
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
-  deletedAt   DateTime?
+  id            String        @id @default(cuid())
+  title         String
+  slug          String        @unique
+  summary       String?
+  description   Json
+  coverImageUrl String?      
+  location      String?
+  completedOn   DateTime?
+  status        ContentStatus @default(DRAFT)
+  publishedAt   DateTime?
+  featured      Boolean       @default(false)
+  version       Int           @default(1)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  deletedAt     DateTime?
 
   createdById       String
   createdBy         User              @relation("ProjectCreatedBy", fields: [createdById], references: [id])

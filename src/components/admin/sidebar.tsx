@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInbox } from '@fortawesome/free-solid-svg-icons';
 import { faChartLine, faFileAlt, faScrewdriverWrench, faDiagramProject, faNewspaper, faEnvelope, faMagnifyingGlassChart, faGear, faUsers, faFileExport } from '@fortawesome/free-solid-svg-icons';
 
 const links = [
@@ -8,6 +9,7 @@ const links = [
   ['/admin/services', 'Services', faScrewdriverWrench],
   ['/admin/projects', 'Projects', faDiagramProject],
   ['/admin/news', 'News', faNewspaper],
+  ['/admin/submissions', 'Submissions', faInbox],
   ['/admin/inquiries', 'Inquiries', faEnvelope],
   ['/admin/seo', 'SEO', faMagnifyingGlassChart],
   ['/admin/settings', 'Settings', faGear],

@@ -868,7 +868,7 @@ export default function EquipmentPage() {
           <div className="heavy-equipment-grid">
             <div className="heavy-equipment-item">
               <div className="heavy-equipment-image">
-                <img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Excavator" />
+                <img src="/images/Excavator.png" alt="Excavator" />
               </div>
               <div className="heavy-equipment-content">
                 <h3>
@@ -914,7 +914,7 @@ export default function EquipmentPage() {
             </div>
             <div className="heavy-equipment-item">
               <div className="heavy-equipment-image">
-                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Bulldozer" />
+                <img src="images/BullDozer.png" alt="Bulldozer" />
               </div>
               <div className="heavy-equipment-content">
                 <h3>
@@ -960,7 +960,7 @@ export default function EquipmentPage() {
             </div>
             <div className="heavy-equipment-item">
               <div className="heavy-equipment-image">
-                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Motor Grader" />
+                <img src="images/MotoGrader.png" alt="Motor Grader" />
               </div>
               <div className="heavy-equipment-content">
                 <h3>

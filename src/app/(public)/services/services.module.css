@@ -1,297 +1,559 @@
-.page {
-  width: 100%;
-  color: #334e68;
-  background: #f3f5f8;
-}
-
-.banner {
-  background: linear-gradient(135deg, #0972c2 0%, #0a5fa0 100%);
-  color: #fff;
-  padding: 90px 24px;
-  text-align: center;
-}
-
-.banner h1 {
-  font-size: clamp(2rem, 3.5vw, 3.25rem);
-  font-weight: 800;
-}
-
-.banner p {
-  max-width: 980px;
-  margin: 18px auto 0;
-  font-size: 1.15rem;
-  line-height: 1.7;
-}
-
-.section,
-.equipment,
-.cta {
-  padding: 88px 24px;
-}
-
-.light {
-  background: #f3f5f8;
-}
-
-.center,
-.intro {
-  max-width: 1220px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.title {
-  font-size: clamp(2rem, 3vw, 3.7rem);
-  color: #1771ba;
-  margin-bottom: 12px;
-  font-weight: 800;
-}
-
-.title::after {
-  content: '';
-  display: block;
-  width: 100px;
-  height: 5px;
-  margin: 16px auto 0;
-  border-radius: 999px;
-  background: #df3f3d;
-}
-
-.subtitle {
-  max-width: 980px;
-  margin: 26px auto 10px;
-  font-size: 1.02rem;
-  line-height: 1.75;
-}
-
-.intro {
-  text-align: left;
-}
-
-.intro .subtitle {
-  margin-left: 0;
-}
-
-.intro .title::after {
-  margin-left: 0;
-}
-
-.servicesGrid,
-.equipmentGrid,
-.industryGrid,
-.processGrid {
-  max-width: 1540px;
-  margin: 40px auto 0;
-  display: grid;
-  gap: 26px;
-}
-
-.servicesGrid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.card {
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 10px 26px rgba(20, 39, 56, 0.1);
-  overflow: hidden;
-  border: 1px solid #dde4ec;
-}
-
-.cardHeader {
-  background: #2f83c3;
-  color: #fff;
-  padding: 30px 34px 24px;
-}
-
-.icon {
-  font-size: 3rem;
-  display: inline-block;
-  color: inherit;
-}
-
-.cardHeader h3 {
-  margin-top: 12px;
-  font-size: 2.05rem;
-  line-height: 1.15;
-  font-weight: 800;
-}
-
-.cardBody {
-  padding: 30px 34px 34px;
-}
-
-.cardBody p {
-  font-size: 1.01rem;
+.aboutPage {
+  --ap-blue: #167fc1;
+  --ap-blue-dark: #0b6fab;
+  --ap-blue-deep: #0a65a3;
+  --ap-red: #dc3939;
+  --ap-text: #4f6172;
+  --ap-title: #0f79b6;
+  --ap-muted: #758596;
+  --ap-soft: #f3f6fa;
+  --ap-white: #ffffff;
+  --ap-shadow: 0 10px 26px rgba(16, 69, 105, 0.12);
+  background: var(--ap-soft);
+  color: var(--ap-text);
+  font-family: 'Poppins', 'Montserrat', 'Segoe UI', Arial, sans-serif;
   line-height: 1.65;
 }
 
-.list {
-  margin-top: 20px;
-  list-style: none;
-  padding: 0;
+.aboutPage,
+.aboutPage * {
+  box-sizing: border-box;
 }
 
-.list li {
-  margin: 10px 0;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}
-
-.subGrid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.subItem {
-  background: #edf1f5;
-  border-radius: 10px;
-  padding: 14px;
-  text-align: left;
-  color: #136db5;
-  font-weight: 700;
-}
-
-.equipment {
-  background: linear-gradient(180deg, #136db5 0%, #0e62a5 100%);
-  color: #fff;
-}
-
-.equipment .title,
-.equipment .subtitle {
-  color: #fff;
-}
-
-.equipment .title::after {
-  margin-left: 0;
-}
-
-.equipment .center {
-  text-align: left;
-}
-
-.equipmentGrid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-.glass {
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 14px;
-  padding: 30px 22px;
-  text-align: center;
-}
-
-.glass svg {
-  font-size: 2.7rem;
-  color: #e3413f;
-}
-
-.glass h4 {
-  font-size: 2rem;
-  margin: 12px 0;
-  font-weight: 800;
-}
-
-.glass p {
-  line-height: 1.45;
-}
-
-.industryGrid {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-}
-
-.industryGrid .card {
-  padding: 34px 22px;
-  text-align: center;
-}
-
-.industryGrid .icon {
-  width: 88px;
-  height: 88px;
-  border-radius: 999px;
-  display: inline-grid;
-  place-items: center;
-  background: #1771ba;
-  color: #fff;
-  font-size: 2.3rem;
-}
-
-.industryGrid h4 {
-  font-size: 2rem;
-  margin: 18px 0 8px;
-  color: #1771ba;
-}
-
-.processGrid {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  align-items: start;
-}
-
-.processGrid .center {
-  text-align: center;
-}
-
-.pill {
-  width: 76px;
-  height: 76px;
-  border-radius: 999px;
-  background: #1771ba;
-  color: #fff;
-  display: grid;
-  place-items: center;
-  margin: 0 auto 16px;
-  font-size: 2rem;
-  font-weight: 800;
-}
-
-.processGrid h4 {
-  color: #1771ba;
-  font-size: 1.9rem;
-  margin-bottom: 8px;
-}
-
-.cta {
-  text-align: center;
-  background: #0f172a;
-  color: #fff;
-}
-
-.btn {
-  display: inline-block;
-  margin-top: 16px;
-  padding: 12px 18px;
-  border-radius: 8px;
+.aboutPage a {
+  color: inherit;
   text-decoration: none;
 }
 
-.accent {
-  background: #d83936;
-  color: #fff;
+.apContainer {
+  width: min(1100px, calc(100% - 44px));
+  margin-inline: auto;
 }
 
-@media (max-width: 1300px) {
-  .servicesGrid,
-  .equipmentGrid { grid-template-columns: repeat(2, 1fr); }
-  .industryGrid,
-  .processGrid { grid-template-columns: repeat(3, 1fr); }
+.apHero,
+.apCta {
+  color: var(--ap-white);
+  text-align: center;
+  background:
+    linear-gradient(90deg, rgba(8, 104, 167, 0.94), rgba(24, 132, 195, 0.92)),
+    radial-gradient(circle at 16% 20%, rgba(255, 255, 255, 0.18), transparent 22%),
+    radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.12), transparent 20%),
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 12px);
+  background-blend-mode: normal, screen, screen, normal;
 }
 
-@media (max-width: 800px) {
-  .servicesGrid,
-  .equipmentGrid,
-  .industryGrid,
-  .processGrid,
-  .subGrid { grid-template-columns: 1fr; }
-  .intro,
-  .equipment .center { text-align: center; }
-  .intro .title::after,
-  .intro .subtitle,
-  .equipment .title::after { margin-left: auto; }
-  .section,
-  .equipment,
-  .cta { padding: 64px 16px; }
+.apHero {
+  min-height: 252px;
+  display: grid;
+  place-items: center;
+  padding: 58px 0 64px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.apHeroContent h1 {
+  margin: 0 0 14px;
+  font-size: clamp(2rem, 5vw, 3.42rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+.apHeroContent p {
+  width: min(720px, 100%);
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.75;
+  opacity: 0.96;
+}
+
+.apIntro {
+  background: var(--ap-white);
+  padding: 72px 0 78px;
+  text-align: center;
+}
+
+.apIntroInner {
+  width: min(820px, calc(100% - 44px));
+}
+
+.apIntro .apSectionHeading {
+  margin-bottom: 22px;
+}
+
+.apIntro p {
+  margin: 0 auto;
+  color: #546778;
+  font-size: 0.98rem;
+  line-height: 1.95;
+}
+
+.apButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 3px;
+  background: var(--ap-red);
+  color: var(--ap-white) !important;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: 0 6px 16px rgba(171, 29, 29, 0.25);
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+.apButton:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.04);
+}
+
+.apServices {
+  background: var(--ap-soft);
+  padding: 54px 0 84px;
+}
+
+.apSectionHeading {
+  margin: 0 auto 45px;
+  text-align: center;
+}
+
+.apSectionHeadingLeft {
+  text-align: left;
+}
+
+.apSectionHeading h2 {
+  margin: 0;
+  color: var(--ap-title);
+  font-size: clamp(1.8rem, 3.8vw, 2.6rem);
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+.apSectionHeading span {
+  display: block;
+  width: 64px;
+  height: 4px;
+  margin: 15px auto 0;
+  background: var(--ap-red);
+  border-radius: 999px;
+}
+
+.apSectionHeadingLeft span {
+  margin-left: 0;
+}
+
+.apSectionHeading p {
+  width: min(770px, 100%);
+  margin: 21px auto 0;
+  color: #6f7f8f;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.apSectionHeadingLeft p {
+  margin-left: 0;
+}
+
+.apSectionHeadingLight h2,
+.apSectionHeadingLight p {
+  color: var(--ap-white);
+}
+
+.apSectionHeadingLight p {
+  opacity: 0.95;
+}
+
+.apServicesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 34px;
+  align-items: start;
+}
+
+.apServiceCard {
+  overflow: hidden;
+  min-height: 100%;
+  background: var(--ap-white);
+  border-radius: 7px;
+  box-shadow: var(--ap-shadow);
+}
+
+.apServiceCardHeader {
+  min-height: 172px;
+  padding: 32px 30px 28px;
+  color: var(--ap-white);
+  background: var(--ap-blue);
+}
+
+.apServiceCardIcon {
+  width: 48px;
+  height: 48px;
+  display: block;
+  margin-bottom: 18px;
+  color: currentColor;
+}
+
+.apServiceCardHeader h3 {
+  margin: 0;
+  max-width: 290px;
+  font-size: 1.58rem;
+  line-height: 1.18;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+.apServiceCardBody {
+  padding: 30px;
+}
+
+.apServiceCardBody p {
+  margin: 0 0 24px;
+  color: #5e6e7f;
+  font-size: 0.94rem;
+  line-height: 1.85;
+}
+
+.apServiceCard h4 {
+  margin: 0 0 13px;
+  color: var(--ap-title);
+  font-size: 1.02rem;
+  font-weight: 800;
+}
+
+.apServiceCard ul {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.apServiceCard li {
+  position: relative;
+  min-height: 17px;
+  padding-left: 26px;
+  color: #5f7182;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.apServiceCard li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 14px;
+  height: 14px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--ap-red);
+  color: var(--ap-white);
+  font-size: 8px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.apDetailGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.apDetailCard {
+  min-height: 105px;
+  padding: 17px 16px;
+  border-radius: 4px;
+  background: #f3f6f9;
+}
+
+.apDetailCard strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--ap-title);
+  font-size: 0.9rem;
+  line-height: 1.25;
+}
+
+.apDetailCard span {
+  display: block;
+  color: #657585;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.apEquipment {
+  padding: 72px 0 84px;
+  color: var(--ap-white);
+  background:
+    linear-gradient(90deg, rgba(6, 105, 170, 0.98), rgba(11, 113, 179, 0.98)),
+    radial-gradient(circle at 50% 38%, rgba(255, 255, 255, 0.12), transparent 32%);
+}
+
+.apEquipment .apSectionHeading {
+  width: min(880px, 100%);
+  margin-bottom: 46px;
+}
+
+.apEquipmentGrid {
+  width: min(820px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.apEquipmentCard {
+  min-height: 146px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  padding: 24px 18px;
+  text-align: center;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.11);
+}
+
+.apEquipmentCardIcon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 14px;
+  color: var(--ap-red);
+}
+
+.apEquipmentCard h3 {
+  margin: 0 0 7px;
+  color: var(--ap-white);
+  font-size: 0.98rem;
+  line-height: 1.25;
+  font-weight: 800;
+}
+
+.apEquipmentCard p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.83rem;
+  line-height: 1.45;
+}
+
+.apIndustries {
+  padding: 68px 0 78px;
+  background: var(--ap-white);
+}
+
+.apIndustriesGrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.apIndustryCard {
+  min-height: 148px;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  padding: 24px 14px;
+  text-align: center;
+  border: 1px solid #edf1f5;
+  border-radius: 5px;
+  background: var(--ap-white);
+  box-shadow: 0 8px 20px rgba(24, 72, 111, 0.06);
+}
+
+.apIndustryCardIconWrap {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 15px;
+  border-radius: 999px;
+  background: var(--ap-blue);
+  color: var(--ap-white);
+}
+
+.apIndustryCardIcon {
+  width: 28px;
+  height: 28px;
+}
+
+.apIndustryCard h3 {
+  margin: 0 0 6px;
+  color: var(--ap-title);
+  font-size: 0.95rem;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.apIndustryCard p {
+  margin: 0;
+  color: #677889;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.apProcess {
+  padding: 82px 0 78px;
+  background: var(--ap-soft);
+  text-align: center;
+}
+
+.apProcessTimeline {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 16px;
+}
+
+.apProcessNode {
+  display: contents;
+}
+
+.apProcessStep {
+  width: 165px;
+  text-align: center;
+}
+
+.apProcessStep span {
+  width: 48px;
+  height: 48px;
+  display: inline-grid;
+  place-items: center;
+  margin-bottom: 14px;
+  border-radius: 999px;
+  background: var(--ap-blue);
+  color: var(--ap-white);
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.apProcessStep h3 {
+  margin: 0 0 5px;
+  color: #1177b4;
+  font-size: 0.95rem;
+  line-height: 1.25;
+  font-weight: 800;
+}
+
+.apProcessStep p {
+  margin: 0;
+  color: #667789;
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.apProcessArrow {
+  padding-top: 45px;
+  color: var(--ap-red);
+  font-size: 2rem;
+  line-height: 1;
+  font-weight: 400;
+}
+
+.apProcessNote {
+  margin: 45px auto 0;
+  color: #4d6273;
+  font-size: 0.94rem;
+  line-height: 1.65;
+}
+
+.apCta {
+  min-height: 300px;
+  display: grid;
+  place-items: center;
+  padding: 70px 0 76px;
+}
+
+.apCtaInner h2 {
+  margin: 0 0 20px;
+  color: var(--ap-white);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.18;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+.apCtaInner p {
+  width: min(650px, 100%);
+  margin: 0 auto 28px;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.apButtonCta {
+  min-width: 160px;
+  min-height: 52px;
+  padding: 0 25px;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 1024px) {
+  .apServicesGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .apEquipmentGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .apIndustriesGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .apProcessTimeline {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .apProcessArrow {
+    display: none;
+  }
+
+  .apProcessNode {
+    display: block;
+  }
+}
+
+@media (max-width: 680px) {
+  .apContainer,
+  .apIntroInner {
+    width: min(100% - 28px, 1100px);
+  }
+
+  .apHero {
+    padding: 50px 0 54px;
+  }
+
+  .apIntro,
+  .apServices,
+  .apEquipment,
+  .apIndustries,
+  .apProcess,
+  .apCta {
+    padding-top: 52px;
+    padding-bottom: 56px;
+  }
+
+  .apServicesGrid,
+  .apEquipmentGrid,
+  .apIndustriesGrid,
+  .apDetailGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .apServiceCardHeader {
+    min-height: 142px;
+  }
+
+  .apProcessTimeline {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .apProcessStep {
+    width: 100%;
+  }
 }

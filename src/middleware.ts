@@ -11,7 +11,6 @@ function applySecurityHeaders(response: NextResponse): NextResponse {
   response.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
   response.headers.set('Cross-Origin-Resource-Policy', 'same-origin');
 
-  // Keep CSP conservative for now to avoid breaking existing inline assets.
   response.headers.set(
     'Content-Security-Policy',
     "default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
@@ -33,6 +32,10 @@ function csrfFailed(): NextResponse {
   );
 }
 
+function isPublicInquiryEndpoint(pathname: string): boolean {
+  return pathname === '/api/inquiries' || pathname === '/api/inquiries/quotes';
+}
+
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const isAdminRoute = pathname.startsWith('/admin');
@@ -40,13 +43,22 @@ export function middleware(request: NextRequest) {
 
   const sessionCookie = request.cookies.get(securityConfig.AUTH_COOKIE_NAME)?.value;
 
+  // Protect admin routes
   if (isAdminRoute && !sessionCookie) {
-    const loginUrl = new URL('/?auth=required', request.url);
+    const loginUrl = new URL('/login', request.url);
+    loginUrl.searchParams.set('auth', 'required');
+    loginUrl.searchParams.set('next', request.nextUrl.pathname);
     return applySecurityHeaders(NextResponse.redirect(loginUrl));
   }
 
-  // Enforce double-submit CSRF for authenticated mutating API requests.
-  if (isApiRoute && isUnsafeMethod(request.method) && sessionCookie) {
+  // Enforce CSRF for authenticated mutating API requests,
+  // excluding public inquiry endpoints.
+  if (
+    isApiRoute &&
+    isUnsafeMethod(request.method) &&
+    sessionCookie &&
+    !isPublicInquiryEndpoint(pathname)
+  ) {
     const csrfHeader = request.headers.get('x-csrf-token');
     const csrfCookie = request.cookies.get(securityConfig.AUTH_CSRF_COOKIE_NAME)?.value;
 

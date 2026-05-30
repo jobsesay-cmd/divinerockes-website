@@ -11,3 +11,14 @@ export const userCreateSchema = z.object({
 export const userUpdateSchema = userCreateSchema.partial().extend({
   isActive: z.boolean().optional(),
 });
+
+export const roleCreateSchema = z.object({
+  key: z.nativeEnum(RoleType),
+  name: z.string().min(2).max(120),
+  description: z.string().max(280).optional(),
+});
+
+export const roleUpdateSchema = z.object({
+  name: z.string().min(2).max(120).optional(),
+  description: z.string().max(280).optional(),
+});
