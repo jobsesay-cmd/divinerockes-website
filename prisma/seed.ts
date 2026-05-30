@@ -100,6 +100,7 @@ async function main() {
     update: {
       fullName: 'Divinerock Super Admin',
       isActive: true,
+      passwordHash: hashPassword(adminPassword),
     },
     create: {
       email: adminEmail,

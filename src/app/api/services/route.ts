@@ -1,24 +1,104 @@
 import { NextRequest } from 'next/server';
-import { paginationSchema } from '@/lib/api/pagination';
-import { fail, ok } from '@/lib/api/response';
-import { assertCsrfToken } from '@/lib/auth/session';
+import { ok, fail } from '@/lib/api/response';
 import { requirePermission } from '@/lib/rbac';
-import { serviceSchema } from '@/domains/services/schema';
-import { listServices, upsertService } from '@/domains/services/service';
+import { prisma } from '@/lib/prisma';
+import { z } from 'zod';
 
-export async function GET(req: NextRequest) {
-  const parsed = paginationSchema.safeParse(Object.fromEntries(req.nextUrl.searchParams));
-  if (!parsed.success) return fail('Validation failed', 422, parsed.error.flatten());
-  return ok(await listServices(parsed.data.page, parsed.data.pageSize));
+const createSchema = z.object({
+  name: z.string().trim().min(2).max(140),
+  summary: z.string().trim().min(20).max(1200),
+  status: z.enum(['DRAFT', 'PUBLISHED', 'ARCHIVED']).optional(),
+});
+
+function toMessage(error: unknown) {
+  return error instanceof Error ? error.message : 'Internal server error';
+}
+
+function slugify(input: string): string {
+  return input
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-');
+}
+
+async function uniqueSlug(base: string): Promise<string> {
+  const root = slugify(base) || 'service';
+  let slug = root;
+  let i = 1;
+
+  while (true) {
+    const existing = await prisma.service.findFirst({
+      where: { slug },
+      select: { id: true },
+    });
+    if (!existing) return slug;
+    slug = `${root}-${i++}`;
+  }
+}
+
+export async function GET() {
+  try {
+    const items = await prisma.service.findMany({
+      where: {
+        deletedAt: null,
+      },
+      orderBy: [{ publishedAt: 'desc' }, { createdAt: 'desc' }],
+      select: {
+        id: true,
+        name: true,
+        summary: true,
+        slug: true,
+        status: true,
+        publishedAt: true,
+        createdAt: true,
+        updatedAt: true,
+      },
+    });
+
+    return ok({ items });
+  } catch (error) {
+    return fail(toMessage(error), 500);
+  }
 }
 
 export async function POST(req: NextRequest) {
-  const auth = await requirePermission('services:manage');
-  if (auth.error) return auth.error;
-  if (!(await assertCsrfToken())) return fail('CSRF validation failed', 403);
+  try {
+    const auth = await requirePermission('services:manage');
+    if (auth.error) return auth.error;
 
-  const parsed = serviceSchema.safeParse(await req.json());
-  if (!parsed.success) return fail('Validation failed', 422, parsed.error.flatten());
+    const body = await req.json().catch(() => null);
+    const parsed = createSchema.safeParse(body);
+    if (!parsed.success) return fail('Validation failed', 422, parsed.error.flatten());
 
-  return ok(await upsertService(null, parsed.data, auth.session.user.id), { status: 201 });
+    const slug = await uniqueSlug(parsed.data.name);
+    const status = parsed.data.status ?? 'PUBLISHED';
+
+    const created = await prisma.service.create({
+      data: {
+        name: parsed.data.name,
+        slug,
+        summary: parsed.data.summary,
+        content: { blocks: [] },
+        status,
+        publishedAt: status === 'PUBLISHED' ? new Date() : null,
+        createdById: auth.session.user.id,
+      },
+      select: {
+        id: true,
+        name: true,
+        summary: true,
+        slug: true,
+        status: true,
+        publishedAt: true,
+        createdAt: true,
+        updatedAt: true,
+      },
+    });
+
+    return ok(created);
+  } catch (error) {
+    return fail(toMessage(error), 500);
+  }
 }

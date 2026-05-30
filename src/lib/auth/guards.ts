@@ -12,7 +12,7 @@ function hasPermission(
 
 export async function requireAdminSession() {
   const session = await getSessionUser();
-  if (!session?.user) redirect('/');
+  if (!session?.user) redirect('/login?auth=required&next=/admin');
   return session;
 }
 

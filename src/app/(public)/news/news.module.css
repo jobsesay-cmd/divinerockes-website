@@ -1,0 +1,35 @@
+.page { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem 4rem; color: #1f2b37; }
+.hero { text-align: center; padding: 2rem 0 1rem; }
+.hero h1 { font-size: 2.5rem; color: #0972c2; margin-bottom: .5rem; }
+.hero p { max-width: 760px; margin: 0 auto 1rem; color: #4a5a6a; }
+.chips { display: flex; gap: .6rem; flex-wrap: wrap; justify-content: center; }
+.chip { border: 1px solid #0972c2; border-radius: 999px; padding: .45rem .9rem; color: #0972c2; text-decoration: none; font-size: .9rem; }
+.chip:hover { background: #0972c2; color: #fff; }
+
+.section, .featured, .newsletter { margin-top: 2.5rem; }
+.section h2, .featured h2, .newsletter h2 { color: #0972c2; margin-bottom: 1rem; }
+
+.featuredCard { display: grid; gap: 1rem; grid-template-columns: 1.2fr 1fr; background: #fff; border: 1px solid #e5ecf2; border-radius: 12px; overflow: hidden; }
+.featuredCard img { width: 100%; height: 100%; object-fit: cover; min-height: 260px; }
+.featuredCard > div { padding: 1rem; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 1rem; }
+
+.card { background: #fff; border: 1px solid #e5ecf2; border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
+.cardImage { width: 100%; height: 170px; object-fit: cover; display: block; }
+.cardContent { padding: 1rem; }
+
+.card h3 { margin: .3rem 0 .5rem; font-size: 1.05rem; }
+.card p { color: #4a5a6a; }
+.meta { font-size: .8rem; color: #6e7d8d !important; text-transform: uppercase; }
+
+.card a, .featuredCard a { display: inline-block; margin-top: .8rem; color: #0972c2; font-weight: 600; text-decoration: none; }
+
+.newsletter { background: #f5f7fa; border-radius: 12px; padding: 1.5rem; text-align: center; }
+.form { display: flex; gap: .6rem; justify-content: center; flex-wrap: wrap; margin-top: .8rem; }
+.form input { min-width: 260px; border: 1px solid #d3dde7; border-radius: 8px; padding: .6rem .8rem; }
+.form button { background: #d83936; border: none; color: #fff; border-radius: 8px; padding: .6rem 1rem; font-weight: 700; }
+
+@media (max-width: 900px){
+  .featuredCard{ grid-template-columns:1fr; }
+}
